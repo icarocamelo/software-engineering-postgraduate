@@ -7,3 +7,32 @@ Um conceito de Software
 3. Informação descritiva, tanto na forma impresa como na virtual
 
 
+Software é um veículo de entrega de um produtos
+ - controla outros softwares (sistema operacional)
+ - viabiliza a comunicação de dados
+ - facilita a construção de outros softwares
+
+Aplicaçoes de softwares
+
+- Programas que apoiam o funcionamento de outros programas
+software de tempo real:
+    - monitora, analisa e controla eventos do mundo real
+    - tempo real é diferente de interativo ou time-sharing
+    - software de aplicação
+    - software científico e de engenharia
+        - desde astronomia até a vulcanologia
+        - processam números
+        - CAD
+    - software embutidos ou embarcados
+    - software para linhas de produtos
+        - textos, planilhas, etc
+        - interface sempre inovadora
+    - netsourcing
+        - software de mensagens
+    - software livre
+        - possuem código fonte auto descritivo que facilita sua modificação
+    - computação ubíqua
+        - softwares que permitem pequenos dispositivos se comunicarem em qualquer ambiente criando um contexto "always on"
+    - software legado
+
+
