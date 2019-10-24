@@ -1,0 +1,39 @@
+Engenharia de software
+
+Objetivos
+
+- Entender o problema antes de desenvolver uma solução
+- Projetar é uma atividade fundamental
+- Alta qualidade
+- Facilidade de manutenção
+
+O que é engenharia de software:
+"Estabelecimento e o emprego de sólidos princípios de engenharia de 
+modo a obter software econômica, que seja confiável e funcione
+de forma eficiente em máquinas reais". Roger Pressman
+
+Definição do IEEE
+Engenharia de software:
+    1. A aplicação de uma abordagem sistemática, disciplinada e quantificável
+no desenvolvimento, na operação e na manutenção de software,
+isto é, a aplicaçao de engenharia ao software.
+    2. O estudo de abordagens como definido em 1.
+
+A tecnologia em camadas
+    - Tools
+    - Methods
+    - Process model
+    - A "quality" focus
+
+Questões para a engenharia de software
+    - Qual o problema tem que ser resolvido
+    - Quais caraterísticas do software são utilizadas
+    - Como o software será construído
+    - Como os erros serão identificados
+    - Como o software será mantido
+
+A essência da prática
+    - Compreenda o problema
+    - Planeje a solução
+    - Execute e leve adiante o plano definido
+    - Examine o resultado
