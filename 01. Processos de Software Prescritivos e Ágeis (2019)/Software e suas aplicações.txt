@@ -1,0 +1,9 @@
+Software e suas aplicações
+
+Um conceito de Software
+
+1. Instruções que fornecem caraterísticas, funções e desempenho
+2. Estrutura de dados que possibilitam manipulação de dados
+3. Informação descritiva, tanto na forma impresa como na virtual
+
+
