@@ -27,3 +27,14 @@ Fluxo de Processo
     - Iterativo
     - Evolucionário
     - Paralelo
+
+Padrões de Processos
+    - Padrão de fases: define a sequencia de atividades metodológicas
+        - Exemplo: modelo espiral ou prototipação
+    - Padrões de tarefas: define um problema associado a uma ação de engenharia de software
+        - Exemplo: levantamento de necessidade
+Avaliação e Aperfeiçoamento de Processos
+    - SCAMPI
+    - CBA IPI
+    - SPICE
+    - ISO 9001:2000 para software
