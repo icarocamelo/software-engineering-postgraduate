@@ -1,0 +1,26 @@
+Processo unificado (RUP - Rational Unified Process)
+
+Ivan Jacobson
+UML
+
+Características:
+    - Dirigido por caso de uso
+    - Centrado na arquitetura
+    - Iterativo e incremental
+
+Fases ou disciplinas:
+    - Inception-Concepção
+        - Definição dos casos de uso mais críticos
+        - Delimita-se o escopo
+    - Elaboration
+        - Descrição arquitetural do software
+        - Ao final dessa fase, deve-se estar apto a planejar a construção
+    - Construction
+        - Implementação de código
+    - Transition
+        - Envolve a realização de testes e correção de erros
+
+Como definir o número de iteração 
+    - Projeto muito simples: [1,1,1,1]
+    - Projetos maiores: [1,2,2,1]
+    - Projeto ainda maiores: [+1, +1, +1, +1]
