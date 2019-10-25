@@ -1,0 +1,38 @@
+Importância do software na sociedade contemporânea: Parte 01
+
+1a. era (195? 196?)
+    - Processamento batch
+    - Distribuicao limitada de softwares
+    - Software padronizado
+    - Producao artesanal
+
+2a. era (196? 197?)
+    - Sistemas multiusuarios
+    - Surgimento de software houses e bureaus de processamentos
+    - Pacotes de software
+    - Processamentos real-time
+    - Inicio da utilizacao da tecnologia de banco de dados
+    - Surgimento dos cursos de ciencia da computacao
+
+3a. era (197? 198?)
+    - Sistemas distribuidos devido a evolucao das tecnologias 
+redes de redes de computadores
+    - Inteligencia embutida em microprocessadores
+    - Diminuicao do custo do hardware
+
+4a. era (198? ate 200?)
+    - Aumento do poder das aplicacoes desktop
+    - Tecnologia de orientacao a objetos
+    - Sistemas especialistas
+    - Redes neurais
+    - Computacao paralela
+    - Arquitetura multi-camada
+
+
+----
+
+O que fazer para aumentar a produtividade e qualidade do 
+software e sua entrega?
+
+
+    

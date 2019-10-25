@@ -1,0 +1,12 @@
+Mitos relativos ao software
+
+- Mitos de gerenciamento
+    - Boas práticas e padrões existentes não são fontes suficientes para o sucesso do projeto
+    - Adicionar programadores para reduzir atraso de cronograma
+    - Terceirizar o projeto ainda requer gerenciamento
+
+- Mitos dos clientes
+    - É necessário conhecer os requisitos em detalhes
+    - Mudanças ocorrem e são facilmente adaptadas pois o software é flexível
+
+- Mitos dos profissionais da área

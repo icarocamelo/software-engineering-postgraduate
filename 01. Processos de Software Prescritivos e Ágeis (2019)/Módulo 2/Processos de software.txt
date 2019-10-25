@@ -1,0 +1,29 @@
+Processos de software
+
+Definição: 
+"Processo de software é definido como uma metodologia
+para as atividades, ações e tarefas necessárias para dsenvolver
+um software de alta qualidade". Roger Pressman
+
+Atividades metodológicas
+    - Comunicação
+    - Planejamento
+    - Modelagem
+    - Construção
+    - Entrega
+
+Atividades de apoio
+    - Controle e acompanhamento do projeto
+    - Administração de risco
+    - Garantia de qualidade
+    - Revisões técnicas
+    - Medição
+    - Gerenciamento de configuração de software
+    - Gerenciamento da reusabilidade
+    - Preparo e produção de artefatos
+
+Fluxo de Processo
+    - Linear
+    - Iterativo
+    - Evolucionário
+    - Paralelo
