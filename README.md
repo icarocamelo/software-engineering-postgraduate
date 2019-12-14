@@ -1,9 +1,9 @@
-# Notes from the Post-Graduate Certificate program in Software Engineering at PUC Minas
+# Notes from the Postgraduate diploma program in Software Engineering at PUC Minas
 
-## PUC Minas - Postgraduate certificate in Software Engineering
+## PUC Minas - Postgraduate diploma in Software Engineering
 
 
-### Courses
+### Coursework
 - Prescriptive Software Processes and Agile 
 - Mobile Application Architecture
 - Web Application Architecture
