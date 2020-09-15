@@ -1,23 +1,16 @@
 version: '2'
 services:
-  saudeplusplus-app:
-    image: saudeplusplus
+  saudepluplus-app:
+    image: saudepluplus
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,swagger
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://saudeplusplus-postgresql:5432/saudeplusplus
-      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/auth/realms/jhipster
-      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=web_app
-      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=web_app
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://saudepluplus-postgresql:5432/saudepluplus
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
     ports:
       - 8080:8080
-  saudeplusplus-postgresql:
+  saudepluplus-postgresql:
     extends:
       file: postgresql.yml
-      service: saudeplusplus-postgresql
-  keycloak:
-    extends:
-      file: keycloak.yml
-      service: keycloak
+      service: saudepluplus-postgresql

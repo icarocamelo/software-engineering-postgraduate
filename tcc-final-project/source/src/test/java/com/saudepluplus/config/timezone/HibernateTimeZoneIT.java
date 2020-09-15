@@ -1,7 +1,6 @@
 package com.saudepluplus.config.timezone;
 
-import com.saudepluplus.SaudeplusplusApp;
-import com.saudepluplus.config.TestSecurityConfiguration;
+import com.saudepluplus.SaudepluplusApp;
 import com.saudepluplus.repository.timezone.DateTimeWrapper;
 import com.saudepluplus.repository.timezone.DateTimeWrapperRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Integration tests for the ZoneId Hibernate configuration.
  */
-@SpringBootTest(classes = {SaudeplusplusApp.class, TestSecurityConfiguration.class})
+@SpringBootTest(classes = SaudepluplusApp.class)
 public class HibernateTimeZoneIT {
 
     @Autowired

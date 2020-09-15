@@ -4,9 +4,12 @@ import { NgModule } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SessionStorageService, LocalStorageService } from 'ngx-webstorage';
-import { JhiDataUtils, JhiDateUtils, JhiEventManager, JhiAlertService, JhiParseLinks } from 'ng-jhipster';
+import { JhiLanguageService, JhiDataUtils, JhiDateUtils, JhiEventManager, JhiAlertService, JhiParseLinks } from 'ng-jhipster';
 
+import { MockLanguageService } from './helpers/mock-language.service';
 import { AccountService } from 'app/core/auth/account.service';
+import { LoginModalService } from 'app/core/login/login-modal.service';
+import { MockLoginModalService } from './helpers/mock-login-modal.service';
 import { MockAccountService } from './helpers/mock-account.service';
 import { MockActivatedRoute, MockRouter } from './helpers/mock-route.service';
 import { MockActiveModal } from './helpers/mock-active-modal.service';
@@ -19,6 +22,10 @@ import { MockEventManager } from './helpers/mock-event-manager.service';
     JhiDataUtils,
     JhiDateUtils,
     JhiParseLinks,
+    {
+      provide: JhiLanguageService,
+      useClass: MockLanguageService,
+    },
     {
       provide: JhiEventManager,
       useClass: MockEventManager,
@@ -40,6 +47,10 @@ import { MockEventManager } from './helpers/mock-event-manager.service';
       useClass: MockAccountService,
     },
     {
+      provide: LoginModalService,
+      useClass: MockLoginModalService,
+    },
+    {
       provide: JhiAlertService,
       useClass: MockAlertService,
     },
@@ -58,4 +69,4 @@ import { MockEventManager } from './helpers/mock-event-manager.service';
   ],
   imports: [HttpClientTestingModule],
 })
-export class SaudeplusplusTestModule {}
+export class SaudepluplusTestModule {}

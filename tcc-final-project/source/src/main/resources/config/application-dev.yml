@@ -37,8 +37,8 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:saudeplusplus;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: saudeplusplus
+    url: jdbc:h2:mem:saudepluplus;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: saudepluplus
     password:
     hikari:
       poolName: Hikari
@@ -77,9 +77,13 @@ jhipster:
     allowed-origins: '*'
     allowed-methods: '*'
     allowed-headers: '*'
-    exposed-headers: 'Authorization,Link,X-Total-Count'
+    exposed-headers: 'Link,X-Total-Count'
     allow-credentials: true
     max-age: 1800
+  security:
+    remember-me:
+      # security key (this key should be unique for your application, and kept secret)
+      key: 7cd318937db72858b295c99ed0e5fe53b4f1ffc0fa670355365c6272e691ced5e9468f8cf85b8f06d5d8f649cd18686a29dd
   mail: # specific JHipster mail property, for standard properties see MailProperties
     base-url: http://127.0.0.1:8080
   metrics:

@@ -16,7 +16,7 @@ const ENV = 'development';
 module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
     devtool: 'eval-source-map',
     devServer: {
-        contentBase: './build/resources/main/static/',
+        contentBase: './target/classes/static/',
         proxy: [{
             context: [
                 '/api',
@@ -25,8 +25,6 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
                 '/swagger-resources',
                 '/v2/api-docs',
                 '/h2-console',
-                '/oauth2',
-                '/login',
                 '/auth'
             ],
             target: `http${options.tls ? 's' : ''}://localhost:8080`,
@@ -45,7 +43,7 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
         main: './src/main/webapp/app/app.main'
     },
     output: {
-        path: utils.root('build/resources/main/static/'),
+        path: utils.root('target/classes/static/'),
         filename: 'app/[name].bundle.js',
         chunkFilename: 'app/[id].chunk.js'
     },

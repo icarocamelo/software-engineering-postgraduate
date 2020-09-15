@@ -3,7 +3,7 @@ package com.saudepluplus.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Properties specific to Saudeplusplus.
+ * Properties specific to Saudepluplus.
  * <p>
  * Properties are configured in the {@code application.yml} file.
  * See {@link io.github.jhipster.config.JHipsterProperties} for a good example.

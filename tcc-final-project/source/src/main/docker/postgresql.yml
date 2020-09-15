@@ -1,11 +1,11 @@
 version: '2'
 services:
-  saudeplusplus-postgresql:
+  saudepluplus-postgresql:
     image: postgres:12.3
     # volumes:
-    #     - ~/volumes/jhipster/saudeplusplus/postgresql/:/var/lib/postgresql/data/
+    #     - ~/volumes/jhipster/saudepluplus/postgresql/:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=saudeplusplus
+      - POSTGRES_USER=saudepluplus
       - POSTGRES_PASSWORD=
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:

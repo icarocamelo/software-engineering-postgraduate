@@ -1,7 +1,6 @@
 package com.saudepluplus.web.rest;
 
-import com.saudepluplus.SaudeplusplusApp;
-import com.saudepluplus.config.TestSecurityConfiguration;
+import com.saudepluplus.SaudepluplusApp;
 import com.saudepluplus.domain.PersistentAuditEvent;
 import com.saudepluplus.repository.PersistenceAuditEventRepository;
 import com.saudepluplus.security.AuthoritiesConstants;
@@ -31,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @AutoConfigureMockMvc
 @WithMockUser(authorities = AuthoritiesConstants.ADMIN)
-@SpringBootTest(classes = {SaudeplusplusApp.class, TestSecurityConfiguration.class})
+@SpringBootTest(classes = SaudepluplusApp.class)
 @Transactional
 public class AuditResourceIT {
 

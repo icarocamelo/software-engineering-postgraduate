@@ -1,9 +1,8 @@
 package com.saudepluplus.repository;
 
-import com.saudepluplus.SaudeplusplusApp;
+import com.saudepluplus.SaudepluplusApp;
 
 import com.saudepluplus.config.Constants;
-import com.saudepluplus.config.TestSecurityConfiguration;
 import com.saudepluplus.config.audit.AuditEventConverter;
 import com.saudepluplus.domain.PersistentAuditEvent;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +28,7 @@ import static com.saudepluplus.repository.CustomAuditEventRepository.EVENT_DATA_
 /**
  * Integration tests for {@link CustomAuditEventRepository}.
  */
-@SpringBootTest(classes = {SaudeplusplusApp.class, TestSecurityConfiguration.class})
+@SpringBootTest(classes = SaudepluplusApp.class)
 @Transactional
 public class CustomAuditEventRepositoryIT {
 

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SaudeplusplusSharedModule } from 'app/shared/shared.module';
+import { SaudepluplusSharedModule } from 'app/shared/shared.module';
 
 import { DocsComponent } from './docs.component';
 
 import { docsRoute } from './docs.route';
 
 @NgModule({
-  imports: [SaudeplusplusSharedModule, RouterModule.forChild([docsRoute])],
+  imports: [SaudepluplusSharedModule, RouterModule.forChild([docsRoute])],
   declarations: [DocsComponent],
 })
 export class DocsModule {}

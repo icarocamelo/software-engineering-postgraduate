@@ -1,7 +1,6 @@
 package com.saudepluplus.web.rest.errors;
 
-import com.saudepluplus.SaudeplusplusApp;
-import com.saudepluplus.config.TestSecurityConfiguration;
+import com.saudepluplus.SaudepluplusApp;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @WithMockUser
 @AutoConfigureMockMvc
-@SpringBootTest(classes = {SaudeplusplusApp.class, TestSecurityConfiguration.class})
+@SpringBootTest(classes = SaudepluplusApp.class)
 public class ExceptionTranslatorIT {
 
     @Autowired

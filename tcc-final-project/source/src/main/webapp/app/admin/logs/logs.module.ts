@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SaudeplusplusSharedModule } from 'app/shared/shared.module';
+import { SaudepluplusSharedModule } from 'app/shared/shared.module';
 
 import { LogsComponent } from './logs.component';
 
 import { logsRoute } from './logs.route';
 
 @NgModule({
-  imports: [SaudeplusplusSharedModule, RouterModule.forChild([logsRoute])],
+  imports: [SaudepluplusSharedModule, RouterModule.forChild([logsRoute])],
   declarations: [LogsComponent],
 })
 export class LogsModule {}

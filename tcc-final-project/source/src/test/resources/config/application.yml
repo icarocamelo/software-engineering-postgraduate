@@ -18,10 +18,10 @@ spring:
   # Uncomment the following line to enable tests against production database type rather than H2, using Testcontainers
   #active: testcontainers
   application:
-    name: saudeplusplus
+    name: saudepluplus
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:saudeplusplus;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:saudepluplus;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     name:
     username:
     password:
@@ -57,24 +57,17 @@ spring:
     basename: i18n/messages
   task:
     execution:
-      thread-name-prefix: saudeplusplus-task-
+      thread-name-prefix: saudepluplus-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: saudeplusplus-scheduling-
+      thread-name-prefix: saudepluplus-scheduling-
       pool:
         size: 1
   thymeleaf:
     mode: HTML
-  # Allow SecurityConfiguration to initialize w/o specifying an empty issuer-uri is OK
-  security:
-    oauth2:
-      client:
-        provider:
-          oidc:
-            issuer-uri: http://DO_NOT_CALL:9080/auth/realms/jhipster
 
 server:
   port: 10344
@@ -88,7 +81,7 @@ server:
 
 jhipster:
   clientApp:
-    name: 'saudeplusplusApp'
+    name: 'saudepluplusApp'
   logging:
     # To test json console appender
     use-json-format: false
@@ -100,6 +93,10 @@ jhipster:
   mail:
     from: test@localhost
     base-url: http://127.0.0.1:8080
+  security:
+    remember-me:
+      # security key (this key should be unique for your application, and kept secret)
+      key: 7cd318937db72858b295c99ed0e5fe53b4f1ffc0fa670355365c6272e691ced5e9468f8cf85b8f06d5d8f649cd18686a29dd
   metrics:
     logs: # Reports metrics in the logs
       enabled: true

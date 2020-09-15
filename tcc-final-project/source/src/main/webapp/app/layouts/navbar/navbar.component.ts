@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JhiLanguageService } from 'ng-jhipster';
+import { SessionStorageService } from 'ngx-webstorage';
 
 import { VERSION } from 'app/app.constants';
+import { LANGUAGES } from 'app/core/language/language.constants';
 import { AccountService } from 'app/core/auth/account.service';
+import { LoginModalService } from 'app/core/login/login-modal.service';
 import { LoginService } from 'app/core/login/login.service';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 
@@ -14,12 +18,16 @@ import { ProfileService } from 'app/layouts/profiles/profile.service';
 export class NavbarComponent implements OnInit {
   inProduction?: boolean;
   isNavbarCollapsed = true;
+  languages = LANGUAGES;
   swaggerEnabled?: boolean;
   version: string;
 
   constructor(
     private loginService: LoginService,
+    private languageService: JhiLanguageService,
+    private sessionStorage: SessionStorageService,
     private accountService: AccountService,
+    private loginModalService: LoginModalService,
     private profileService: ProfileService,
     private router: Router
   ) {
@@ -33,6 +41,11 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  changeLanguage(languageKey: string): void {
+    this.sessionStorage.store('locale', languageKey);
+    this.languageService.changeLanguage(languageKey);
+  }
+
   collapseNavbar(): void {
     this.isNavbarCollapsed = true;
   }
@@ -42,7 +55,7 @@ export class NavbarComponent implements OnInit {
   }
 
   login(): void {
-    this.loginService.login();
+    this.loginModalService.open();
   }
 
   logout(): void {
