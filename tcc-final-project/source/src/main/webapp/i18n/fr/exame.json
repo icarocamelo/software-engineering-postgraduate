@@ -1,0 +1,21 @@
+{
+  "saudepluplusApp": {
+    "exame": {
+      "home": {
+        "title": "Exames",
+        "createLabel": "Créer un nouveau Exame",
+        "createOrEditLabel": "Créer ou éditer un Exame",
+        "notFound": "Aucun Exame trouvé"
+      },
+      "created": "Un nouveau Exame a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Exame avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Exame avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Exame {{ id }} ?"
+      },
+      "detail": {
+        "title": "Exame"
+      }
+    }
+  }
+}

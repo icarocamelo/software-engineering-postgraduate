@@ -1,0 +1,21 @@
+{
+  "saudepluplusApp": {
+    "agendaConsulta": {
+      "home": {
+        "title": "Agenda Consultas",
+        "createLabel": "Criar novo Agenda Consulta",
+        "createOrEditLabel": "Criar ou editar Agenda Consulta",
+        "notFound": "Nenhum Agenda Consulta encontrado"
+      },
+      "created": "Um novo Agenda Consulta foi criado com o identificador {{ param }}",
+      "updated": "Um Agenda Consulta foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Agenda Consulta foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Agenda Consulta {{ id }}?"
+      },
+      "detail": {
+        "title": "Agenda Consulta"
+      }
+    }
+  }
+}

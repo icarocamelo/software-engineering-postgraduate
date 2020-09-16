@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="profissional">
+            <h2><span jhiTranslate="saudepluplusApp.profissional.detail.title">Profissional</span> {{ profissional.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="saudepluplusApp.profissional.uUID">U UID</span></dt>
+                <dd>
+                    <span>{{ profissional.uUID }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.profissional.nome">Nome</span></dt>
+                <dd>
+                    <span>{{ profissional.nome }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.profissional.rG">R G</span></dt>
+                <dd>
+                    <span>{{ profissional.rG }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.profissional.cPF">C PF</span></dt>
+                <dd>
+                    <span>{{ profissional.cPF }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.profissional.perfilAcesso">Perfil Acesso</span></dt>
+                <dd>
+                    <div *ngIf="profissional.perfilAcesso">
+                        <a [routerLink]="['/perfil-acesso', profissional.perfilAcesso?.id, 'view']">{{ profissional.perfilAcesso?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/profissional', profissional.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

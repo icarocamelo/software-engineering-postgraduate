@@ -1,0 +1,21 @@
+{
+  "saudepluplusApp": {
+    "clinicaMedica": {
+      "home": {
+        "title": "ClinicaMedicas",
+        "createLabel": "Créer un nouveau Clinica Medica",
+        "createOrEditLabel": "Créer ou éditer un Clinica Medica",
+        "notFound": "Aucun Clinica Medica trouvé"
+      },
+      "created": "Un nouveau Clinica Medica a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Clinica Medica avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Clinica Medica avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Clinica Medica {{ id }} ?"
+      },
+      "detail": {
+        "title": "Clinica Medica"
+      }
+    }
+  }
+}

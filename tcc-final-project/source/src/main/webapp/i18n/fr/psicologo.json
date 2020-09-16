@@ -1,0 +1,21 @@
+{
+  "saudepluplusApp": {
+    "psicologo": {
+      "home": {
+        "title": "Psicologos",
+        "createLabel": "Créer un nouveau Psicologo",
+        "createOrEditLabel": "Créer ou éditer un Psicologo",
+        "notFound": "Aucun Psicologo trouvé"
+      },
+      "created": "Un nouveau Psicologo a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Psicologo avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Psicologo avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Psicologo {{ id }} ?"
+      },
+      "detail": {
+        "title": "Psicologo"
+      }
+    }
+  }
+}

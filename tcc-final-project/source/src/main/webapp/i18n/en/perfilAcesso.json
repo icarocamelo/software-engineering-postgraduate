@@ -1,0 +1,23 @@
+{
+  "saudepluplusApp": {
+    "perfilAcesso": {
+      "home": {
+        "title": "Perfil Acessos",
+        "createLabel": "Create a new Perfil Acesso",
+        "createOrEditLabel": "Create or edit a Perfil Acesso",
+        "notFound": "No Perfil Acessos found"
+      },
+      "created": "A new Perfil Acesso is created with identifier {{ param }}",
+      "updated": "A Perfil Acesso is updated with identifier {{ param }}",
+      "deleted": "A Perfil Acesso is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Perfil Acesso {{ id }}?"
+      },
+      "detail": {
+        "title": "Perfil Acesso"
+      },
+      "uUID": "U UID",
+      "permissao": "Permissao"
+    }
+  }
+}

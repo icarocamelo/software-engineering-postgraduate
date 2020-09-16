@@ -1,0 +1,25 @@
+{
+  "saudepluplusApp": {
+    "procedimento": {
+      "home": {
+        "title": "Procedimentos",
+        "createLabel": "Créer un nouveau Procedimento",
+        "createOrEditLabel": "Créer ou éditer un Procedimento",
+        "notFound": "Aucun Procedimento trouvé"
+      },
+      "created": "Un nouveau Procedimento a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Procedimento avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Procedimento avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Procedimento {{ id }} ?"
+      },
+      "detail": {
+        "title": "Procedimento"
+      },
+      "uUID": "U UID",
+      "descricao": "Descricao",
+      "preco": "Preco",
+      "codigo": "Codigo"
+    }
+  }
+}

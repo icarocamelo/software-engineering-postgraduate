@@ -1,0 +1,23 @@
+{
+  "saudepluplusApp": {
+    "medicamento": {
+      "home": {
+        "title": "Medicamentos",
+        "createLabel": "Créer un nouveau Medicamento",
+        "createOrEditLabel": "Créer ou éditer un Medicamento",
+        "notFound": "Aucun Medicamento trouvé"
+      },
+      "created": "Un nouveau Medicamento a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Medicamento avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Medicamento avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Medicamento {{ id }} ?"
+      },
+      "detail": {
+        "title": "Medicamento"
+      },
+      "uUID": "U UID",
+      "farmacia": "Farmacia"
+    }
+  }
+}

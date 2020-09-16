@@ -1,0 +1,21 @@
+{
+  "saudepluplusApp": {
+    "hospital": {
+      "home": {
+        "title": "Hospitals",
+        "createLabel": "Créer un nouveau Hospital",
+        "createOrEditLabel": "Créer ou éditer un Hospital",
+        "notFound": "Aucun Hospital trouvé"
+      },
+      "created": "Un nouveau Hospital a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Hospital avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Hospital avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Hospital {{ id }} ?"
+      },
+      "detail": {
+        "title": "Hospital"
+      }
+    }
+  }
+}

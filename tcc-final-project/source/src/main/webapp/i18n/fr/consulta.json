@@ -1,0 +1,21 @@
+{
+  "saudepluplusApp": {
+    "consulta": {
+      "home": {
+        "title": "Consultas",
+        "createLabel": "Créer un nouveau Consulta",
+        "createOrEditLabel": "Créer ou éditer un Consulta",
+        "notFound": "Aucun Consulta trouvé"
+      },
+      "created": "Un nouveau Consulta a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Consulta avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Consulta avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Consulta {{ id }} ?"
+      },
+      "detail": {
+        "title": "Consulta"
+      }
+    }
+  }
+}

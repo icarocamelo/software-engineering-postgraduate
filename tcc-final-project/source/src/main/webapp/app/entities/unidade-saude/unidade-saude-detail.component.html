@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="unidadeSaude">
+            <h2><span jhiTranslate="saudepluplusApp.unidadeSaude.detail.title">Unidade Saude</span> {{ unidadeSaude.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="saudepluplusApp.unidadeSaude.uUID">U UID</span></dt>
+                <dd>
+                    <span>{{ unidadeSaude.uUID }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.unidadeSaude.endereco">Endereco</span></dt>
+                <dd>
+                    <span>{{ unidadeSaude.endereco }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.unidadeSaude.cNPJ">C NPJ</span></dt>
+                <dd>
+                    <span>{{ unidadeSaude.cNPJ }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.unidadeSaude.telefone">Telefone</span></dt>
+                <dd>
+                    <span>{{ unidadeSaude.telefone }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.unidadeSaude.cEP">C EP</span></dt>
+                <dd>
+                    <span>{{ unidadeSaude.cEP }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.unidadeSaude.razaoSocial">Razao Social</span></dt>
+                <dd>
+                    <span>{{ unidadeSaude.razaoSocial }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.unidadeSaude.nomeFantasia">Nome Fantasia</span></dt>
+                <dd>
+                    <span>{{ unidadeSaude.nomeFantasia }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.unidadeSaude.tipoUnidadeSaude">Tipo Unidade Saude</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'saudepluplusApp.TipoUnidadeSaude.' + unidadeSaude.tipoUnidadeSaude }}">{{ unidadeSaude.tipoUnidadeSaude }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/unidade-saude', unidadeSaude.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

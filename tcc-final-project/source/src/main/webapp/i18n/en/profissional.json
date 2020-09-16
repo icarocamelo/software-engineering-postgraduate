@@ -1,0 +1,26 @@
+{
+  "saudepluplusApp": {
+    "profissional": {
+      "home": {
+        "title": "Profissionals",
+        "createLabel": "Create a new Profissional",
+        "createOrEditLabel": "Create or edit a Profissional",
+        "notFound": "No Profissionals found"
+      },
+      "created": "A new Profissional is created with identifier {{ param }}",
+      "updated": "A Profissional is updated with identifier {{ param }}",
+      "deleted": "A Profissional is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Profissional {{ id }}?"
+      },
+      "detail": {
+        "title": "Profissional"
+      },
+      "uUID": "U UID",
+      "nome": "Nome",
+      "rG": "R G",
+      "cPF": "C PF",
+      "perfilAcesso": "Perfil Acesso"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "saudepluplusApp": {
+    "paciente": {
+      "home": {
+        "title": "Pacientes",
+        "createLabel": "Criar novo Paciente",
+        "createOrEditLabel": "Criar ou editar Paciente",
+        "notFound": "Nenhum Paciente encontrado"
+      },
+      "created": "Um novo Paciente foi criado com o identificador {{ param }}",
+      "updated": "Um Paciente foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Paciente foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Paciente {{ id }}?"
+      },
+      "detail": {
+        "title": "Paciente"
+      },
+      "uUID": "U UID",
+      "nome": "Nome",
+      "rG": "R G",
+      "cPF": "C PF",
+      "endereco": "Endereco",
+      "dataNascimento": "Data Nascimento",
+      "telefone": "Telefone",
+      "peso": "Peso",
+      "altura": "Altura",
+      "responsavel": "Responsavel",
+      "rNE": "R NE",
+      "perfilAcesso": "Perfil Acesso"
+    }
+  }
+}

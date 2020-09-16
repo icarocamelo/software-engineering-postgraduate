@@ -1,0 +1,23 @@
+{
+  "saudepluplusApp": {
+    "farmacia": {
+      "home": {
+        "title": "Farmacias",
+        "createLabel": "Criar novo Farmacia",
+        "createOrEditLabel": "Criar ou editar Farmacia",
+        "notFound": "Nenhum Farmacia encontrado"
+      },
+      "created": "Um novo Farmacia foi criado com o identificador {{ param }}",
+      "updated": "Um Farmacia foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Farmacia foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Farmacia {{ id }}?"
+      },
+      "detail": {
+        "title": "Farmacia"
+      },
+      "uUID": "U UID",
+      "medicamentos": "Medicamentos"
+    }
+  }
+}

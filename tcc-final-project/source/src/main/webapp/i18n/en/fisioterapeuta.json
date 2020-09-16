@@ -1,0 +1,21 @@
+{
+  "saudepluplusApp": {
+    "fisioterapeuta": {
+      "home": {
+        "title": "Fisioterapeutas",
+        "createLabel": "Create a new Fisioterapeuta",
+        "createOrEditLabel": "Create or edit a Fisioterapeuta",
+        "notFound": "No Fisioterapeutas found"
+      },
+      "created": "A new Fisioterapeuta is created with identifier {{ param }}",
+      "updated": "A Fisioterapeuta is updated with identifier {{ param }}",
+      "deleted": "A Fisioterapeuta is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Fisioterapeuta {{ id }}?"
+      },
+      "detail": {
+        "title": "Fisioterapeuta"
+      }
+    }
+  }
+}

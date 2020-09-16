@@ -14,7 +14,39 @@
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916023755_added_entity_Paciente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916023855_added_entity_Endereco.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916023955_added_entity_Profissional.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916024055_added_entity_ProfissionalDeSaude.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916024155_added_entity_Medico.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916024255_added_entity_Fisioterapeuta.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916024355_added_entity_Psicologo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916024455_added_entity_Enfermeiro.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916024555_added_entity_Exame.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916024655_added_entity_Consulta.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916024755_added_entity_Procedimento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916024855_added_entity_Atendimento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916024955_added_entity_CartaoVacina.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025055_added_entity_Vacina.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025155_added_entity_UnidadeSaude.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025255_added_entity_Laboratorio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025355_added_entity_ClinicaMedica.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025455_added_entity_Hospital.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025555_added_entity_PostoDeSaude.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025655_added_entity_Leito.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025755_added_entity_Farmacia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025855_added_entity_Medicamento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025955_added_entity_Agenda.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916030055_added_entity_AgendaConsulta.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916030155_added_entity_AgendaExame.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916030255_added_entity_PerfilAcesso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916030355_added_entity_Permissao.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20200916023755_added_entity_constraints_Paciente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916023955_added_entity_constraints_Profissional.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025055_added_entity_constraints_Vacina.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916025855_added_entity_constraints_Medicamento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200916030255_added_entity_constraints_PerfilAcesso.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

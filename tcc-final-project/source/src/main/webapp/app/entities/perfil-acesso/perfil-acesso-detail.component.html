@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="perfilAcesso">
+            <h2><span jhiTranslate="saudepluplusApp.perfilAcesso.detail.title">Perfil Acesso</span> {{ perfilAcesso.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="saudepluplusApp.perfilAcesso.uUID">U UID</span></dt>
+                <dd>
+                    <span>{{ perfilAcesso.uUID }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.perfilAcesso.permissao">Permissao</span></dt>
+                <dd>
+                    <div *ngIf="perfilAcesso.permissao">
+                        <a [routerLink]="['/permissao', perfilAcesso.permissao?.id, 'view']">{{ perfilAcesso.permissao?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/perfil-acesso', perfilAcesso.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

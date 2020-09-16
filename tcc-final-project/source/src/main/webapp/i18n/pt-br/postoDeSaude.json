@@ -1,0 +1,21 @@
+{
+  "saudepluplusApp": {
+    "postoDeSaude": {
+      "home": {
+        "title": "Posto De Saudes",
+        "createLabel": "Criar novo Posto De Saude",
+        "createOrEditLabel": "Criar ou editar Posto De Saude",
+        "notFound": "Nenhum Posto De Saude encontrado"
+      },
+      "created": "Um novo Posto De Saude foi criado com o identificador {{ param }}",
+      "updated": "Um Posto De Saude foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Posto De Saude foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Posto De Saude {{ id }}?"
+      },
+      "detail": {
+        "title": "Posto De Saude"
+      }
+    }
+  }
+}

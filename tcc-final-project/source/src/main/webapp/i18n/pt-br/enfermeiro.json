@@ -1,0 +1,21 @@
+{
+  "saudepluplusApp": {
+    "enfermeiro": {
+      "home": {
+        "title": "Enfermeiros",
+        "createLabel": "Criar novo Enfermeiro",
+        "createOrEditLabel": "Criar ou editar Enfermeiro",
+        "notFound": "Nenhum Enfermeiro encontrado"
+      },
+      "created": "Um novo Enfermeiro foi criado com o identificador {{ param }}",
+      "updated": "Um Enfermeiro foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Enfermeiro foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Enfermeiro {{ id }}?"
+      },
+      "detail": {
+        "title": "Enfermeiro"
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="saudepluplusApp.perfilAcesso.home.title">Perfil Acessos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-perfil-acesso" [routerLink]="['/perfil-acesso/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="saudepluplusApp.perfilAcesso.home.createLabel">
+            Create a new Perfil Acesso
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="perfilAcessos?.length === 0">
+        <span jhiTranslate="saudepluplusApp.perfilAcesso.home.notFound">No perfilAcessos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="perfilAcessos && perfilAcessos.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.perfilAcesso.uUID">U UID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.perfilAcesso.permissao">Permissao</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let perfilAcesso of perfilAcessos ;trackBy: trackId">
+                    <td><a [routerLink]="['/perfil-acesso', perfilAcesso.id, 'view']">{{ perfilAcesso.id }}</a></td>
+                    <td>{{ perfilAcesso.uUID }}</td>
+                    <td>
+                        <div *ngIf="perfilAcesso.permissao">
+                            <a [routerLink]="['/permissao', perfilAcesso.permissao?.id, 'view']" >{{ perfilAcesso.permissao?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/perfil-acesso', perfilAcesso.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/perfil-acesso', perfilAcesso.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(perfilAcesso)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

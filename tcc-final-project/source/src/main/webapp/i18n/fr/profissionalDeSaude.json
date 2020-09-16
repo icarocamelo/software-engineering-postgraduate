@@ -1,0 +1,22 @@
+{
+  "saudepluplusApp": {
+    "profissionalDeSaude": {
+      "home": {
+        "title": "ProfissionalDeSaudes",
+        "createLabel": "Créer un nouveau Profissional De Saude",
+        "createOrEditLabel": "Créer ou éditer un Profissional De Saude",
+        "notFound": "Aucun Profissional De Saude trouvé"
+      },
+      "created": "Un nouveau Profissional De Saude a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Profissional De Saude avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Profissional De Saude avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Profissional De Saude {{ id }} ?"
+      },
+      "detail": {
+        "title": "Profissional De Saude"
+      },
+      "numeroRegistro": "Numero Registro"
+    }
+  }
+}

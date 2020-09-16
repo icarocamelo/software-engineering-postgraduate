@@ -1,0 +1,21 @@
+{
+  "saudepluplusApp": {
+    "enfermeiro": {
+      "home": {
+        "title": "Enfermeiros",
+        "createLabel": "Create a new Enfermeiro",
+        "createOrEditLabel": "Create or edit a Enfermeiro",
+        "notFound": "No Enfermeiros found"
+      },
+      "created": "A new Enfermeiro is created with identifier {{ param }}",
+      "updated": "A Enfermeiro is updated with identifier {{ param }}",
+      "deleted": "A Enfermeiro is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Enfermeiro {{ id }}?"
+      },
+      "detail": {
+        "title": "Enfermeiro"
+      }
+    }
+  }
+}

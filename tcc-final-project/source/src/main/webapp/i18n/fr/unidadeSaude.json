@@ -1,0 +1,29 @@
+{
+  "saudepluplusApp": {
+    "unidadeSaude": {
+      "home": {
+        "title": "UnidadeSaudes",
+        "createLabel": "Créer un nouveau Unidade Saude",
+        "createOrEditLabel": "Créer ou éditer un Unidade Saude",
+        "notFound": "Aucun Unidade Saude trouvé"
+      },
+      "created": "Un nouveau Unidade Saude a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Unidade Saude avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Unidade Saude avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Unidade Saude {{ id }} ?"
+      },
+      "detail": {
+        "title": "Unidade Saude"
+      },
+      "uUID": "U UID",
+      "endereco": "Endereco",
+      "cNPJ": "C NPJ",
+      "telefone": "Telefone",
+      "cEP": "C EP",
+      "razaoSocial": "Razao Social",
+      "nomeFantasia": "Nome Fantasia",
+      "tipoUnidadeSaude": "Tipo Unidade Saude"
+    }
+  }
+}

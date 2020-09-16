@@ -1,0 +1,22 @@
+{
+  "saudepluplusApp": {
+    "atendimento": {
+      "home": {
+        "title": "Atendimentos",
+        "createLabel": "Criar novo Atendimento",
+        "createOrEditLabel": "Criar ou editar Atendimento",
+        "notFound": "Nenhum Atendimento encontrado"
+      },
+      "created": "Um novo Atendimento foi criado com o identificador {{ param }}",
+      "updated": "Um Atendimento foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Atendimento foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Atendimento {{ id }}?"
+      },
+      "detail": {
+        "title": "Atendimento"
+      },
+      "uUID": "U UID"
+    }
+  }
+}
