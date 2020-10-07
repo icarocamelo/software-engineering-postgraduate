@@ -1,0 +1,26 @@
+{
+  "saudepluplusApp": {
+    "agenda": {
+      "home": {
+        "title": "Agenda",
+        "createLabel": "Créer un nouveau Agenda",
+        "createOrEditLabel": "Créer ou éditer un Agenda",
+        "notFound": "Aucun Agenda trouvé"
+      },
+      "created": "Un nouveau Agenda a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Agenda avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Agenda avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Agenda {{ id }} ?"
+      },
+      "detail": {
+        "title": "Agenda"
+      },
+      "data": "Data",
+      "medico": "Medico",
+      "fisioterapeuta": "Fisioterapeuta",
+      "enfermeiro": "Enfermeiro",
+      "psicologo": "Psicologo"
+    }
+  }
+}

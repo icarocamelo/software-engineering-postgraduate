@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="procedimento">
+            <h2><span jhiTranslate="saudepluplusApp.procedimento.detail.title">Procedimento</span> {{ procedimento.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="saudepluplusApp.procedimento.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{ procedimento.descricao }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.procedimento.preco">Preco</span></dt>
+                <dd>
+                    <span>{{ procedimento.preco }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.procedimento.codigo">Codigo</span></dt>
+                <dd>
+                    <span>{{ procedimento.codigo }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.procedimento.paciente">Paciente</span></dt>
+                <dd>
+                    <div *ngIf="procedimento.paciente">
+                        <a [routerLink]="['/paciente', procedimento.paciente?.id, 'view']">{{ procedimento.paciente?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.procedimento.profissionalDeSaude">Profissional De Saude</span></dt>
+                <dd>
+                    <div *ngIf="procedimento.profissionalDeSaude">
+                        <a [routerLink]="['/profissional-de-saude', procedimento.profissionalDeSaude?.id, 'view']">{{ procedimento.profissionalDeSaude?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.procedimento.endereco">Endereco</span></dt>
+                <dd>
+                    <div *ngIf="procedimento.endereco">
+                        <a [routerLink]="['/endereco', procedimento.endereco?.id, 'view']">{{ procedimento.endereco?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.procedimento.agenda">Agenda</span></dt>
+                <dd>
+                    <div *ngIf="procedimento.agenda">
+                        <a [routerLink]="['/agenda', procedimento.agenda?.id, 'view']">{{ procedimento.agenda?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.procedimento.prontuario">Prontuario</span></dt>
+                <dd>
+                    <div *ngIf="procedimento.prontuario">
+                        <a [routerLink]="['/prontuario', procedimento.prontuario?.id, 'view']">{{ procedimento.prontuario?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/procedimento', procedimento.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fisioterapeuta">
+            <h2><span jhiTranslate="saudepluplusApp.fisioterapeuta.detail.title">Fisioterapeuta</span> {{ fisioterapeuta.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="saudepluplusApp.fisioterapeuta.nome">Nome</span></dt>
+                <dd>
+                    <span>{{ fisioterapeuta.nome }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.fisioterapeuta.rG">R G</span></dt>
+                <dd>
+                    <span>{{ fisioterapeuta.rG }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.fisioterapeuta.cPF">C PF</span></dt>
+                <dd>
+                    <span>{{ fisioterapeuta.cPF }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.fisioterapeuta.numeroRegistro">Numero Registro</span></dt>
+                <dd>
+                    <span>{{ fisioterapeuta.numeroRegistro }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/fisioterapeuta', fisioterapeuta.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

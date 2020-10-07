@@ -1,0 +1,27 @@
+{
+  "saudepluplusApp": {
+    "usuario": {
+      "home": {
+        "title": "Usuarios",
+        "createLabel": "Criar novo Usuario",
+        "createOrEditLabel": "Criar ou editar Usuario",
+        "notFound": "Nenhum Usuario encontrado"
+      },
+      "created": "Um novo Usuario foi criado com o identificador {{ param }}",
+      "updated": "Um Usuario foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Usuario foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Usuario {{ id }}?"
+      },
+      "detail": {
+        "title": "Usuario"
+      },
+      "login": "Login",
+      "nome": "Nome",
+      "sobrenome": "Sobrenome",
+      "email": "Email",
+      "ativo": "Ativo",
+      "perfil": "Perfil"
+    }
+  }
+}

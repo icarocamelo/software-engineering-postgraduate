@@ -1,0 +1,22 @@
+{
+  "saudepluplusApp": {
+    "profissional": {
+      "home": {
+        "title": "Profissionals",
+        "createLabel": "Créer un nouveau Profissional",
+        "createOrEditLabel": "Créer ou éditer un Profissional",
+        "notFound": "Aucun Profissional trouvé"
+      },
+      "created": "Un nouveau Profissional a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Profissional avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Profissional avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Profissional {{ id }} ?"
+      },
+      "detail": {
+        "title": "Profissional"
+      },
+      "perfilAcesso": "Perfil Acesso"
+    }
+  }
+}

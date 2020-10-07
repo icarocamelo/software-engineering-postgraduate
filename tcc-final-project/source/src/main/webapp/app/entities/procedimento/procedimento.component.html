@@ -1,0 +1,95 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="saudepluplusApp.procedimento.home.title">Procedimentos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-procedimento" [routerLink]="['/procedimento/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="saudepluplusApp.procedimento.home.createLabel">
+            Create a new Procedimento
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="procedimentos?.length === 0">
+        <span jhiTranslate="saudepluplusApp.procedimento.home.notFound">No procedimentos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="procedimentos && procedimentos.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.descricao">Descricao</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.preco">Preco</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.codigo">Codigo</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.paciente">Paciente</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.profissionalDeSaude">Profissional De Saude</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.endereco">Endereco</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.agenda">Agenda</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.prontuario">Prontuario</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let procedimento of procedimentos ;trackBy: trackId">
+                    <td><a [routerLink]="['/procedimento', procedimento.id, 'view']">{{ procedimento.id }}</a></td>
+                    <td>{{ procedimento.descricao }}</td>
+                    <td>{{ procedimento.preco }}</td>
+                    <td>{{ procedimento.codigo }}</td>
+                    <td>
+                        <div *ngIf="procedimento.paciente">
+                            <a [routerLink]="['/paciente', procedimento.paciente?.id, 'view']" >{{ procedimento.paciente?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="procedimento.profissionalDeSaude">
+                            <a [routerLink]="['/profissional-de-saude', procedimento.profissionalDeSaude?.id, 'view']" >{{ procedimento.profissionalDeSaude?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="procedimento.endereco">
+                            <a [routerLink]="['/endereco', procedimento.endereco?.id, 'view']" >{{ procedimento.endereco?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="procedimento.agenda">
+                            <a [routerLink]="['/agenda', procedimento.agenda?.id, 'view']" >{{ procedimento.agenda?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="procedimento.prontuario">
+                            <a [routerLink]="['/prontuario', procedimento.prontuario?.id, 'view']" >{{ procedimento.prontuario?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/procedimento', procedimento.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/procedimento', procedimento.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(procedimento)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

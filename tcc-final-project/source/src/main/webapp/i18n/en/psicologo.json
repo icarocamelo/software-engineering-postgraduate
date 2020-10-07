@@ -1,0 +1,26 @@
+{
+  "saudepluplusApp": {
+    "psicologo": {
+      "home": {
+        "title": "Psicologos",
+        "createLabel": "Create a new Psicologo",
+        "createOrEditLabel": "Create or edit a Psicologo",
+        "notFound": "No Psicologos found"
+      },
+      "created": "A new Psicologo is created with identifier {{ param }}",
+      "updated": "A Psicologo is updated with identifier {{ param }}",
+      "deleted": "A Psicologo is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Psicologo {{ id }}?"
+      },
+      "detail": {
+        "title": "Psicologo"
+      },
+      "nome": "Nome",
+      "rG": "R G",
+      "cPF": "C PF",
+      "numeroRegistro": "Numero Registro",
+      "agenda": "Agenda"
+    }
+  }
+}

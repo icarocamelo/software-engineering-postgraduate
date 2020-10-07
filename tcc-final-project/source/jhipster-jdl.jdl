@@ -1,0 +1,229 @@
+entity Paciente {
+
+    Nome String
+    RG String
+    CPF String
+    DataNascimento LocalDate
+    Telefone String
+    Peso Double
+    Altura Double
+    Responsavel String
+    RNE String
+}
+
+entity Endereco {
+
+    Tipo String
+    Numero String
+    Pais String
+    Estado String
+    Cidade String
+    Bairro String
+    CEP String
+    CoordenadasGeograficas String
+}
+
+entity Profissional {
+}
+
+entity ProfissionalDeSaude {
+
+}
+
+entity Medico {
+
+    Nome String
+    RG String
+    CPF String
+    NumeroRegistro String
+}
+entity Fisioterapeuta {
+
+    Nome String
+    RG String
+    CPF String
+    NumeroRegistro String
+}
+entity Psicologo {
+
+    Nome String
+    RG String
+    CPF String
+    NumeroRegistro String
+}
+entity Enfermeiro {
+
+    Nome String
+    RG String
+    CPF String
+    NumeroRegistro String
+}
+entity Exame {
+
+    Descricao String
+    Preco Double
+    Codigo String
+}
+entity Consulta {
+
+    Descricao String
+    Preco Double
+    Codigo String
+}
+entity Procedimento {
+
+    Descricao String
+    Preco Double
+    Codigo String
+}
+
+entity Atendimento {
+
+    Data LocalDate
+}
+entity CartaoVacina {
+
+}
+
+entity Vacina {
+
+    Nome String
+    Lote String
+    DataAplicacao LocalDate
+}
+
+entity UnidadeSaude {
+}
+enum TipoUnidadeSaude {
+	PUBLICA, PARTICULAR
+}
+enum Perfil {
+	ADMINISTRADOR, USUARIO
+}
+entity Laboratorio {
+
+    CNPJ String
+    Telefone String
+    CEP String
+    RazaoSocial String
+    NomeFantasia String
+    TipoUnidadeSaude TipoUnidadeSaude
+
+}
+entity ClinicaMedica {
+
+    CNPJ String
+    Telefone String
+    CEP String
+    RazaoSocial String
+    NomeFantasia String
+    TipoUnidadeSaude TipoUnidadeSaude
+}
+entity Hospital {
+
+    Nome String
+
+}
+entity PostoDeSaude {
+
+    CNPJ String
+    Telefone String
+    CEP String
+    RazaoSocial String
+    NomeFantasia String
+    TipoUnidadeSaude TipoUnidadeSaude
+}
+
+entity Leito {
+	Identificacao String
+}
+
+entity Farmacia {
+
+    Nome String
+}
+
+entity Medicamento {
+
+    Nome String
+}
+
+entity Agenda {
+
+    Data LocalDate
+}
+
+entity AgendaConsulta {
+
+    Data LocalDate
+}
+entity AgendaExame {
+
+    Data LocalDate
+}
+
+entity PerfilAcesso {
+
+    Nome String
+}
+entity Permissao {
+
+    Nome String
+}
+
+entity Prontuario {
+
+}
+
+entity Usuario {
+    Login String
+    Nome String
+    Sobrenome String
+    Email String
+    Ativo Boolean
+    Perfil Perfil
+}
+
+
+relationship OneToOne {
+    Prontuario{paciente} to Paciente
+
+	Paciente{perfilAcesso} to PerfilAcesso
+    Paciente{endereco} to Endereco
+
+    Profissional{perfilAcesso} to PerfilAcesso
+    PostoDeSaude{endereco} to Endereco
+    ClinicaMedica{endereco} to Endereco
+
+    Atendimento{paciente} to Paciente
+    Atendimento{profissionalDeSaude} to ProfissionalDeSaude
+    Atendimento{endereco} to Endereco
+    Atendimento{agenda} to Agenda
+
+    Procedimento{paciente} to Paciente
+    Procedimento{profissionalDeSaude} to ProfissionalDeSaude
+    Procedimento{endereco} to Endereco
+    Procedimento{agenda} to Agenda
+
+    Farmacia{endereco} to Endereco
+
+    Laboratorio{endereco} to Endereco
+    ClinicaMedica{endereco} to Endereco
+
+
+}
+relationship OneToMany {
+    ProfissionalDeSaude{prontuario} to Prontuario
+    Prontuario{atendimentos} to Atendimento
+    Prontuario{procedimentos} to Procedimento
+
+	CartaoVacina{vacina} to Vacina
+    Farmacia{medicamentos} to Medicamento
+    Medico{agenda} to Agenda
+    Fisioterapeuta{agenda} to Agenda
+    Enfermeiro{agenda} to Agenda
+    Psicologo{agenda} to Agenda
+    Hospital{leitos} to Leito
+    PerfilAcesso{permissoes} to Permissao
+}
+

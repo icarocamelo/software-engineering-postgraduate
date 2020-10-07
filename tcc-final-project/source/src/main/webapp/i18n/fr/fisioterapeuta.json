@@ -1,0 +1,26 @@
+{
+  "saudepluplusApp": {
+    "fisioterapeuta": {
+      "home": {
+        "title": "Fisioterapeutas",
+        "createLabel": "Créer un nouveau Fisioterapeuta",
+        "createOrEditLabel": "Créer ou éditer un Fisioterapeuta",
+        "notFound": "Aucun Fisioterapeuta trouvé"
+      },
+      "created": "Un nouveau Fisioterapeuta a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Fisioterapeuta avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Fisioterapeuta avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Fisioterapeuta {{ id }} ?"
+      },
+      "detail": {
+        "title": "Fisioterapeuta"
+      },
+      "nome": "Nome",
+      "rG": "R G",
+      "cPF": "C PF",
+      "numeroRegistro": "Numero Registro",
+      "agenda": "Agenda"
+    }
+  }
+}

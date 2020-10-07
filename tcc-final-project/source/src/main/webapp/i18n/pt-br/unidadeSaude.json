@@ -1,0 +1,21 @@
+{
+  "saudepluplusApp": {
+    "unidadeSaude": {
+      "home": {
+        "title": "Unidade Saudes",
+        "createLabel": "Criar novo Unidade Saude",
+        "createOrEditLabel": "Criar ou editar Unidade Saude",
+        "notFound": "Nenhum Unidade Saude encontrado"
+      },
+      "created": "Um novo Unidade Saude foi criado com o identificador {{ param }}",
+      "updated": "Um Unidade Saude foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Unidade Saude foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Unidade Saude {{ id }}?"
+      },
+      "detail": {
+        "title": "Unidade Saude"
+      }
+    }
+  }
+}

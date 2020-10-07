@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="laboratorio">
+            <h2><span jhiTranslate="saudepluplusApp.laboratorio.detail.title">Laboratorio</span> {{ laboratorio.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="saudepluplusApp.laboratorio.cNPJ">C NPJ</span></dt>
+                <dd>
+                    <span>{{ laboratorio.cNPJ }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.laboratorio.telefone">Telefone</span></dt>
+                <dd>
+                    <span>{{ laboratorio.telefone }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.laboratorio.cEP">C EP</span></dt>
+                <dd>
+                    <span>{{ laboratorio.cEP }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.laboratorio.razaoSocial">Razao Social</span></dt>
+                <dd>
+                    <span>{{ laboratorio.razaoSocial }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.laboratorio.nomeFantasia">Nome Fantasia</span></dt>
+                <dd>
+                    <span>{{ laboratorio.nomeFantasia }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.laboratorio.tipoUnidadeSaude">Tipo Unidade Saude</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'saudepluplusApp.TipoUnidadeSaude.' + laboratorio.tipoUnidadeSaude }}">{{ laboratorio.tipoUnidadeSaude }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.laboratorio.endereco">Endereco</span></dt>
+                <dd>
+                    <div *ngIf="laboratorio.endereco">
+                        <a [routerLink]="['/endereco', laboratorio.endereco?.id, 'view']">{{ laboratorio.endereco?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/laboratorio', laboratorio.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

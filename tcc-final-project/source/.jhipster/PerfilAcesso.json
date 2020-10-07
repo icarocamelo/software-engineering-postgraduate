@@ -1,0 +1,28 @@
+{
+  "name": "PerfilAcesso",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "permissao",
+      "otherEntityRelationshipName": "perfilAcesso",
+      "relationshipName": "permissoes"
+    }
+  ],
+  "changelogDate": "20200916030255",
+  "entityTableName": "perfil_acesso",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

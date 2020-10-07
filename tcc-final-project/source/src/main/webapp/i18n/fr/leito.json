@@ -1,0 +1,23 @@
+{
+  "saudepluplusApp": {
+    "leito": {
+      "home": {
+        "title": "Leitos",
+        "createLabel": "Créer un nouveau Leito",
+        "createOrEditLabel": "Créer ou éditer un Leito",
+        "notFound": "Aucun Leito trouvé"
+      },
+      "created": "Un nouveau Leito a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Leito avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Leito avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Leito {{ id }} ?"
+      },
+      "detail": {
+        "title": "Leito"
+      },
+      "identificacao": "Identificacao",
+      "hospital": "Hospital"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "name": "Procedimento",
+  "fields": [
+    {
+      "fieldName": "descricao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "preco",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "codigo",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "paciente",
+      "otherEntityRelationshipName": "procedimento",
+      "relationshipName": "paciente",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "profissionalDeSaude",
+      "otherEntityRelationshipName": "procedimento",
+      "relationshipName": "profissionalDeSaude",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "endereco",
+      "otherEntityRelationshipName": "procedimento",
+      "relationshipName": "endereco",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "agenda",
+      "otherEntityRelationshipName": "procedimento",
+      "relationshipName": "agenda",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "prontuario",
+      "otherEntityRelationshipName": "procedimentos",
+      "relationshipName": "prontuario",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200916024755",
+  "entityTableName": "procedimento",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-psicologo-heading" jhiTranslate="saudepluplusApp.psicologo.home.createOrEditLabel">Create or edit a Psicologo</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.psicologo.nome" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.psicologo.rG" for="field_rG">R G</label>
+                    <input type="text" class="form-control" name="rG" id="field_rG"
+                           formControlName="rG"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.psicologo.cPF" for="field_cPF">C PF</label>
+                    <input type="text" class="form-control" name="cPF" id="field_cPF"
+                           formControlName="cPF"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.psicologo.numeroRegistro" for="field_numeroRegistro">Numero Registro</label>
+                    <input type="text" class="form-control" name="numeroRegistro" id="field_numeroRegistro"
+                           formControlName="numeroRegistro"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

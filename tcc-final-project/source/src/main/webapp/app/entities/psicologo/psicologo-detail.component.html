@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="psicologo">
+            <h2><span jhiTranslate="saudepluplusApp.psicologo.detail.title">Psicologo</span> {{ psicologo.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="saudepluplusApp.psicologo.nome">Nome</span></dt>
+                <dd>
+                    <span>{{ psicologo.nome }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.psicologo.rG">R G</span></dt>
+                <dd>
+                    <span>{{ psicologo.rG }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.psicologo.cPF">C PF</span></dt>
+                <dd>
+                    <span>{{ psicologo.cPF }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.psicologo.numeroRegistro">Numero Registro</span></dt>
+                <dd>
+                    <span>{{ psicologo.numeroRegistro }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/psicologo', psicologo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

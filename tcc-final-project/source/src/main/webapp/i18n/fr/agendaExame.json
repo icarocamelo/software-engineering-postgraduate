@@ -1,0 +1,22 @@
+{
+  "saudepluplusApp": {
+    "agendaExame": {
+      "home": {
+        "title": "AgendaExames",
+        "createLabel": "Créer un nouveau Agenda Exame",
+        "createOrEditLabel": "Créer ou éditer un Agenda Exame",
+        "notFound": "Aucun Agenda Exame trouvé"
+      },
+      "created": "Un nouveau Agenda Exame a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Agenda Exame avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Agenda Exame avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Agenda Exame {{ id }} ?"
+      },
+      "detail": {
+        "title": "Agenda Exame"
+      },
+      "data": "Data"
+    }
+  }
+}

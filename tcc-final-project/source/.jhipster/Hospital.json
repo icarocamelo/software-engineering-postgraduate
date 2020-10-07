@@ -1,0 +1,28 @@
+{
+  "name": "Hospital",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "leito",
+      "otherEntityRelationshipName": "hospital",
+      "relationshipName": "leitos"
+    }
+  ],
+  "changelogDate": "20200916025455",
+  "entityTableName": "hospital",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

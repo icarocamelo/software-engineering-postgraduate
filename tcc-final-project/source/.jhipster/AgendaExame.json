@@ -1,0 +1,21 @@
+{
+  "name": "AgendaExame",
+  "fields": [
+    {
+      "fieldName": "data",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200916030155",
+  "entityTableName": "agenda_exame",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

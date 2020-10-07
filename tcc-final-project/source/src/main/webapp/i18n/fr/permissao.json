@@ -1,0 +1,23 @@
+{
+  "saudepluplusApp": {
+    "permissao": {
+      "home": {
+        "title": "Permissaos",
+        "createLabel": "Créer un nouveau Permissao",
+        "createOrEditLabel": "Créer ou éditer un Permissao",
+        "notFound": "Aucun Permissao trouvé"
+      },
+      "created": "Un nouveau Permissao a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Permissao avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Permissao avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Permissao {{ id }} ?"
+      },
+      "detail": {
+        "title": "Permissao"
+      },
+      "nome": "Nome",
+      "perfilAcesso": "Perfil Acesso"
+    }
+  }
+}

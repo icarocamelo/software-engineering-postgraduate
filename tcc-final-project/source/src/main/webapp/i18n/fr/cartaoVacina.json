@@ -1,0 +1,22 @@
+{
+  "saudepluplusApp": {
+    "cartaoVacina": {
+      "home": {
+        "title": "CartaoVacinas",
+        "createLabel": "Créer un nouveau Cartao Vacina",
+        "createOrEditLabel": "Créer ou éditer un Cartao Vacina",
+        "notFound": "Aucun Cartao Vacina trouvé"
+      },
+      "created": "Un nouveau Cartao Vacina a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Cartao Vacina avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Cartao Vacina avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Cartao Vacina {{ id }} ?"
+      },
+      "detail": {
+        "title": "Cartao Vacina"
+      },
+      "vacina": "Vacina"
+    }
+  }
+}

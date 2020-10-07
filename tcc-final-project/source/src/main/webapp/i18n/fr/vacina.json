@@ -1,0 +1,25 @@
+{
+  "saudepluplusApp": {
+    "vacina": {
+      "home": {
+        "title": "Vacinas",
+        "createLabel": "Créer un nouveau Vacina",
+        "createOrEditLabel": "Créer ou éditer un Vacina",
+        "notFound": "Aucun Vacina trouvé"
+      },
+      "created": "Un nouveau Vacina a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Vacina avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Vacina avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Vacina {{ id }} ?"
+      },
+      "detail": {
+        "title": "Vacina"
+      },
+      "nome": "Nome",
+      "lote": "Lote",
+      "dataAplicacao": "Data Aplicacao",
+      "cartaoVacina": "Cartao Vacina"
+    }
+  }
+}

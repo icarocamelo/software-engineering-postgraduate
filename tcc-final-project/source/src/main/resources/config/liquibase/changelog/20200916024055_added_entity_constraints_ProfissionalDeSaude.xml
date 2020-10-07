@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity ProfissionalDeSaude.
+    -->
+    <changeSet id="20200916024055-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="atendimento_id"
+                                 baseTableName="profissional_de_saude"
+                                 constraintName="fk_profissional_de_saude_atendimento_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="atendimento"/>
+
+        <addForeignKeyConstraint baseColumnNames="procedimento_id"
+                                 baseTableName="profissional_de_saude"
+                                 constraintName="fk_profissional_de_saude_procedimento_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="procedimento"/>
+
+        <addForeignKeyConstraint baseColumnNames="prontuario_id"
+                                 baseTableName="profissional_de_saude"
+                                 constraintName="fk_profissional_de_saude_prontuario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="prontuario"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="endereco">
+            <h2><span jhiTranslate="saudepluplusApp.endereco.detail.title">Endereco</span> {{ endereco.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="saudepluplusApp.endereco.tipo">Tipo</span></dt>
+                <dd>
+                    <span>{{ endereco.tipo }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.endereco.numero">Numero</span></dt>
+                <dd>
+                    <span>{{ endereco.numero }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.endereco.pais">Pais</span></dt>
+                <dd>
+                    <span>{{ endereco.pais }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.endereco.estado">Estado</span></dt>
+                <dd>
+                    <span>{{ endereco.estado }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.endereco.cidade">Cidade</span></dt>
+                <dd>
+                    <span>{{ endereco.cidade }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.endereco.bairro">Bairro</span></dt>
+                <dd>
+                    <span>{{ endereco.bairro }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.endereco.cEP">C EP</span></dt>
+                <dd>
+                    <span>{{ endereco.cEP }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.endereco.coordenadasGeograficas">Coordenadas Geograficas</span></dt>
+                <dd>
+                    <span>{{ endereco.coordenadasGeograficas }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/endereco', endereco.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

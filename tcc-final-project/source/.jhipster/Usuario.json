@@ -1,0 +1,42 @@
+{
+  "name": "Usuario",
+  "fields": [
+    {
+      "fieldName": "login",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sobrenome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ativo",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "perfil",
+      "fieldType": "Perfil",
+      "fieldValues": "ADMINISTRADOR,USUARIO"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20201003040049",
+  "entityTableName": "usuario",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

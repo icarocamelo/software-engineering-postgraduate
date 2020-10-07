@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Profissional.
+    -->
+    <changeSet id="20200916023955-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="perfil_acesso_id"
+                                 baseTableName="profissional"
+                                 constraintName="fk_profissional_perfil_acesso_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="perfil_acesso"/>
+
+    </changeSet>
+</databaseChangeLog>

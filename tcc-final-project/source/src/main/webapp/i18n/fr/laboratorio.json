@@ -1,0 +1,28 @@
+{
+  "saudepluplusApp": {
+    "laboratorio": {
+      "home": {
+        "title": "Laboratorios",
+        "createLabel": "Créer un nouveau Laboratorio",
+        "createOrEditLabel": "Créer ou éditer un Laboratorio",
+        "notFound": "Aucun Laboratorio trouvé"
+      },
+      "created": "Un nouveau Laboratorio a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Laboratorio avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Laboratorio avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Laboratorio {{ id }} ?"
+      },
+      "detail": {
+        "title": "Laboratorio"
+      },
+      "cNPJ": "C NPJ",
+      "telefone": "Telefone",
+      "cEP": "C EP",
+      "razaoSocial": "Razao Social",
+      "nomeFantasia": "Nome Fantasia",
+      "tipoUnidadeSaude": "Tipo Unidade Saude",
+      "endereco": "Endereco"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "ClinicaMedica",
+  "fields": [
+    {
+      "fieldName": "cNPJ",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cEP",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "razaoSocial",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomeFantasia",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipoUnidadeSaude",
+      "fieldType": "TipoUnidadeSaude",
+      "fieldValues": "PUBLICA,PARTICULAR"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "endereco",
+      "otherEntityRelationshipName": "clinicaMedica",
+      "relationshipName": "endereco",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200916025355",
+  "entityTableName": "clinica_medica",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,23 @@
+{
+  "saudepluplusApp": {
+    "leito": {
+      "home": {
+        "title": "Leitos",
+        "createLabel": "Criar novo Leito",
+        "createOrEditLabel": "Criar ou editar Leito",
+        "notFound": "Nenhum Leito encontrado"
+      },
+      "created": "Um novo Leito foi criado com o identificador {{ param }}",
+      "updated": "Um Leito foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Leito foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Leito {{ id }}?"
+      },
+      "detail": {
+        "title": "Leito"
+      },
+      "identificacao": "Identificacao",
+      "hospital": "Hospital"
+    }
+  }
+}

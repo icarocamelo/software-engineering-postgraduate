@@ -1,0 +1,67 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="saudepluplusApp.fisioterapeuta.home.title">Fisioterapeutas</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-fisioterapeuta" [routerLink]="['/fisioterapeuta/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="saudepluplusApp.fisioterapeuta.home.createLabel">
+            Create a new Fisioterapeuta
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="fisioterapeutas?.length === 0">
+        <span jhiTranslate="saudepluplusApp.fisioterapeuta.home.notFound">No fisioterapeutas found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="fisioterapeutas && fisioterapeutas.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.fisioterapeuta.nome">Nome</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.fisioterapeuta.rG">R G</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.fisioterapeuta.cPF">C PF</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.fisioterapeuta.numeroRegistro">Numero Registro</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fisioterapeuta of fisioterapeutas ;trackBy: trackId">
+                    <td><a [routerLink]="['/fisioterapeuta', fisioterapeuta.id, 'view']">{{ fisioterapeuta.id }}</a></td>
+                    <td>{{ fisioterapeuta.nome }}</td>
+                    <td>{{ fisioterapeuta.rG }}</td>
+                    <td>{{ fisioterapeuta.cPF }}</td>
+                    <td>{{ fisioterapeuta.numeroRegistro }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/fisioterapeuta', fisioterapeuta.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/fisioterapeuta', fisioterapeuta.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(fisioterapeuta)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

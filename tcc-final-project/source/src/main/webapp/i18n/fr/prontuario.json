@@ -1,0 +1,25 @@
+{
+  "saudepluplusApp": {
+    "prontuario": {
+      "home": {
+        "title": "Prontuarios",
+        "createLabel": "Créer un nouveau Prontuario",
+        "createOrEditLabel": "Créer ou éditer un Prontuario",
+        "notFound": "Aucun Prontuario trouvé"
+      },
+      "created": "Un nouveau Prontuario a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Prontuario avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Prontuario avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Prontuario {{ id }} ?"
+      },
+      "detail": {
+        "title": "Prontuario"
+      },
+      "paciente": "Paciente",
+      "atendimentos": "Atendimentos",
+      "procedimentos": "Procedimentos",
+      "profissionalDeSaude": "Profissional De Saude"
+    }
+  }
+}

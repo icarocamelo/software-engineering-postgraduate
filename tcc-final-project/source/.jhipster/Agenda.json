@@ -1,0 +1,50 @@
+{
+  "name": "Agenda",
+  "fields": [
+    {
+      "fieldName": "data",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "medico",
+      "otherEntityRelationshipName": "agenda",
+      "relationshipName": "medico",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "fisioterapeuta",
+      "otherEntityRelationshipName": "agenda",
+      "relationshipName": "fisioterapeuta",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "enfermeiro",
+      "otherEntityRelationshipName": "agenda",
+      "relationshipName": "enfermeiro",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "psicologo",
+      "otherEntityRelationshipName": "agenda",
+      "relationshipName": "psicologo",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200916025955",
+  "entityTableName": "agenda",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

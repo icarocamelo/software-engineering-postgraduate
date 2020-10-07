@@ -1,0 +1,26 @@
+{
+  "saudepluplusApp": {
+    "fisioterapeuta": {
+      "home": {
+        "title": "Fisioterapeutas",
+        "createLabel": "Criar novo Fisioterapeuta",
+        "createOrEditLabel": "Criar ou editar Fisioterapeuta",
+        "notFound": "Nenhum Fisioterapeuta encontrado"
+      },
+      "created": "Um novo Fisioterapeuta foi criado com o identificador {{ param }}",
+      "updated": "Um Fisioterapeuta foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Fisioterapeuta foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Fisioterapeuta {{ id }}?"
+      },
+      "detail": {
+        "title": "Fisioterapeuta"
+      },
+      "nome": "Nome",
+      "rG": "R G",
+      "cPF": "C PF",
+      "numeroRegistro": "Numero Registro",
+      "agenda": "Agenda"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="saudepluplusApp.atendimento.home.title">Atendimentos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-atendimento" [routerLink]="['/atendimento/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="saudepluplusApp.atendimento.home.createLabel">
+            Create a new Atendimento
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="atendimentos?.length === 0">
+        <span jhiTranslate="saudepluplusApp.atendimento.home.notFound">No atendimentos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="atendimentos && atendimentos.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.atendimento.data">Data</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.atendimento.paciente">Paciente</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.atendimento.profissionalDeSaude">Profissional De Saude</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.atendimento.endereco">Endereco</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.atendimento.agenda">Agenda</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.atendimento.prontuario">Prontuario</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let atendimento of atendimentos ;trackBy: trackId">
+                    <td><a [routerLink]="['/atendimento', atendimento.id, 'view']">{{ atendimento.id }}</a></td>
+                    <td>{{ atendimento.data | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="atendimento.paciente">
+                            <a [routerLink]="['/paciente', atendimento.paciente?.id, 'view']" >{{ atendimento.paciente?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="atendimento.profissionalDeSaude">
+                            <a [routerLink]="['/profissional-de-saude', atendimento.profissionalDeSaude?.id, 'view']" >{{ atendimento.profissionalDeSaude?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="atendimento.endereco">
+                            <a [routerLink]="['/endereco', atendimento.endereco?.id, 'view']" >{{ atendimento.endereco?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="atendimento.agenda">
+                            <a [routerLink]="['/agenda', atendimento.agenda?.id, 'view']" >{{ atendimento.agenda?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="atendimento.prontuario">
+                            <a [routerLink]="['/prontuario', atendimento.prontuario?.id, 'view']" >{{ atendimento.prontuario?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/atendimento', atendimento.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/atendimento', atendimento.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(atendimento)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

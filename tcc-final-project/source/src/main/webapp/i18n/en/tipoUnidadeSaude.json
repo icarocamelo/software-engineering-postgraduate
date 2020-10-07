@@ -1,0 +1,9 @@
+{
+  "saudepluplusApp": {
+    "TipoUnidadeSaude": {
+      "null": "",
+      "PUBLICA": "PUBLICA",
+      "PARTICULAR": "PARTICULAR"
+    }
+  }
+}

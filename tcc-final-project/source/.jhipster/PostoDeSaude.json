@@ -1,0 +1,51 @@
+{
+  "name": "PostoDeSaude",
+  "fields": [
+    {
+      "fieldName": "cNPJ",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cEP",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "razaoSocial",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomeFantasia",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipoUnidadeSaude",
+      "fieldType": "TipoUnidadeSaude",
+      "fieldValues": "PUBLICA,PARTICULAR"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "endereco",
+      "otherEntityRelationshipName": "postoDeSaude",
+      "relationshipName": "endereco",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200916025555",
+  "entityTableName": "posto_de_saude",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

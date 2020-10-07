@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="paciente">
+            <h2><span jhiTranslate="saudepluplusApp.paciente.detail.title">Paciente</span> {{ paciente.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="saudepluplusApp.paciente.nome">Nome</span></dt>
+                <dd>
+                    <span>{{ paciente.nome }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.paciente.rG">R G</span></dt>
+                <dd>
+                    <span>{{ paciente.rG }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.paciente.cPF">C PF</span></dt>
+                <dd>
+                    <span>{{ paciente.cPF }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.paciente.dataNascimento">Data Nascimento</span></dt>
+                <dd>
+                    <span>{{ paciente.dataNascimento }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.paciente.telefone">Telefone</span></dt>
+                <dd>
+                    <span>{{ paciente.telefone }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.paciente.peso">Peso</span></dt>
+                <dd>
+                    <span>{{ paciente.peso }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.paciente.altura">Altura</span></dt>
+                <dd>
+                    <span>{{ paciente.altura }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.paciente.responsavel">Responsavel</span></dt>
+                <dd>
+                    <span>{{ paciente.responsavel }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.paciente.rNE">R NE</span></dt>
+                <dd>
+                    <span>{{ paciente.rNE }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.paciente.perfilAcesso">Perfil Acesso</span></dt>
+                <dd>
+                    <div *ngIf="paciente.perfilAcesso">
+                        <a [routerLink]="['/perfil-acesso', paciente.perfilAcesso?.id, 'view']">{{ paciente.perfilAcesso?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.paciente.endereco">Endereco</span></dt>
+                <dd>
+                    <div *ngIf="paciente.endereco">
+                        <a [routerLink]="['/endereco', paciente.endereco?.id, 'view']">{{ paciente.endereco?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/paciente', paciente.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

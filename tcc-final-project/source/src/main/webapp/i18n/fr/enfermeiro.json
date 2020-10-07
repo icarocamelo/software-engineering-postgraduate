@@ -1,0 +1,26 @@
+{
+  "saudepluplusApp": {
+    "enfermeiro": {
+      "home": {
+        "title": "Enfermeiros",
+        "createLabel": "Créer un nouveau Enfermeiro",
+        "createOrEditLabel": "Créer ou éditer un Enfermeiro",
+        "notFound": "Aucun Enfermeiro trouvé"
+      },
+      "created": "Un nouveau Enfermeiro a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Enfermeiro avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Enfermeiro avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Enfermeiro {{ id }} ?"
+      },
+      "detail": {
+        "title": "Enfermeiro"
+      },
+      "nome": "Nome",
+      "rG": "R G",
+      "cPF": "C PF",
+      "numeroRegistro": "Numero Registro",
+      "agenda": "Agenda"
+    }
+  }
+}

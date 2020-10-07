@@ -1,0 +1,24 @@
+{
+  "saudepluplusApp": {
+    "farmacia": {
+      "home": {
+        "title": "Farmacias",
+        "createLabel": "Créer un nouveau Farmacia",
+        "createOrEditLabel": "Créer ou éditer un Farmacia",
+        "notFound": "Aucun Farmacia trouvé"
+      },
+      "created": "Un nouveau Farmacia a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Farmacia avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Farmacia avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Farmacia {{ id }} ?"
+      },
+      "detail": {
+        "title": "Farmacia"
+      },
+      "nome": "Nome",
+      "endereco": "Endereco",
+      "medicamentos": "Medicamentos"
+    }
+  }
+}

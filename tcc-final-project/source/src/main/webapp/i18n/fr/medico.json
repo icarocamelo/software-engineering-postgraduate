@@ -1,0 +1,26 @@
+{
+  "saudepluplusApp": {
+    "medico": {
+      "home": {
+        "title": "Medicos",
+        "createLabel": "Créer un nouveau Medico",
+        "createOrEditLabel": "Créer ou éditer un Medico",
+        "notFound": "Aucun Medico trouvé"
+      },
+      "created": "Un nouveau Medico a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Medico avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Medico avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Medico {{ id }} ?"
+      },
+      "detail": {
+        "title": "Medico"
+      },
+      "nome": "Nome",
+      "rG": "R G",
+      "cPF": "C PF",
+      "numeroRegistro": "Numero Registro",
+      "agenda": "Agenda"
+    }
+  }
+}

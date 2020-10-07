@@ -1,0 +1,159 @@
+@startuml
+class Paciente {
+	UUID : String
+    Nome : String
+    RG : String
+    CPF : String
+    Endereco : String
+    DataNascimento : LocalDate
+    Telefone : String
+    Peso : Double
+    Altura : Double
+    Responsavel : String
+    RNE : String    
+}
+
+class Endereco {
+	UUID : String
+    Tipo : String
+    Numero : String
+    Pais : String
+    Estado : String
+    Cidade : String
+    Bairro : String
+    CEP : String
+    CoordenadasGeograficas : String
+}
+
+class Profissional {
+	UUID : String
+    Nome : String
+    RG : String
+    CPF : String
+}
+
+class ProfissionalDeSaude extends Profissional {
+	NumeroRegistro : String
+}
+
+class Medico extends ProfissionalDeSaude {
+
+}
+class Fisioterapeuta extends ProfissionalDeSaude {
+
+}
+class Psicologo extends ProfissionalDeSaude {
+
+}
+class Enfermeiro extends ProfissionalDeSaude {
+
+}
+
+class Procedimento {
+	UUID : String
+    Descricao : String
+    Preco : Double
+    Codigo : String
+}
+
+class Exame extends Procedimento {
+
+}
+class Consulta extends Procedimento {
+
+}
+
+class Atendimento {
+	UUID : String
+    Data : LocalDate
+}
+class CartaoVacina {
+	UUID : String
+
+}
+
+class Vacina {
+	UUID : String
+    Nome : String 
+    Lote : String
+    DataAplicacao : LocalDate
+    Preco : Double
+}
+
+class UnidadeSaude {
+	UUID : String
+    Endereco : String
+    CNPJ : String
+    Telefone : String
+    CEP : String
+    RazaoSocial : String
+    NomeFantasia : String
+}
+enum TipoUnidadeSaude {
+	PUBLICA, PARTICULAR
+}
+class Laboratorio extends UnidadeSaude {
+
+}
+class ClinicaMedica extends UnidadeSaude {
+
+}
+class Hospital extends UnidadeSaude {
+
+}
+class PostoDeSaude extends UnidadeSaude {
+
+}
+
+class Leito {
+	UUID : String
+    Endereco : Endereco
+}
+
+class Farmacia {
+	UUID : String
+    Nome: String
+    Endereco : Endereco
+}
+
+class Medicamento {
+	UUID : String
+    Nome: String
+}
+
+class Agenda {
+	UUID : String
+    Data : String    
+}
+class AgendaConsulta extends Agenda {
+}
+class AgendaExame extends Agenda {
+}
+
+class PerfilAcesso {
+	UUID : String
+}
+class Permissao {
+	UUID : String
+}
+
+
+PerfilAcesso "1" *-- "many" Permissao : contains
+Paciente - PerfilAcesso
+Farmacia "1" *-- "many" Medicamento : contains
+Hospital "1" *-- "many" Leito : contains
+Paciente "1" *-- "1" Endereco : contains
+Paciente "1" --* "1" CartaoVacina : contains
+CartaoVacina "1" *-- "many" Vacina : contains
+UnidadeSaude - TipoUnidadeSaude
+    Atendimento - Paciente
+    Atendimento - ProfissionalDeSaude
+    Atendimento - Endereco
+    Atendimento - Agenda
+
+    Procedimento - Paciente
+    Procedimento - ProfissionalDeSaude
+    Procedimento - UnidadeSaude
+    Procedimento - Agenda
+
+@enduml
