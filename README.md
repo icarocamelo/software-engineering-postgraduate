@@ -13,7 +13,7 @@
 - Software Implementation and Reuse
 - Human-Computer Interaction
 - Software Design
-- Project Quality, Product and Software Process
+- Software Project, Product and Process Quality
 - Database Technologies
 - Systematic Software Tests
 
@@ -32,3 +32,7 @@
 - Qualidade de Projeto, Produto e Processo de Software
 - Tecnologias de Banco de Dados
 - Testes Sistemáticos de Software
+
+### Capstone project
+Link: https://github.com/icarocamelo/software-engineering-postgraduate/blob/master/tcc-final-project/docs/Icaro-Camelo-TCC-Capstone-Project.docx
+
