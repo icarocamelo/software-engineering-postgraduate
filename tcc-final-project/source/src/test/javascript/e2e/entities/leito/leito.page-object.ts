@@ -29,18 +29,36 @@ export class LeitoUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  uUIDInput = element(by.id('field_uUID'));
+  identificacaoInput = element(by.id('field_identificacao'));
+
+  hospitalSelect = element(by.id('field_hospital'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
 
-  async setUUIDInput(uUID: string): Promise<void> {
-    await this.uUIDInput.sendKeys(uUID);
+  async setIdentificacaoInput(identificacao: string): Promise<void> {
+    await this.identificacaoInput.sendKeys(identificacao);
   }
 
-  async getUUIDInput(): Promise<string> {
-    return await this.uUIDInput.getAttribute('value');
+  async getIdentificacaoInput(): Promise<string> {
+    return await this.identificacaoInput.getAttribute('value');
+  }
+
+  async hospitalSelectLastOption(): Promise<void> {
+    await this.hospitalSelect.all(by.tagName('option')).last().click();
+  }
+
+  async hospitalSelectOption(option: string): Promise<void> {
+    await this.hospitalSelect.sendKeys(option);
+  }
+
+  getHospitalSelect(): ElementFinder {
+    return this.hospitalSelect;
+  }
+
+  async getHospitalSelectedOption(): Promise<string> {
+    return await this.hospitalSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

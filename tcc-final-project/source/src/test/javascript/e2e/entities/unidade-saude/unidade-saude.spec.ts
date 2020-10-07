@@ -43,30 +43,7 @@ describe('UnidadeSaude e2e test', () => {
 
     await unidadeSaudeComponentsPage.clickOnCreateButton();
 
-    await promise.all([
-      unidadeSaudeUpdatePage.setUUIDInput('uUID'),
-      unidadeSaudeUpdatePage.setEnderecoInput('endereco'),
-      unidadeSaudeUpdatePage.setCNPJInput('cNPJ'),
-      unidadeSaudeUpdatePage.setTelefoneInput('telefone'),
-      unidadeSaudeUpdatePage.setCEPInput('cEP'),
-      unidadeSaudeUpdatePage.setRazaoSocialInput('razaoSocial'),
-      unidadeSaudeUpdatePage.setNomeFantasiaInput('nomeFantasia'),
-      unidadeSaudeUpdatePage.tipoUnidadeSaudeSelectLastOption(),
-    ]);
-
-    expect(await unidadeSaudeUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
-    expect(await unidadeSaudeUpdatePage.getEnderecoInput()).to.eq('endereco', 'Expected Endereco value to be equals to endereco');
-    expect(await unidadeSaudeUpdatePage.getCNPJInput()).to.eq('cNPJ', 'Expected CNPJ value to be equals to cNPJ');
-    expect(await unidadeSaudeUpdatePage.getTelefoneInput()).to.eq('telefone', 'Expected Telefone value to be equals to telefone');
-    expect(await unidadeSaudeUpdatePage.getCEPInput()).to.eq('cEP', 'Expected CEP value to be equals to cEP');
-    expect(await unidadeSaudeUpdatePage.getRazaoSocialInput()).to.eq(
-      'razaoSocial',
-      'Expected RazaoSocial value to be equals to razaoSocial'
-    );
-    expect(await unidadeSaudeUpdatePage.getNomeFantasiaInput()).to.eq(
-      'nomeFantasia',
-      'Expected NomeFantasia value to be equals to nomeFantasia'
-    );
+    await promise.all([]);
 
     await unidadeSaudeUpdatePage.save();
     expect(await unidadeSaudeUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

@@ -41,11 +41,9 @@ describe('Paciente e2e test', () => {
     await pacienteComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      pacienteUpdatePage.setUUIDInput('uUID'),
       pacienteUpdatePage.setNomeInput('nome'),
       pacienteUpdatePage.setRGInput('rG'),
       pacienteUpdatePage.setCPFInput('cPF'),
-      pacienteUpdatePage.setEnderecoInput('endereco'),
       pacienteUpdatePage.setDataNascimentoInput('2000-12-31'),
       pacienteUpdatePage.setTelefoneInput('telefone'),
       pacienteUpdatePage.setPesoInput('5'),
@@ -53,13 +51,12 @@ describe('Paciente e2e test', () => {
       pacienteUpdatePage.setResponsavelInput('responsavel'),
       pacienteUpdatePage.setRNEInput('rNE'),
       pacienteUpdatePage.perfilAcessoSelectLastOption(),
+      pacienteUpdatePage.enderecoSelectLastOption(),
     ]);
 
-    expect(await pacienteUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
     expect(await pacienteUpdatePage.getNomeInput()).to.eq('nome', 'Expected Nome value to be equals to nome');
     expect(await pacienteUpdatePage.getRGInput()).to.eq('rG', 'Expected RG value to be equals to rG');
     expect(await pacienteUpdatePage.getCPFInput()).to.eq('cPF', 'Expected CPF value to be equals to cPF');
-    expect(await pacienteUpdatePage.getEnderecoInput()).to.eq('endereco', 'Expected Endereco value to be equals to endereco');
     expect(await pacienteUpdatePage.getDataNascimentoInput()).to.eq(
       '2000-12-31',
       'Expected dataNascimento value to be equals to 2000-12-31'

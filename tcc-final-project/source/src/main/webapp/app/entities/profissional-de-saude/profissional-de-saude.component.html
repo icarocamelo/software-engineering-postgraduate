@@ -23,14 +23,12 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.profissionalDeSaude.numeroRegistro">Numero Registro</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let profissionalDeSaude of profissionalDeSaudes ;trackBy: trackId">
                     <td><a [routerLink]="['/profissional-de-saude', profissionalDeSaude.id, 'view']">{{ profissionalDeSaude.id }}</a></td>
-                    <td>{{ profissionalDeSaude.numeroRegistro }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

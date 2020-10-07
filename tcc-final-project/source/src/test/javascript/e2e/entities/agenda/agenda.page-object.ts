@@ -29,19 +29,15 @@ export class AgendaUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  uUIDInput = element(by.id('field_uUID'));
   dataInput = element(by.id('field_data'));
+
+  medicoSelect = element(by.id('field_medico'));
+  fisioterapeutaSelect = element(by.id('field_fisioterapeuta'));
+  enfermeiroSelect = element(by.id('field_enfermeiro'));
+  psicologoSelect = element(by.id('field_psicologo'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
-  }
-
-  async setUUIDInput(uUID: string): Promise<void> {
-    await this.uUIDInput.sendKeys(uUID);
-  }
-
-  async getUUIDInput(): Promise<string> {
-    return await this.uUIDInput.getAttribute('value');
   }
 
   async setDataInput(data: string): Promise<void> {
@@ -50,6 +46,70 @@ export class AgendaUpdatePage {
 
   async getDataInput(): Promise<string> {
     return await this.dataInput.getAttribute('value');
+  }
+
+  async medicoSelectLastOption(): Promise<void> {
+    await this.medicoSelect.all(by.tagName('option')).last().click();
+  }
+
+  async medicoSelectOption(option: string): Promise<void> {
+    await this.medicoSelect.sendKeys(option);
+  }
+
+  getMedicoSelect(): ElementFinder {
+    return this.medicoSelect;
+  }
+
+  async getMedicoSelectedOption(): Promise<string> {
+    return await this.medicoSelect.element(by.css('option:checked')).getText();
+  }
+
+  async fisioterapeutaSelectLastOption(): Promise<void> {
+    await this.fisioterapeutaSelect.all(by.tagName('option')).last().click();
+  }
+
+  async fisioterapeutaSelectOption(option: string): Promise<void> {
+    await this.fisioterapeutaSelect.sendKeys(option);
+  }
+
+  getFisioterapeutaSelect(): ElementFinder {
+    return this.fisioterapeutaSelect;
+  }
+
+  async getFisioterapeutaSelectedOption(): Promise<string> {
+    return await this.fisioterapeutaSelect.element(by.css('option:checked')).getText();
+  }
+
+  async enfermeiroSelectLastOption(): Promise<void> {
+    await this.enfermeiroSelect.all(by.tagName('option')).last().click();
+  }
+
+  async enfermeiroSelectOption(option: string): Promise<void> {
+    await this.enfermeiroSelect.sendKeys(option);
+  }
+
+  getEnfermeiroSelect(): ElementFinder {
+    return this.enfermeiroSelect;
+  }
+
+  async getEnfermeiroSelectedOption(): Promise<string> {
+    return await this.enfermeiroSelect.element(by.css('option:checked')).getText();
+  }
+
+  async psicologoSelectLastOption(): Promise<void> {
+    await this.psicologoSelect.all(by.tagName('option')).last().click();
+  }
+
+  async psicologoSelectOption(option: string): Promise<void> {
+    await this.psicologoSelect.sendKeys(option);
+  }
+
+  getPsicologoSelect(): ElementFinder {
+    return this.psicologoSelect;
+  }
+
+  async getPsicologoSelectedOption(): Promise<string> {
+    return await this.psicologoSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

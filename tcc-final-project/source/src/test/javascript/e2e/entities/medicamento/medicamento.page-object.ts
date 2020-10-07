@@ -29,7 +29,7 @@ export class MedicamentoUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  uUIDInput = element(by.id('field_uUID'));
+  nomeInput = element(by.id('field_nome'));
 
   farmaciaSelect = element(by.id('field_farmacia'));
 
@@ -37,12 +37,12 @@ export class MedicamentoUpdatePage {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
 
-  async setUUIDInput(uUID: string): Promise<void> {
-    await this.uUIDInput.sendKeys(uUID);
+  async setNomeInput(nome: string): Promise<void> {
+    await this.nomeInput.sendKeys(nome);
   }
 
-  async getUUIDInput(): Promise<string> {
-    return await this.uUIDInput.getAttribute('value');
+  async getNomeInput(): Promise<string> {
+    return await this.nomeInput.getAttribute('value');
   }
 
   async farmaciaSelectLastOption(): Promise<void> {

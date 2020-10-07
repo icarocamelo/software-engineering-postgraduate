@@ -29,18 +29,8 @@ export class ProfissionalDeSaudeUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  numeroRegistroInput = element(by.id('field_numeroRegistro'));
-
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
-  }
-
-  async setNumeroRegistroInput(numeroRegistro: string): Promise<void> {
-    await this.numeroRegistroInput.sendKeys(numeroRegistro);
-  }
-
-  async getNumeroRegistroInput(): Promise<string> {
-    return await this.numeroRegistroInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

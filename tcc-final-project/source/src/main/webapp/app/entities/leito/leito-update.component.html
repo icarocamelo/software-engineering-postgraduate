@@ -12,9 +12,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="saudepluplusApp.leito.uUID" for="field_uUID">U UID</label>
-                    <input type="text" class="form-control" name="uUID" id="field_uUID"
-                           formControlName="uUID"/>
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.leito.identificacao" for="field_identificacao">Identificacao</label>
+                    <input type="text" class="form-control" name="identificacao" id="field_identificacao"
+                           formControlName="identificacao"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.leito.hospital" for="field_hospital">Hospital</label>
+                    <select class="form-control" id="field_hospital" name="hospital" formControlName="hospital">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="hospitalOption.id === editForm.get('hospital')!.value?.id ? editForm.get('hospital')!.value : hospitalOption" *ngFor="let hospitalOption of hospitals; trackBy: trackById">{{ hospitalOption.id }}</option>
+                    </select>
                 </div>
             </div>
 

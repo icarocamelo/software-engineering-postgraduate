@@ -16,7 +16,8 @@
       "detail": {
         "title": "Farmacia"
       },
-      "uUID": "U UID",
+      "nome": "Nome",
+      "endereco": "Endereco",
       "medicamentos": "Medicamentos"
     }
   }

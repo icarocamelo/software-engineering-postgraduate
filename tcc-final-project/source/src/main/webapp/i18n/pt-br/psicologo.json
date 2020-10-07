@@ -15,7 +15,12 @@
       },
       "detail": {
         "title": "Psicologo"
-      }
+      },
+      "nome": "Nome",
+      "rG": "R G",
+      "cPF": "C PF",
+      "numeroRegistro": "Numero Registro",
+      "agenda": "Agenda"
     }
   }
 }

@@ -1,0 +1,70 @@
+{
+  "name": "Paciente",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rG",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cPF",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataNascimento",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "telefone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "peso",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "altura",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "responsavel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rNE",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "perfilAcesso",
+      "otherEntityRelationshipName": "paciente",
+      "relationshipName": "perfilAcesso",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "endereco",
+      "otherEntityRelationshipName": "paciente",
+      "relationshipName": "endereco",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200916023755",
+  "entityTableName": "paciente",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -43,7 +43,20 @@ describe('Fisioterapeuta e2e test', () => {
 
     await fisioterapeutaComponentsPage.clickOnCreateButton();
 
-    await promise.all([]);
+    await promise.all([
+      fisioterapeutaUpdatePage.setNomeInput('nome'),
+      fisioterapeutaUpdatePage.setRGInput('rG'),
+      fisioterapeutaUpdatePage.setCPFInput('cPF'),
+      fisioterapeutaUpdatePage.setNumeroRegistroInput('numeroRegistro'),
+    ]);
+
+    expect(await fisioterapeutaUpdatePage.getNomeInput()).to.eq('nome', 'Expected Nome value to be equals to nome');
+    expect(await fisioterapeutaUpdatePage.getRGInput()).to.eq('rG', 'Expected RG value to be equals to rG');
+    expect(await fisioterapeutaUpdatePage.getCPFInput()).to.eq('cPF', 'Expected CPF value to be equals to cPF');
+    expect(await fisioterapeutaUpdatePage.getNumeroRegistroInput()).to.eq(
+      'numeroRegistro',
+      'Expected NumeroRegistro value to be equals to numeroRegistro'
+    );
 
     await fisioterapeutaUpdatePage.save();
     expect(await fisioterapeutaUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

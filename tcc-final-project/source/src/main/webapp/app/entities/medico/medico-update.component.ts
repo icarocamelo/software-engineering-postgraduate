@@ -17,6 +17,10 @@ export class MedicoUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    nome: [],
+    rG: [],
+    cPF: [],
+    numeroRegistro: [],
   });
 
   constructor(protected medicoService: MedicoService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -30,6 +34,10 @@ export class MedicoUpdateComponent implements OnInit {
   updateForm(medico: IMedico): void {
     this.editForm.patchValue({
       id: medico.id,
+      nome: medico.nome,
+      rG: medico.rG,
+      cPF: medico.cPF,
+      numeroRegistro: medico.numeroRegistro,
     });
   }
 
@@ -51,6 +59,10 @@ export class MedicoUpdateComponent implements OnInit {
     return {
       ...new Medico(),
       id: this.editForm.get(['id'])!.value,
+      nome: this.editForm.get(['nome'])!.value,
+      rG: this.editForm.get(['rG'])!.value,
+      cPF: this.editForm.get(['cPF'])!.value,
+      numeroRegistro: this.editForm.get(['numeroRegistro'])!.value,
     };
   }
 

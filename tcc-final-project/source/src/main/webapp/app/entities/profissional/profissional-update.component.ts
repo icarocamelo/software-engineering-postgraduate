@@ -21,10 +21,6 @@ export class ProfissionalUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    uUID: [],
-    nome: [],
-    rG: [],
-    cPF: [],
     perfilAcesso: [],
   });
 
@@ -66,10 +62,6 @@ export class ProfissionalUpdateComponent implements OnInit {
   updateForm(profissional: IProfissional): void {
     this.editForm.patchValue({
       id: profissional.id,
-      uUID: profissional.uUID,
-      nome: profissional.nome,
-      rG: profissional.rG,
-      cPF: profissional.cPF,
       perfilAcesso: profissional.perfilAcesso,
     });
   }
@@ -92,10 +84,6 @@ export class ProfissionalUpdateComponent implements OnInit {
     return {
       ...new Profissional(),
       id: this.editForm.get(['id'])!.value,
-      uUID: this.editForm.get(['uUID'])!.value,
-      nome: this.editForm.get(['nome'])!.value,
-      rG: this.editForm.get(['rG'])!.value,
-      cPF: this.editForm.get(['cPF'])!.value,
       perfilAcesso: this.editForm.get(['perfilAcesso'])!.value,
     };
   }

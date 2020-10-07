@@ -41,7 +41,6 @@ describe('Endereco e2e test', () => {
     await enderecoComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      enderecoUpdatePage.setUUIDInput('uUID'),
       enderecoUpdatePage.setTipoInput('tipo'),
       enderecoUpdatePage.setNumeroInput('numero'),
       enderecoUpdatePage.setPaisInput('pais'),
@@ -52,7 +51,6 @@ describe('Endereco e2e test', () => {
       enderecoUpdatePage.setCoordenadasGeograficasInput('coordenadasGeograficas'),
     ]);
 
-    expect(await enderecoUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
     expect(await enderecoUpdatePage.getTipoInput()).to.eq('tipo', 'Expected Tipo value to be equals to tipo');
     expect(await enderecoUpdatePage.getNumeroInput()).to.eq('numero', 'Expected Numero value to be equals to numero');
     expect(await enderecoUpdatePage.getPaisInput()).to.eq('pais', 'Expected Pais value to be equals to pais');

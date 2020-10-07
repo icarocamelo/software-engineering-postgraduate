@@ -54,7 +54,7 @@ describe('Service Tests', () => {
       it('should update a Permissao', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
+            nome: 'BBBBBB',
           },
           elemDefault
         );
@@ -71,7 +71,7 @@ describe('Service Tests', () => {
       it('should return a list of Permissao', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
+            nome: 'BBBBBB',
           },
           elemDefault
         );

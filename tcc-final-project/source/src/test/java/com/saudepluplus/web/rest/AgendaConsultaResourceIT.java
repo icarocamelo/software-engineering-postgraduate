@@ -14,6 +14,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,6 +31,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WithMockUser
 public class AgendaConsultaResourceIT {
+
+    private static final LocalDate DEFAULT_DATA = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private AgendaConsultaRepository agendaConsultaRepository;
@@ -48,7 +53,8 @@ public class AgendaConsultaResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static AgendaConsulta createEntity(EntityManager em) {
-        AgendaConsulta agendaConsulta = new AgendaConsulta();
+        AgendaConsulta agendaConsulta = new AgendaConsulta()
+            .data(DEFAULT_DATA);
         return agendaConsulta;
     }
     /**
@@ -58,7 +64,8 @@ public class AgendaConsultaResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static AgendaConsulta createUpdatedEntity(EntityManager em) {
-        AgendaConsulta agendaConsulta = new AgendaConsulta();
+        AgendaConsulta agendaConsulta = new AgendaConsulta()
+            .data(UPDATED_DATA);
         return agendaConsulta;
     }
 
@@ -81,6 +88,7 @@ public class AgendaConsultaResourceIT {
         List<AgendaConsulta> agendaConsultaList = agendaConsultaRepository.findAll();
         assertThat(agendaConsultaList).hasSize(databaseSizeBeforeCreate + 1);
         AgendaConsulta testAgendaConsulta = agendaConsultaList.get(agendaConsultaList.size() - 1);
+        assertThat(testAgendaConsulta.getData()).isEqualTo(DEFAULT_DATA);
     }
 
     @Test
@@ -113,7 +121,8 @@ public class AgendaConsultaResourceIT {
         restAgendaConsultaMockMvc.perform(get("/api/agenda-consultas?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(agendaConsulta.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(agendaConsulta.getId().intValue())))
+            .andExpect(jsonPath("$.[*].data").value(hasItem(DEFAULT_DATA.toString())));
     }
     
     @Test
@@ -126,7 +135,8 @@ public class AgendaConsultaResourceIT {
         restAgendaConsultaMockMvc.perform(get("/api/agenda-consultas/{id}", agendaConsulta.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(agendaConsulta.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(agendaConsulta.getId().intValue()))
+            .andExpect(jsonPath("$.data").value(DEFAULT_DATA.toString()));
     }
     @Test
     @Transactional
@@ -148,6 +158,8 @@ public class AgendaConsultaResourceIT {
         AgendaConsulta updatedAgendaConsulta = agendaConsultaRepository.findById(agendaConsulta.getId()).get();
         // Disconnect from session so that the updates on updatedAgendaConsulta are not directly saved in db
         em.detach(updatedAgendaConsulta);
+        updatedAgendaConsulta
+            .data(UPDATED_DATA);
 
         restAgendaConsultaMockMvc.perform(put("/api/agenda-consultas").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -158,6 +170,7 @@ public class AgendaConsultaResourceIT {
         List<AgendaConsulta> agendaConsultaList = agendaConsultaRepository.findAll();
         assertThat(agendaConsultaList).hasSize(databaseSizeBeforeUpdate);
         AgendaConsulta testAgendaConsulta = agendaConsultaList.get(agendaConsultaList.size() - 1);
+        assertThat(testAgendaConsulta.getData()).isEqualTo(UPDATED_DATA);
     }
 
     @Test

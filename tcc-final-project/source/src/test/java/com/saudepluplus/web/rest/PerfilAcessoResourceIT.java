@@ -30,8 +30,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class PerfilAcessoResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
+    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    private static final String UPDATED_NOME = "BBBBBBBBBB";
 
     @Autowired
     private PerfilAcessoRepository perfilAcessoRepository;
@@ -52,7 +52,7 @@ public class PerfilAcessoResourceIT {
      */
     public static PerfilAcesso createEntity(EntityManager em) {
         PerfilAcesso perfilAcesso = new PerfilAcesso()
-            .uUID(DEFAULT_U_UID);
+            .nome(DEFAULT_NOME);
         return perfilAcesso;
     }
     /**
@@ -63,7 +63,7 @@ public class PerfilAcessoResourceIT {
      */
     public static PerfilAcesso createUpdatedEntity(EntityManager em) {
         PerfilAcesso perfilAcesso = new PerfilAcesso()
-            .uUID(UPDATED_U_UID);
+            .nome(UPDATED_NOME);
         return perfilAcesso;
     }
 
@@ -86,7 +86,7 @@ public class PerfilAcessoResourceIT {
         List<PerfilAcesso> perfilAcessoList = perfilAcessoRepository.findAll();
         assertThat(perfilAcessoList).hasSize(databaseSizeBeforeCreate + 1);
         PerfilAcesso testPerfilAcesso = perfilAcessoList.get(perfilAcessoList.size() - 1);
-        assertThat(testPerfilAcesso.getuUID()).isEqualTo(DEFAULT_U_UID);
+        assertThat(testPerfilAcesso.getNome()).isEqualTo(DEFAULT_NOME);
     }
 
     @Test
@@ -120,7 +120,7 @@ public class PerfilAcessoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(perfilAcesso.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)));
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)));
     }
     
     @Test
@@ -134,7 +134,7 @@ public class PerfilAcessoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(perfilAcesso.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID));
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME));
     }
     @Test
     @Transactional
@@ -157,7 +157,7 @@ public class PerfilAcessoResourceIT {
         // Disconnect from session so that the updates on updatedPerfilAcesso are not directly saved in db
         em.detach(updatedPerfilAcesso);
         updatedPerfilAcesso
-            .uUID(UPDATED_U_UID);
+            .nome(UPDATED_NOME);
 
         restPerfilAcessoMockMvc.perform(put("/api/perfil-acessos").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -168,7 +168,7 @@ public class PerfilAcessoResourceIT {
         List<PerfilAcesso> perfilAcessoList = perfilAcessoRepository.findAll();
         assertThat(perfilAcessoList).hasSize(databaseSizeBeforeUpdate);
         PerfilAcesso testPerfilAcesso = perfilAcessoList.get(perfilAcessoList.size() - 1);
-        assertThat(testPerfilAcesso.getuUID()).isEqualTo(UPDATED_U_UID);
+        assertThat(testPerfilAcesso.getNome()).isEqualTo(UPDATED_NOME);
     }
 
     @Test

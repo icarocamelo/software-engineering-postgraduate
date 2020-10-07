@@ -17,6 +17,9 @@ export class ExameUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    descricao: [],
+    preco: [],
+    codigo: [],
   });
 
   constructor(protected exameService: ExameService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -30,6 +33,9 @@ export class ExameUpdateComponent implements OnInit {
   updateForm(exame: IExame): void {
     this.editForm.patchValue({
       id: exame.id,
+      descricao: exame.descricao,
+      preco: exame.preco,
+      codigo: exame.codigo,
     });
   }
 
@@ -51,6 +57,9 @@ export class ExameUpdateComponent implements OnInit {
     return {
       ...new Exame(),
       id: this.editForm.get(['id'])!.value,
+      descricao: this.editForm.get(['descricao'])!.value,
+      preco: this.editForm.get(['preco'])!.value,
+      codigo: this.editForm.get(['codigo'])!.value,
     };
   }
 

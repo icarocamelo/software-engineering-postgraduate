@@ -1,0 +1,44 @@
+{
+  "name": "Prontuario",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "paciente",
+      "otherEntityRelationshipName": "prontuario",
+      "relationshipName": "paciente",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "atendimento",
+      "otherEntityRelationshipName": "prontuario",
+      "relationshipName": "atendimentos"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "procedimento",
+      "otherEntityRelationshipName": "prontuario",
+      "relationshipName": "procedimentos"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "profissionalDeSaude",
+      "otherEntityRelationshipName": "prontuario",
+      "relationshipName": "profissionalDeSaude",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200929051819",
+  "entityTableName": "prontuario",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

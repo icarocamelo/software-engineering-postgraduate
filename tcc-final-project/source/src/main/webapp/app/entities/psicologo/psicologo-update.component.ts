@@ -17,6 +17,10 @@ export class PsicologoUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    nome: [],
+    rG: [],
+    cPF: [],
+    numeroRegistro: [],
   });
 
   constructor(protected psicologoService: PsicologoService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -30,6 +34,10 @@ export class PsicologoUpdateComponent implements OnInit {
   updateForm(psicologo: IPsicologo): void {
     this.editForm.patchValue({
       id: psicologo.id,
+      nome: psicologo.nome,
+      rG: psicologo.rG,
+      cPF: psicologo.cPF,
+      numeroRegistro: psicologo.numeroRegistro,
     });
   }
 
@@ -51,6 +59,10 @@ export class PsicologoUpdateComponent implements OnInit {
     return {
       ...new Psicologo(),
       id: this.editForm.get(['id'])!.value,
+      nome: this.editForm.get(['nome'])!.value,
+      rG: this.editForm.get(['rG'])!.value,
+      cPF: this.editForm.get(['cPF'])!.value,
+      numeroRegistro: this.editForm.get(['numeroRegistro'])!.value,
     };
   }
 

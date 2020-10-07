@@ -29,7 +29,6 @@ export class VacinaUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  uUIDInput = element(by.id('field_uUID'));
   nomeInput = element(by.id('field_nome'));
   loteInput = element(by.id('field_lote'));
   dataAplicacaoInput = element(by.id('field_dataAplicacao'));
@@ -38,14 +37,6 @@ export class VacinaUpdatePage {
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
-  }
-
-  async setUUIDInput(uUID: string): Promise<void> {
-    await this.uUIDInput.sendKeys(uUID);
-  }
-
-  async getUUIDInput(): Promise<string> {
-    return await this.uUIDInput.getAttribute('value');
   }
 
   async setNomeInput(nome: string): Promise<void> {

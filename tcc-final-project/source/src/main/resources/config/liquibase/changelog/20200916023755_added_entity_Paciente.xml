@@ -15,9 +15,6 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="u_uid" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="nome" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -25,9 +22,6 @@
                 <constraints nullable="true" />
             </column>
             <column name="c_pf" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="endereco" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="data_nascimento" type="date">
@@ -50,6 +44,9 @@
             </column>
             <column name="perfil_acesso_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_paciente_perfil_acesso_id" />
+            </column>
+            <column name="endereco_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_paciente_endereco_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
@@ -74,11 +71,9 @@
                   separator=";"
                   tableName="paciente">
             <column name="id" type="numeric"/>
-            <column name="u_uid" type="string"/>
             <column name="nome" type="string"/>
             <column name="r_g" type="string"/>
             <column name="c_pf" type="string"/>
-            <column name="endereco" type="string"/>
             <column name="data_nascimento" type="date"/>
             <column name="telefone" type="string"/>
             <column name="peso" type="numeric"/>

@@ -4,6 +4,7 @@ package com.saudepluplus.domain;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * A AgendaConsulta.
@@ -19,6 +20,9 @@ public class AgendaConsulta implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @Column(name = "data")
+    private LocalDate data;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -26,6 +30,19 @@ public class AgendaConsulta implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public AgendaConsulta data(LocalDate data) {
+        this.data = data;
+        return this;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -50,6 +67,7 @@ public class AgendaConsulta implements Serializable {
     public String toString() {
         return "AgendaConsulta{" +
             "id=" + getId() +
+            ", data='" + getData() + "'" +
             "}";
     }
 }

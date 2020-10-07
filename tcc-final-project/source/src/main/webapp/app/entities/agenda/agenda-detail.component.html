@@ -8,13 +8,33 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="saudepluplusApp.agenda.uUID">U UID</span></dt>
-                <dd>
-                    <span>{{ agenda.uUID }}</span>
-                </dd>
                 <dt><span jhiTranslate="saudepluplusApp.agenda.data">Data</span></dt>
                 <dd>
                     <span>{{ agenda.data }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.agenda.medico">Medico</span></dt>
+                <dd>
+                    <div *ngIf="agenda.medico">
+                        <a [routerLink]="['/medico', agenda.medico?.id, 'view']">{{ agenda.medico?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.agenda.fisioterapeuta">Fisioterapeuta</span></dt>
+                <dd>
+                    <div *ngIf="agenda.fisioterapeuta">
+                        <a [routerLink]="['/fisioterapeuta', agenda.fisioterapeuta?.id, 'view']">{{ agenda.fisioterapeuta?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.agenda.enfermeiro">Enfermeiro</span></dt>
+                <dd>
+                    <div *ngIf="agenda.enfermeiro">
+                        <a [routerLink]="['/enfermeiro', agenda.enfermeiro?.id, 'view']">{{ agenda.enfermeiro?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.agenda.psicologo">Psicologo</span></dt>
+                <dd>
+                    <div *ngIf="agenda.psicologo">
+                        <a [routerLink]="['/psicologo', agenda.psicologo?.id, 'view']">{{ agenda.psicologo?.id }}</a>
+                    </div>
                 </dd>
             </dl>
 

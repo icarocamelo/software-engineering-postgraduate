@@ -30,6 +30,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class MedicoResourceIT {
 
+    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    private static final String UPDATED_NOME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_R_G = "AAAAAAAAAA";
+    private static final String UPDATED_R_G = "BBBBBBBBBB";
+
+    private static final String DEFAULT_C_PF = "AAAAAAAAAA";
+    private static final String UPDATED_C_PF = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NUMERO_REGISTRO = "AAAAAAAAAA";
+    private static final String UPDATED_NUMERO_REGISTRO = "BBBBBBBBBB";
+
     @Autowired
     private MedicoRepository medicoRepository;
 
@@ -48,7 +60,11 @@ public class MedicoResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Medico createEntity(EntityManager em) {
-        Medico medico = new Medico();
+        Medico medico = new Medico()
+            .nome(DEFAULT_NOME)
+            .rG(DEFAULT_R_G)
+            .cPF(DEFAULT_C_PF)
+            .numeroRegistro(DEFAULT_NUMERO_REGISTRO);
         return medico;
     }
     /**
@@ -58,7 +74,11 @@ public class MedicoResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Medico createUpdatedEntity(EntityManager em) {
-        Medico medico = new Medico();
+        Medico medico = new Medico()
+            .nome(UPDATED_NOME)
+            .rG(UPDATED_R_G)
+            .cPF(UPDATED_C_PF)
+            .numeroRegistro(UPDATED_NUMERO_REGISTRO);
         return medico;
     }
 
@@ -81,6 +101,10 @@ public class MedicoResourceIT {
         List<Medico> medicoList = medicoRepository.findAll();
         assertThat(medicoList).hasSize(databaseSizeBeforeCreate + 1);
         Medico testMedico = medicoList.get(medicoList.size() - 1);
+        assertThat(testMedico.getNome()).isEqualTo(DEFAULT_NOME);
+        assertThat(testMedico.getrG()).isEqualTo(DEFAULT_R_G);
+        assertThat(testMedico.getcPF()).isEqualTo(DEFAULT_C_PF);
+        assertThat(testMedico.getNumeroRegistro()).isEqualTo(DEFAULT_NUMERO_REGISTRO);
     }
 
     @Test
@@ -113,7 +137,11 @@ public class MedicoResourceIT {
         restMedicoMockMvc.perform(get("/api/medicos?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(medico.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(medico.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
+            .andExpect(jsonPath("$.[*].rG").value(hasItem(DEFAULT_R_G)))
+            .andExpect(jsonPath("$.[*].cPF").value(hasItem(DEFAULT_C_PF)))
+            .andExpect(jsonPath("$.[*].numeroRegistro").value(hasItem(DEFAULT_NUMERO_REGISTRO)));
     }
     
     @Test
@@ -126,7 +154,11 @@ public class MedicoResourceIT {
         restMedicoMockMvc.perform(get("/api/medicos/{id}", medico.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(medico.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(medico.getId().intValue()))
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
+            .andExpect(jsonPath("$.rG").value(DEFAULT_R_G))
+            .andExpect(jsonPath("$.cPF").value(DEFAULT_C_PF))
+            .andExpect(jsonPath("$.numeroRegistro").value(DEFAULT_NUMERO_REGISTRO));
     }
     @Test
     @Transactional
@@ -148,6 +180,11 @@ public class MedicoResourceIT {
         Medico updatedMedico = medicoRepository.findById(medico.getId()).get();
         // Disconnect from session so that the updates on updatedMedico are not directly saved in db
         em.detach(updatedMedico);
+        updatedMedico
+            .nome(UPDATED_NOME)
+            .rG(UPDATED_R_G)
+            .cPF(UPDATED_C_PF)
+            .numeroRegistro(UPDATED_NUMERO_REGISTRO);
 
         restMedicoMockMvc.perform(put("/api/medicos").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -158,6 +195,10 @@ public class MedicoResourceIT {
         List<Medico> medicoList = medicoRepository.findAll();
         assertThat(medicoList).hasSize(databaseSizeBeforeUpdate);
         Medico testMedico = medicoList.get(medicoList.size() - 1);
+        assertThat(testMedico.getNome()).isEqualTo(UPDATED_NOME);
+        assertThat(testMedico.getrG()).isEqualTo(UPDATED_R_G);
+        assertThat(testMedico.getcPF()).isEqualTo(UPDATED_C_PF);
+        assertThat(testMedico.getNumeroRegistro()).isEqualTo(UPDATED_NUMERO_REGISTRO);
     }
 
     @Test

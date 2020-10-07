@@ -4,6 +4,8 @@ package com.saudepluplus.domain;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Hospital.
@@ -19,6 +21,12 @@ public class Hospital implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @Column(name = "nome")
+    private String nome;
+
+    @OneToMany(mappedBy = "hospital")
+    private Set<Leito> leitos = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -26,6 +34,44 @@ public class Hospital implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Hospital nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Set<Leito> getLeitos() {
+        return leitos;
+    }
+
+    public Hospital leitos(Set<Leito> leitos) {
+        this.leitos = leitos;
+        return this;
+    }
+
+    public Hospital addLeitos(Leito leito) {
+        this.leitos.add(leito);
+        leito.setHospital(this);
+        return this;
+    }
+
+    public Hospital removeLeitos(Leito leito) {
+        this.leitos.remove(leito);
+        leito.setHospital(null);
+        return this;
+    }
+
+    public void setLeitos(Set<Leito> leitos) {
+        this.leitos = leitos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -50,6 +96,7 @@ public class Hospital implements Serializable {
     public String toString() {
         return "Hospital{" +
             "id=" + getId() +
+            ", nome='" + getNome() + "'" +
             "}";
     }
 }

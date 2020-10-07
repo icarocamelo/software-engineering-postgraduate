@@ -44,13 +44,16 @@ describe('Procedimento e2e test', () => {
     await procedimentoComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      procedimentoUpdatePage.setUUIDInput('uUID'),
       procedimentoUpdatePage.setDescricaoInput('descricao'),
       procedimentoUpdatePage.setPrecoInput('5'),
       procedimentoUpdatePage.setCodigoInput('codigo'),
+      procedimentoUpdatePage.pacienteSelectLastOption(),
+      procedimentoUpdatePage.profissionalDeSaudeSelectLastOption(),
+      procedimentoUpdatePage.enderecoSelectLastOption(),
+      procedimentoUpdatePage.agendaSelectLastOption(),
+      procedimentoUpdatePage.prontuarioSelectLastOption(),
     ]);
 
-    expect(await procedimentoUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
     expect(await procedimentoUpdatePage.getDescricaoInput()).to.eq('descricao', 'Expected Descricao value to be equals to descricao');
     expect(await procedimentoUpdatePage.getPrecoInput()).to.eq('5', 'Expected preco value to be equals to 5');
     expect(await procedimentoUpdatePage.getCodigoInput()).to.eq('codigo', 'Expected Codigo value to be equals to codigo');

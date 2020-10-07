@@ -54,7 +54,7 @@ describe('Service Tests', () => {
       it('should update a Medicamento', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
+            nome: 'BBBBBB',
           },
           elemDefault
         );
@@ -71,7 +71,7 @@ describe('Service Tests', () => {
       it('should return a list of Medicamento', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
+            nome: 'BBBBBB',
           },
           elemDefault
         );

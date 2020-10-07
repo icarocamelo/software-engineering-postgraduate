@@ -43,7 +43,27 @@ describe('ClinicaMedica e2e test', () => {
 
     await clinicaMedicaComponentsPage.clickOnCreateButton();
 
-    await promise.all([]);
+    await promise.all([
+      clinicaMedicaUpdatePage.setCNPJInput('cNPJ'),
+      clinicaMedicaUpdatePage.setTelefoneInput('telefone'),
+      clinicaMedicaUpdatePage.setCEPInput('cEP'),
+      clinicaMedicaUpdatePage.setRazaoSocialInput('razaoSocial'),
+      clinicaMedicaUpdatePage.setNomeFantasiaInput('nomeFantasia'),
+      clinicaMedicaUpdatePage.tipoUnidadeSaudeSelectLastOption(),
+      clinicaMedicaUpdatePage.enderecoSelectLastOption(),
+    ]);
+
+    expect(await clinicaMedicaUpdatePage.getCNPJInput()).to.eq('cNPJ', 'Expected CNPJ value to be equals to cNPJ');
+    expect(await clinicaMedicaUpdatePage.getTelefoneInput()).to.eq('telefone', 'Expected Telefone value to be equals to telefone');
+    expect(await clinicaMedicaUpdatePage.getCEPInput()).to.eq('cEP', 'Expected CEP value to be equals to cEP');
+    expect(await clinicaMedicaUpdatePage.getRazaoSocialInput()).to.eq(
+      'razaoSocial',
+      'Expected RazaoSocial value to be equals to razaoSocial'
+    );
+    expect(await clinicaMedicaUpdatePage.getNomeFantasiaInput()).to.eq(
+      'nomeFantasia',
+      'Expected NomeFantasia value to be equals to nomeFantasia'
+    );
 
     await clinicaMedicaUpdatePage.save();
     expect(await clinicaMedicaUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

@@ -1,10 +1,11 @@
 package com.saudepluplus.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A PerfilAcesso.
@@ -20,12 +21,11 @@ public class PerfilAcesso implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "u_uid")
-    private String uUID;
+    @Column(name = "nome")
+    private String nome;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = "perfilAcessos", allowSetters = true)
-    private Permissao permissao;
+    @OneToMany(mappedBy = "perfilAcesso")
+    private Set<Permissao> permissoes = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -36,30 +36,42 @@ public class PerfilAcesso implements Serializable {
         this.id = id;
     }
 
-    public String getuUID() {
-        return uUID;
+    public String getNome() {
+        return nome;
     }
 
-    public PerfilAcesso uUID(String uUID) {
-        this.uUID = uUID;
+    public PerfilAcesso nome(String nome) {
+        this.nome = nome;
         return this;
     }
 
-    public void setuUID(String uUID) {
-        this.uUID = uUID;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Permissao getPermissao() {
-        return permissao;
+    public Set<Permissao> getPermissoes() {
+        return permissoes;
     }
 
-    public PerfilAcesso permissao(Permissao permissao) {
-        this.permissao = permissao;
+    public PerfilAcesso permissoes(Set<Permissao> permissaos) {
+        this.permissoes = permissaos;
         return this;
     }
 
-    public void setPermissao(Permissao permissao) {
-        this.permissao = permissao;
+    public PerfilAcesso addPermissoes(Permissao permissao) {
+        this.permissoes.add(permissao);
+        permissao.setPerfilAcesso(this);
+        return this;
+    }
+
+    public PerfilAcesso removePermissoes(Permissao permissao) {
+        this.permissoes.remove(permissao);
+        permissao.setPerfilAcesso(null);
+        return this;
+    }
+
+    public void setPermissoes(Set<Permissao> permissaos) {
+        this.permissoes = permissaos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -84,7 +96,7 @@ public class PerfilAcesso implements Serializable {
     public String toString() {
         return "PerfilAcesso{" +
             "id=" + getId() +
-            ", uUID='" + getuUID() + "'" +
+            ", nome='" + getNome() + "'" +
             "}";
     }
 }

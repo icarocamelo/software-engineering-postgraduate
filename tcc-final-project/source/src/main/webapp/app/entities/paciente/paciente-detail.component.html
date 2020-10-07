@@ -8,10 +8,6 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="saudepluplusApp.paciente.uUID">U UID</span></dt>
-                <dd>
-                    <span>{{ paciente.uUID }}</span>
-                </dd>
                 <dt><span jhiTranslate="saudepluplusApp.paciente.nome">Nome</span></dt>
                 <dd>
                     <span>{{ paciente.nome }}</span>
@@ -23,10 +19,6 @@
                 <dt><span jhiTranslate="saudepluplusApp.paciente.cPF">C PF</span></dt>
                 <dd>
                     <span>{{ paciente.cPF }}</span>
-                </dd>
-                <dt><span jhiTranslate="saudepluplusApp.paciente.endereco">Endereco</span></dt>
-                <dd>
-                    <span>{{ paciente.endereco }}</span>
                 </dd>
                 <dt><span jhiTranslate="saudepluplusApp.paciente.dataNascimento">Data Nascimento</span></dt>
                 <dd>
@@ -56,6 +48,12 @@
                 <dd>
                     <div *ngIf="paciente.perfilAcesso">
                         <a [routerLink]="['/perfil-acesso', paciente.perfilAcesso?.id, 'view']">{{ paciente.perfilAcesso?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.paciente.endereco">Endereco</span></dt>
+                <dd>
+                    <div *ngIf="paciente.endereco">
+                        <a [routerLink]="['/endereco', paciente.endereco?.id, 'view']">{{ paciente.endereco?.id }}</a>
                     </div>
                 </dd>
             </dl>

@@ -4,9 +4,12 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IFarmacia, Farmacia } from 'app/shared/model/farmacia.model';
 import { FarmaciaService } from './farmacia.service';
+import { IEndereco } from 'app/shared/model/endereco.model';
+import { EnderecoService } from 'app/entities/endereco/endereco.service';
 
 @Component({
   selector: 'jhi-farmacia-update',
@@ -14,24 +17,54 @@ import { FarmaciaService } from './farmacia.service';
 })
 export class FarmaciaUpdateComponent implements OnInit {
   isSaving = false;
+  enderecos: IEndereco[] = [];
 
   editForm = this.fb.group({
     id: [],
-    uUID: [],
+    nome: [],
+    endereco: [],
   });
 
-  constructor(protected farmaciaService: FarmaciaService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected farmaciaService: FarmaciaService,
+    protected enderecoService: EnderecoService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ farmacia }) => {
       this.updateForm(farmacia);
+
+      this.enderecoService
+        .query({ filter: 'farmacia-is-null' })
+        .pipe(
+          map((res: HttpResponse<IEndereco[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: IEndereco[]) => {
+          if (!farmacia.endereco || !farmacia.endereco.id) {
+            this.enderecos = resBody;
+          } else {
+            this.enderecoService
+              .find(farmacia.endereco.id)
+              .pipe(
+                map((subRes: HttpResponse<IEndereco>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IEndereco[]) => (this.enderecos = concatRes));
+          }
+        });
     });
   }
 
   updateForm(farmacia: IFarmacia): void {
     this.editForm.patchValue({
       id: farmacia.id,
-      uUID: farmacia.uUID,
+      nome: farmacia.nome,
+      endereco: farmacia.endereco,
     });
   }
 
@@ -53,7 +86,8 @@ export class FarmaciaUpdateComponent implements OnInit {
     return {
       ...new Farmacia(),
       id: this.editForm.get(['id'])!.value,
-      uUID: this.editForm.get(['uUID'])!.value,
+      nome: this.editForm.get(['nome'])!.value,
+      endereco: this.editForm.get(['endereco'])!.value,
     };
   }
 
@@ -71,5 +105,9 @@ export class FarmaciaUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IEndereco): any {
+    return item.id;
   }
 }

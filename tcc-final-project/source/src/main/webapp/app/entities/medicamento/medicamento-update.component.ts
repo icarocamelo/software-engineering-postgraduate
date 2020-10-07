@@ -20,7 +20,7 @@ export class MedicamentoUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    uUID: [],
+    nome: [],
     farmacia: [],
   });
 
@@ -42,7 +42,7 @@ export class MedicamentoUpdateComponent implements OnInit {
   updateForm(medicamento: IMedicamento): void {
     this.editForm.patchValue({
       id: medicamento.id,
-      uUID: medicamento.uUID,
+      nome: medicamento.nome,
       farmacia: medicamento.farmacia,
     });
   }
@@ -65,7 +65,7 @@ export class MedicamentoUpdateComponent implements OnInit {
     return {
       ...new Medicamento(),
       id: this.editForm.get(['id'])!.value,
-      uUID: this.editForm.get(['uUID'])!.value,
+      nome: this.editForm.get(['nome'])!.value,
       farmacia: this.editForm.get(['farmacia'])!.value,
     };
   }

@@ -19,9 +19,6 @@ public class Endereco implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "u_uid")
-    private String uUID;
-
     @Column(name = "tipo")
     private String tipo;
 
@@ -53,19 +50,6 @@ public class Endereco implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getuUID() {
-        return uUID;
-    }
-
-    public Endereco uUID(String uUID) {
-        this.uUID = uUID;
-        return this;
-    }
-
-    public void setuUID(String uUID) {
-        this.uUID = uUID;
     }
 
     public String getTipo() {
@@ -194,7 +178,6 @@ public class Endereco implements Serializable {
     public String toString() {
         return "Endereco{" +
             "id=" + getId() +
-            ", uUID='" + getuUID() + "'" +
             ", tipo='" + getTipo() + "'" +
             ", numero='" + getNumero() + "'" +
             ", pais='" + getPais() + "'" +

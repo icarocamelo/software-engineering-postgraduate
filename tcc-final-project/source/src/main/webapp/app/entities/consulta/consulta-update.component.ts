@@ -17,6 +17,9 @@ export class ConsultaUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    descricao: [],
+    preco: [],
+    codigo: [],
   });
 
   constructor(protected consultaService: ConsultaService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -30,6 +33,9 @@ export class ConsultaUpdateComponent implements OnInit {
   updateForm(consulta: IConsulta): void {
     this.editForm.patchValue({
       id: consulta.id,
+      descricao: consulta.descricao,
+      preco: consulta.preco,
+      codigo: consulta.codigo,
     });
   }
 
@@ -51,6 +57,9 @@ export class ConsultaUpdateComponent implements OnInit {
     return {
       ...new Consulta(),
       id: this.editForm.get(['id'])!.value,
+      descricao: this.editForm.get(['descricao'])!.value,
+      preco: this.editForm.get(['preco'])!.value,
+      codigo: this.editForm.get(['codigo'])!.value,
     };
   }
 

@@ -23,10 +23,6 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.profissional.uUID">U UID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.profissional.nome">Nome</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.profissional.rG">R G</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.profissional.cPF">C PF</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.profissional.perfilAcesso">Perfil Acesso</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -34,10 +30,6 @@
             <tbody>
                 <tr *ngFor="let profissional of profissionals ;trackBy: trackId">
                     <td><a [routerLink]="['/profissional', profissional.id, 'view']">{{ profissional.id }}</a></td>
-                    <td>{{ profissional.uUID }}</td>
-                    <td>{{ profissional.nome }}</td>
-                    <td>{{ profissional.rG }}</td>
-                    <td>{{ profissional.cPF }}</td>
                     <td>
                         <div *ngIf="profissional.perfilAcesso">
                             <a [routerLink]="['/perfil-acesso', profissional.perfilAcesso?.id, 'view']" >{{ profissional.perfilAcesso?.id }}</a>

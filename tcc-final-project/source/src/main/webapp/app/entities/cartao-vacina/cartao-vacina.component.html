@@ -23,14 +23,12 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.cartaoVacina.uUID">U UID</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let cartaoVacina of cartaoVacinas ;trackBy: trackId">
                     <td><a [routerLink]="['/cartao-vacina', cartaoVacina.id, 'view']">{{ cartaoVacina.id }}</a></td>
-                    <td>{{ cartaoVacina.uUID }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

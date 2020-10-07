@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(PsicologoService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Psicologo(0);
+      elemDefault = new Psicologo(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -52,7 +52,15 @@ describe('Service Tests', () => {
       });
 
       it('should update a Psicologo', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            nome: 'BBBBBB',
+            rG: 'BBBBBB',
+            cPF: 'BBBBBB',
+            numeroRegistro: 'BBBBBB',
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -64,7 +72,15 @@ describe('Service Tests', () => {
       });
 
       it('should return a list of Psicologo', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            nome: 'BBBBBB',
+            rG: 'BBBBBB',
+            cPF: 'BBBBBB',
+            numeroRegistro: 'BBBBBB',
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 

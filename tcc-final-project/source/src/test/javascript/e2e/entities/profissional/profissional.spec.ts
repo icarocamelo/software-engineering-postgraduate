@@ -43,18 +43,7 @@ describe('Profissional e2e test', () => {
 
     await profissionalComponentsPage.clickOnCreateButton();
 
-    await promise.all([
-      profissionalUpdatePage.setUUIDInput('uUID'),
-      profissionalUpdatePage.setNomeInput('nome'),
-      profissionalUpdatePage.setRGInput('rG'),
-      profissionalUpdatePage.setCPFInput('cPF'),
-      profissionalUpdatePage.perfilAcessoSelectLastOption(),
-    ]);
-
-    expect(await profissionalUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
-    expect(await profissionalUpdatePage.getNomeInput()).to.eq('nome', 'Expected Nome value to be equals to nome');
-    expect(await profissionalUpdatePage.getRGInput()).to.eq('rG', 'Expected RG value to be equals to rG');
-    expect(await profissionalUpdatePage.getCPFInput()).to.eq('cPF', 'Expected CPF value to be equals to cPF');
+    await promise.all([profissionalUpdatePage.perfilAcessoSelectLastOption()]);
 
     await profissionalUpdatePage.save();
     expect(await profissionalUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

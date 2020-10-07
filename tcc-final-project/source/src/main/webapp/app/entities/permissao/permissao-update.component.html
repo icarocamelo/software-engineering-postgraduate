@@ -12,9 +12,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="saudepluplusApp.permissao.uUID" for="field_uUID">U UID</label>
-                    <input type="text" class="form-control" name="uUID" id="field_uUID"
-                           formControlName="uUID"/>
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.permissao.nome" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.permissao.perfilAcesso" for="field_perfilAcesso">Perfil Acesso</label>
+                    <select class="form-control" id="field_perfilAcesso" name="perfilAcesso" formControlName="perfilAcesso">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="perfilAcessoOption.id === editForm.get('perfilAcesso')!.value?.id ? editForm.get('perfilAcesso')!.value : perfilAcessoOption" *ngFor="let perfilAcessoOption of perfilacessos; trackBy: trackById">{{ perfilAcessoOption.id }}</option>
+                    </select>
                 </div>
             </div>
 

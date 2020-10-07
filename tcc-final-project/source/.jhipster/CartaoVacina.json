@@ -1,0 +1,23 @@
+{
+  "name": "CartaoVacina",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vacina",
+      "otherEntityRelationshipName": "cartaoVacina",
+      "relationshipName": "vacina"
+    }
+  ],
+  "changelogDate": "20200916024955",
+  "entityTableName": "cartao_vacina",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

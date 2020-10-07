@@ -1,9 +1,11 @@
 package com.saudepluplus.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * A Agenda.
@@ -19,11 +21,24 @@ public class Agenda implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "u_uid")
-    private String uUID;
-
     @Column(name = "data")
-    private String data;
+    private LocalDate data;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "agenda", allowSetters = true)
+    private Medico medico;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "agenda", allowSetters = true)
+    private Fisioterapeuta fisioterapeuta;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "agenda", allowSetters = true)
+    private Enfermeiro enfermeiro;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "agenda", allowSetters = true)
+    private Psicologo psicologo;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -34,30 +49,69 @@ public class Agenda implements Serializable {
         this.id = id;
     }
 
-    public String getuUID() {
-        return uUID;
-    }
-
-    public Agenda uUID(String uUID) {
-        this.uUID = uUID;
-        return this;
-    }
-
-    public void setuUID(String uUID) {
-        this.uUID = uUID;
-    }
-
-    public String getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public Agenda data(String data) {
+    public Agenda data(LocalDate data) {
         this.data = data;
         return this;
     }
 
-    public void setData(String data) {
+    public void setData(LocalDate data) {
         this.data = data;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public Agenda medico(Medico medico) {
+        this.medico = medico;
+        return this;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public Fisioterapeuta getFisioterapeuta() {
+        return fisioterapeuta;
+    }
+
+    public Agenda fisioterapeuta(Fisioterapeuta fisioterapeuta) {
+        this.fisioterapeuta = fisioterapeuta;
+        return this;
+    }
+
+    public void setFisioterapeuta(Fisioterapeuta fisioterapeuta) {
+        this.fisioterapeuta = fisioterapeuta;
+    }
+
+    public Enfermeiro getEnfermeiro() {
+        return enfermeiro;
+    }
+
+    public Agenda enfermeiro(Enfermeiro enfermeiro) {
+        this.enfermeiro = enfermeiro;
+        return this;
+    }
+
+    public void setEnfermeiro(Enfermeiro enfermeiro) {
+        this.enfermeiro = enfermeiro;
+    }
+
+    public Psicologo getPsicologo() {
+        return psicologo;
+    }
+
+    public Agenda psicologo(Psicologo psicologo) {
+        this.psicologo = psicologo;
+        return this;
+    }
+
+    public void setPsicologo(Psicologo psicologo) {
+        this.psicologo = psicologo;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -82,7 +136,6 @@ public class Agenda implements Serializable {
     public String toString() {
         return "Agenda{" +
             "id=" + getId() +
-            ", uUID='" + getuUID() + "'" +
             ", data='" + getData() + "'" +
             "}";
     }

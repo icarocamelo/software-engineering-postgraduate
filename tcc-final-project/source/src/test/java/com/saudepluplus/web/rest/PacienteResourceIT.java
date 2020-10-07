@@ -32,9 +32,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class PacienteResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
-
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
 
@@ -43,9 +40,6 @@ public class PacienteResourceIT {
 
     private static final String DEFAULT_C_PF = "AAAAAAAAAA";
     private static final String UPDATED_C_PF = "BBBBBBBBBB";
-
-    private static final String DEFAULT_ENDERECO = "AAAAAAAAAA";
-    private static final String UPDATED_ENDERECO = "BBBBBBBBBB";
 
     private static final LocalDate DEFAULT_DATA_NASCIMENTO = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATA_NASCIMENTO = LocalDate.now(ZoneId.systemDefault());
@@ -84,11 +78,9 @@ public class PacienteResourceIT {
      */
     public static Paciente createEntity(EntityManager em) {
         Paciente paciente = new Paciente()
-            .uUID(DEFAULT_U_UID)
             .nome(DEFAULT_NOME)
             .rG(DEFAULT_R_G)
             .cPF(DEFAULT_C_PF)
-            .endereco(DEFAULT_ENDERECO)
             .dataNascimento(DEFAULT_DATA_NASCIMENTO)
             .telefone(DEFAULT_TELEFONE)
             .peso(DEFAULT_PESO)
@@ -105,11 +97,9 @@ public class PacienteResourceIT {
      */
     public static Paciente createUpdatedEntity(EntityManager em) {
         Paciente paciente = new Paciente()
-            .uUID(UPDATED_U_UID)
             .nome(UPDATED_NOME)
             .rG(UPDATED_R_G)
             .cPF(UPDATED_C_PF)
-            .endereco(UPDATED_ENDERECO)
             .dataNascimento(UPDATED_DATA_NASCIMENTO)
             .telefone(UPDATED_TELEFONE)
             .peso(UPDATED_PESO)
@@ -138,11 +128,9 @@ public class PacienteResourceIT {
         List<Paciente> pacienteList = pacienteRepository.findAll();
         assertThat(pacienteList).hasSize(databaseSizeBeforeCreate + 1);
         Paciente testPaciente = pacienteList.get(pacienteList.size() - 1);
-        assertThat(testPaciente.getuUID()).isEqualTo(DEFAULT_U_UID);
         assertThat(testPaciente.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testPaciente.getrG()).isEqualTo(DEFAULT_R_G);
         assertThat(testPaciente.getcPF()).isEqualTo(DEFAULT_C_PF);
-        assertThat(testPaciente.getEndereco()).isEqualTo(DEFAULT_ENDERECO);
         assertThat(testPaciente.getDataNascimento()).isEqualTo(DEFAULT_DATA_NASCIMENTO);
         assertThat(testPaciente.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
         assertThat(testPaciente.getPeso()).isEqualTo(DEFAULT_PESO);
@@ -182,11 +170,9 @@ public class PacienteResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(paciente.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
             .andExpect(jsonPath("$.[*].rG").value(hasItem(DEFAULT_R_G)))
             .andExpect(jsonPath("$.[*].cPF").value(hasItem(DEFAULT_C_PF)))
-            .andExpect(jsonPath("$.[*].endereco").value(hasItem(DEFAULT_ENDERECO)))
             .andExpect(jsonPath("$.[*].dataNascimento").value(hasItem(DEFAULT_DATA_NASCIMENTO.toString())))
             .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE)))
             .andExpect(jsonPath("$.[*].peso").value(hasItem(DEFAULT_PESO.doubleValue())))
@@ -206,11 +192,9 @@ public class PacienteResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(paciente.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
             .andExpect(jsonPath("$.rG").value(DEFAULT_R_G))
             .andExpect(jsonPath("$.cPF").value(DEFAULT_C_PF))
-            .andExpect(jsonPath("$.endereco").value(DEFAULT_ENDERECO))
             .andExpect(jsonPath("$.dataNascimento").value(DEFAULT_DATA_NASCIMENTO.toString()))
             .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE))
             .andExpect(jsonPath("$.peso").value(DEFAULT_PESO.doubleValue()))
@@ -239,11 +223,9 @@ public class PacienteResourceIT {
         // Disconnect from session so that the updates on updatedPaciente are not directly saved in db
         em.detach(updatedPaciente);
         updatedPaciente
-            .uUID(UPDATED_U_UID)
             .nome(UPDATED_NOME)
             .rG(UPDATED_R_G)
             .cPF(UPDATED_C_PF)
-            .endereco(UPDATED_ENDERECO)
             .dataNascimento(UPDATED_DATA_NASCIMENTO)
             .telefone(UPDATED_TELEFONE)
             .peso(UPDATED_PESO)
@@ -260,11 +242,9 @@ public class PacienteResourceIT {
         List<Paciente> pacienteList = pacienteRepository.findAll();
         assertThat(pacienteList).hasSize(databaseSizeBeforeUpdate);
         Paciente testPaciente = pacienteList.get(pacienteList.size() - 1);
-        assertThat(testPaciente.getuUID()).isEqualTo(UPDATED_U_UID);
         assertThat(testPaciente.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testPaciente.getrG()).isEqualTo(UPDATED_R_G);
         assertThat(testPaciente.getcPF()).isEqualTo(UPDATED_C_PF);
-        assertThat(testPaciente.getEndereco()).isEqualTo(UPDATED_ENDERECO);
         assertThat(testPaciente.getDataNascimento()).isEqualTo(UPDATED_DATA_NASCIMENTO);
         assertThat(testPaciente.getTelefone()).isEqualTo(UPDATED_TELEFONE);
         assertThat(testPaciente.getPeso()).isEqualTo(UPDATED_PESO);

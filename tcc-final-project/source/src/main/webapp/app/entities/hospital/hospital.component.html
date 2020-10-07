@@ -23,12 +23,14 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.hospital.nome">Nome</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let hospital of hospitals ;trackBy: trackId">
                     <td><a [routerLink]="['/hospital', hospital.id, 'view']">{{ hospital.id }}</a></td>
+                    <td>{{ hospital.nome }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

@@ -1,5 +1,6 @@
 package com.saudepluplus.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -19,9 +20,6 @@ public class Procedimento implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "u_uid")
-    private String uUID;
-
     @Column(name = "descricao")
     private String descricao;
 
@@ -31,6 +29,26 @@ public class Procedimento implements Serializable {
     @Column(name = "codigo")
     private String codigo;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Paciente paciente;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private ProfissionalDeSaude profissionalDeSaude;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Endereco endereco;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Agenda agenda;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "procedimentos", allowSetters = true)
+    private Prontuario prontuario;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -38,19 +56,6 @@ public class Procedimento implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getuUID() {
-        return uUID;
-    }
-
-    public Procedimento uUID(String uUID) {
-        this.uUID = uUID;
-        return this;
-    }
-
-    public void setuUID(String uUID) {
-        this.uUID = uUID;
     }
 
     public String getDescricao() {
@@ -91,6 +96,71 @@ public class Procedimento implements Serializable {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public Procedimento paciente(Paciente paciente) {
+        this.paciente = paciente;
+        return this;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public ProfissionalDeSaude getProfissionalDeSaude() {
+        return profissionalDeSaude;
+    }
+
+    public Procedimento profissionalDeSaude(ProfissionalDeSaude profissionalDeSaude) {
+        this.profissionalDeSaude = profissionalDeSaude;
+        return this;
+    }
+
+    public void setProfissionalDeSaude(ProfissionalDeSaude profissionalDeSaude) {
+        this.profissionalDeSaude = profissionalDeSaude;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public Procedimento endereco(Endereco endereco) {
+        this.endereco = endereco;
+        return this;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public Procedimento agenda(Agenda agenda) {
+        this.agenda = agenda;
+        return this;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
+    }
+
+    public Prontuario getProntuario() {
+        return prontuario;
+    }
+
+    public Procedimento prontuario(Prontuario prontuario) {
+        this.prontuario = prontuario;
+        return this;
+    }
+
+    public void setProntuario(Prontuario prontuario) {
+        this.prontuario = prontuario;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -114,7 +184,6 @@ public class Procedimento implements Serializable {
     public String toString() {
         return "Procedimento{" +
             "id=" + getId() +
-            ", uUID='" + getuUID() + "'" +
             ", descricao='" + getDescricao() + "'" +
             ", preco=" + getPreco() +
             ", codigo='" + getCodigo() + "'" +

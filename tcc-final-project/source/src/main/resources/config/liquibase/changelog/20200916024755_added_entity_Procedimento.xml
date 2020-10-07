@@ -15,9 +15,6 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="u_uid" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="descricao" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -25,6 +22,21 @@
                 <constraints nullable="true" />
             </column>
             <column name="codigo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="paciente_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_procedimento_paciente_id" />
+            </column>
+            <column name="profissional_de_saude_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_procedimento_profissional_de_saude_id" />
+            </column>
+            <column name="endereco_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_procedimento_endereco_id" />
+            </column>
+            <column name="agenda_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_procedimento_agenda_id" />
+            </column>
+            <column name="prontuario_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -50,7 +62,6 @@
                   separator=";"
                   tableName="procedimento">
             <column name="id" type="numeric"/>
-            <column name="u_uid" type="string"/>
             <column name="descricao" type="string"/>
             <column name="preco" type="numeric"/>
             <column name="codigo" type="string"/>

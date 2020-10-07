@@ -17,7 +17,6 @@ export class ProfissionalDeSaudeUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    numeroRegistro: [],
   });
 
   constructor(
@@ -35,7 +34,6 @@ export class ProfissionalDeSaudeUpdateComponent implements OnInit {
   updateForm(profissionalDeSaude: IProfissionalDeSaude): void {
     this.editForm.patchValue({
       id: profissionalDeSaude.id,
-      numeroRegistro: profissionalDeSaude.numeroRegistro,
     });
   }
 
@@ -57,7 +55,6 @@ export class ProfissionalDeSaudeUpdateComponent implements OnInit {
     return {
       ...new ProfissionalDeSaude(),
       id: this.editForm.get(['id'])!.value,
-      numeroRegistro: this.editForm.get(['numeroRegistro'])!.value,
     };
   }
 

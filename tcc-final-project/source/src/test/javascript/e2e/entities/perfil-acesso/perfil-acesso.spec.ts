@@ -43,9 +43,9 @@ describe('PerfilAcesso e2e test', () => {
 
     await perfilAcessoComponentsPage.clickOnCreateButton();
 
-    await promise.all([perfilAcessoUpdatePage.setUUIDInput('uUID'), perfilAcessoUpdatePage.permissaoSelectLastOption()]);
+    await promise.all([perfilAcessoUpdatePage.setNomeInput('nome')]);
 
-    expect(await perfilAcessoUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
+    expect(await perfilAcessoUpdatePage.getNomeInput()).to.eq('nome', 'Expected Nome value to be equals to nome');
 
     await perfilAcessoUpdatePage.save();
     expect(await perfilAcessoUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

@@ -8,6 +8,36 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="saudepluplusApp.clinicaMedica.cNPJ">C NPJ</span></dt>
+                <dd>
+                    <span>{{ clinicaMedica.cNPJ }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.clinicaMedica.telefone">Telefone</span></dt>
+                <dd>
+                    <span>{{ clinicaMedica.telefone }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.clinicaMedica.cEP">C EP</span></dt>
+                <dd>
+                    <span>{{ clinicaMedica.cEP }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.clinicaMedica.razaoSocial">Razao Social</span></dt>
+                <dd>
+                    <span>{{ clinicaMedica.razaoSocial }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.clinicaMedica.nomeFantasia">Nome Fantasia</span></dt>
+                <dd>
+                    <span>{{ clinicaMedica.nomeFantasia }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.clinicaMedica.tipoUnidadeSaude">Tipo Unidade Saude</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'saudepluplusApp.TipoUnidadeSaude.' + clinicaMedica.tipoUnidadeSaude }}">{{ clinicaMedica.tipoUnidadeSaude }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.clinicaMedica.endereco">Endereco</span></dt>
+                <dd>
+                    <div *ngIf="clinicaMedica.endereco">
+                        <a [routerLink]="['/endereco', clinicaMedica.endereco?.id, 'view']">{{ clinicaMedica.endereco?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

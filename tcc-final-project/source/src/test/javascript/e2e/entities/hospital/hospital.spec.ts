@@ -40,7 +40,9 @@ describe('Hospital e2e test', () => {
 
     await hospitalComponentsPage.clickOnCreateButton();
 
-    await promise.all([]);
+    await promise.all([hospitalUpdatePage.setNomeInput('nome')]);
+
+    expect(await hospitalUpdatePage.getNomeInput()).to.eq('nome', 'Expected Nome value to be equals to nome');
 
     await hospitalUpdatePage.save();
     expect(await hospitalUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

@@ -40,7 +40,20 @@ describe('Psicologo e2e test', () => {
 
     await psicologoComponentsPage.clickOnCreateButton();
 
-    await promise.all([]);
+    await promise.all([
+      psicologoUpdatePage.setNomeInput('nome'),
+      psicologoUpdatePage.setRGInput('rG'),
+      psicologoUpdatePage.setCPFInput('cPF'),
+      psicologoUpdatePage.setNumeroRegistroInput('numeroRegistro'),
+    ]);
+
+    expect(await psicologoUpdatePage.getNomeInput()).to.eq('nome', 'Expected Nome value to be equals to nome');
+    expect(await psicologoUpdatePage.getRGInput()).to.eq('rG', 'Expected RG value to be equals to rG');
+    expect(await psicologoUpdatePage.getCPFInput()).to.eq('cPF', 'Expected CPF value to be equals to cPF');
+    expect(await psicologoUpdatePage.getNumeroRegistroInput()).to.eq(
+      'numeroRegistro',
+      'Expected NumeroRegistro value to be equals to numeroRegistro'
+    );
 
     await psicologoUpdatePage.save();
     expect(await psicologoUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

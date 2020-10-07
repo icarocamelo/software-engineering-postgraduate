@@ -23,12 +23,18 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.consulta.descricao">Descricao</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.consulta.preco">Preco</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.consulta.codigo">Codigo</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let consulta of consultas ;trackBy: trackId">
                     <td><a [routerLink]="['/consulta', consulta.id, 'view']">{{ consulta.id }}</a></td>
+                    <td>{{ consulta.descricao }}</td>
+                    <td>{{ consulta.preco }}</td>
+                    <td>{{ consulta.codigo }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

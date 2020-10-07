@@ -2,6 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { PostoDeSaudeService } from 'app/entities/posto-de-saude/posto-de-saude.service';
 import { IPostoDeSaude, PostoDeSaude } from 'app/shared/model/posto-de-saude.model';
+import { TipoUnidadeSaude } from 'app/shared/model/enumerations/tipo-unidade-saude.model';
 
 describe('Service Tests', () => {
   describe('PostoDeSaude Service', () => {
@@ -20,7 +21,7 @@ describe('Service Tests', () => {
       service = injector.get(PostoDeSaudeService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new PostoDeSaude(0);
+      elemDefault = new PostoDeSaude(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', TipoUnidadeSaude.PUBLICA);
     });
 
     describe('Service methods', () => {
@@ -52,7 +53,17 @@ describe('Service Tests', () => {
       });
 
       it('should update a PostoDeSaude', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            cNPJ: 'BBBBBB',
+            telefone: 'BBBBBB',
+            cEP: 'BBBBBB',
+            razaoSocial: 'BBBBBB',
+            nomeFantasia: 'BBBBBB',
+            tipoUnidadeSaude: 'BBBBBB',
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -64,7 +75,17 @@ describe('Service Tests', () => {
       });
 
       it('should return a list of PostoDeSaude', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            cNPJ: 'BBBBBB',
+            telefone: 'BBBBBB',
+            cEP: 'BBBBBB',
+            razaoSocial: 'BBBBBB',
+            nomeFantasia: 'BBBBBB',
+            tipoUnidadeSaude: 'BBBBBB',
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 

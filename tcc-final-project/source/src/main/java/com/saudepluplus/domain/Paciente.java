@@ -20,9 +20,6 @@ public class Paciente implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "u_uid")
-    private String uUID;
-
     @Column(name = "nome")
     private String nome;
 
@@ -31,9 +28,6 @@ public class Paciente implements Serializable {
 
     @Column(name = "c_pf")
     private String cPF;
-
-    @Column(name = "endereco")
-    private String endereco;
 
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
@@ -57,6 +51,10 @@ public class Paciente implements Serializable {
     @JoinColumn(unique = true)
     private PerfilAcesso perfilAcesso;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Endereco endereco;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -64,19 +62,6 @@ public class Paciente implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getuUID() {
-        return uUID;
-    }
-
-    public Paciente uUID(String uUID) {
-        this.uUID = uUID;
-        return this;
-    }
-
-    public void setuUID(String uUID) {
-        this.uUID = uUID;
     }
 
     public String getNome() {
@@ -116,19 +101,6 @@ public class Paciente implements Serializable {
 
     public void setcPF(String cPF) {
         this.cPF = cPF;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public Paciente endereco(String endereco) {
-        this.endereco = endereco;
-        return this;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
     }
 
     public LocalDate getDataNascimento() {
@@ -221,6 +193,19 @@ public class Paciente implements Serializable {
     public void setPerfilAcesso(PerfilAcesso perfilAcesso) {
         this.perfilAcesso = perfilAcesso;
     }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public Paciente endereco(Endereco endereco) {
+        this.endereco = endereco;
+        return this;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -244,11 +229,9 @@ public class Paciente implements Serializable {
     public String toString() {
         return "Paciente{" +
             "id=" + getId() +
-            ", uUID='" + getuUID() + "'" +
             ", nome='" + getNome() + "'" +
             ", rG='" + getrG() + "'" +
             ", cPF='" + getcPF() + "'" +
-            ", endereco='" + getEndereco() + "'" +
             ", dataNascimento='" + getDataNascimento() + "'" +
             ", telefone='" + getTelefone() + "'" +
             ", peso=" + getPeso() +

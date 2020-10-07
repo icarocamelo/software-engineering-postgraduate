@@ -43,7 +43,9 @@ describe('AgendaExame e2e test', () => {
 
     await agendaExameComponentsPage.clickOnCreateButton();
 
-    await promise.all([]);
+    await promise.all([agendaExameUpdatePage.setDataInput('2000-12-31')]);
+
+    expect(await agendaExameUpdatePage.getDataInput()).to.eq('2000-12-31', 'Expected data value to be equals to 2000-12-31');
 
     await agendaExameUpdatePage.save();
     expect(await agendaExameUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

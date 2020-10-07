@@ -21,8 +21,12 @@ public class Farmacia implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "u_uid")
-    private String uUID;
+    @Column(name = "nome")
+    private String nome;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Endereco endereco;
 
     @OneToMany(mappedBy = "farmacia")
     private Set<Medicamento> medicamentos = new HashSet<>();
@@ -36,17 +40,30 @@ public class Farmacia implements Serializable {
         this.id = id;
     }
 
-    public String getuUID() {
-        return uUID;
+    public String getNome() {
+        return nome;
     }
 
-    public Farmacia uUID(String uUID) {
-        this.uUID = uUID;
+    public Farmacia nome(String nome) {
+        this.nome = nome;
         return this;
     }
 
-    public void setuUID(String uUID) {
-        this.uUID = uUID;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public Farmacia endereco(Endereco endereco) {
+        this.endereco = endereco;
+        return this;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public Set<Medicamento> getMedicamentos() {
@@ -96,7 +113,7 @@ public class Farmacia implements Serializable {
     public String toString() {
         return "Farmacia{" +
             "id=" + getId() +
-            ", uUID='" + getuUID() + "'" +
+            ", nome='" + getNome() + "'" +
             "}";
     }
 }

@@ -1,0 +1,40 @@
+{
+  "name": "Medico",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rG",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cPF",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroRegistro",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "agenda",
+      "otherEntityRelationshipName": "medico",
+      "relationshipName": "agenda"
+    }
+  ],
+  "changelogDate": "20200916024155",
+  "entityTableName": "medico",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

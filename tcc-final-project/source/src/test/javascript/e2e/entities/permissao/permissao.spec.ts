@@ -40,9 +40,9 @@ describe('Permissao e2e test', () => {
 
     await permissaoComponentsPage.clickOnCreateButton();
 
-    await promise.all([permissaoUpdatePage.setUUIDInput('uUID')]);
+    await promise.all([permissaoUpdatePage.setNomeInput('nome'), permissaoUpdatePage.perfilAcessoSelectLastOption()]);
 
-    expect(await permissaoUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
+    expect(await permissaoUpdatePage.getNomeInput()).to.eq('nome', 'Expected Nome value to be equals to nome');
 
     await permissaoUpdatePage.save();
     expect(await permissaoUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

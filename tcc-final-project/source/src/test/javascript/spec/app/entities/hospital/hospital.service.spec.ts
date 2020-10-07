@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(HospitalService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Hospital(0);
+      elemDefault = new Hospital(0, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -52,7 +52,12 @@ describe('Service Tests', () => {
       });
 
       it('should update a Hospital', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            nome: 'BBBBBB',
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -64,7 +69,12 @@ describe('Service Tests', () => {
       });
 
       it('should return a list of Hospital', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            nome: 'BBBBBB',
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 

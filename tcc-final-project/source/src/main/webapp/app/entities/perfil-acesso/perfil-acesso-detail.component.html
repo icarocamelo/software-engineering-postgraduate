@@ -8,15 +8,9 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="saudepluplusApp.perfilAcesso.uUID">U UID</span></dt>
+                <dt><span jhiTranslate="saudepluplusApp.perfilAcesso.nome">Nome</span></dt>
                 <dd>
-                    <span>{{ perfilAcesso.uUID }}</span>
-                </dd>
-                <dt><span jhiTranslate="saudepluplusApp.perfilAcesso.permissao">Permissao</span></dt>
-                <dd>
-                    <div *ngIf="perfilAcesso.permissao">
-                        <a [routerLink]="['/permissao', perfilAcesso.permissao?.id, 'view']">{{ perfilAcesso.permissao?.id }}</a>
-                    </div>
+                    <span>{{ perfilAcesso.nome }}</span>
                 </dd>
             </dl>
 

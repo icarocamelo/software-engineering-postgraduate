@@ -32,9 +32,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class VacinaResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
-
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
 
@@ -63,7 +60,6 @@ public class VacinaResourceIT {
      */
     public static Vacina createEntity(EntityManager em) {
         Vacina vacina = new Vacina()
-            .uUID(DEFAULT_U_UID)
             .nome(DEFAULT_NOME)
             .lote(DEFAULT_LOTE)
             .dataAplicacao(DEFAULT_DATA_APLICACAO);
@@ -77,7 +73,6 @@ public class VacinaResourceIT {
      */
     public static Vacina createUpdatedEntity(EntityManager em) {
         Vacina vacina = new Vacina()
-            .uUID(UPDATED_U_UID)
             .nome(UPDATED_NOME)
             .lote(UPDATED_LOTE)
             .dataAplicacao(UPDATED_DATA_APLICACAO);
@@ -103,7 +98,6 @@ public class VacinaResourceIT {
         List<Vacina> vacinaList = vacinaRepository.findAll();
         assertThat(vacinaList).hasSize(databaseSizeBeforeCreate + 1);
         Vacina testVacina = vacinaList.get(vacinaList.size() - 1);
-        assertThat(testVacina.getuUID()).isEqualTo(DEFAULT_U_UID);
         assertThat(testVacina.getNome()).isEqualTo(DEFAULT_NOME);
         assertThat(testVacina.getLote()).isEqualTo(DEFAULT_LOTE);
         assertThat(testVacina.getDataAplicacao()).isEqualTo(DEFAULT_DATA_APLICACAO);
@@ -140,7 +134,6 @@ public class VacinaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(vacina.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
             .andExpect(jsonPath("$.[*].lote").value(hasItem(DEFAULT_LOTE)))
             .andExpect(jsonPath("$.[*].dataAplicacao").value(hasItem(DEFAULT_DATA_APLICACAO.toString())));
@@ -157,7 +150,6 @@ public class VacinaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(vacina.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
             .andExpect(jsonPath("$.lote").value(DEFAULT_LOTE))
             .andExpect(jsonPath("$.dataAplicacao").value(DEFAULT_DATA_APLICACAO.toString()));
@@ -183,7 +175,6 @@ public class VacinaResourceIT {
         // Disconnect from session so that the updates on updatedVacina are not directly saved in db
         em.detach(updatedVacina);
         updatedVacina
-            .uUID(UPDATED_U_UID)
             .nome(UPDATED_NOME)
             .lote(UPDATED_LOTE)
             .dataAplicacao(UPDATED_DATA_APLICACAO);
@@ -197,7 +188,6 @@ public class VacinaResourceIT {
         List<Vacina> vacinaList = vacinaRepository.findAll();
         assertThat(vacinaList).hasSize(databaseSizeBeforeUpdate);
         Vacina testVacina = vacinaList.get(vacinaList.size() - 1);
-        assertThat(testVacina.getuUID()).isEqualTo(UPDATED_U_UID);
         assertThat(testVacina.getNome()).isEqualTo(UPDATED_NOME);
         assertThat(testVacina.getLote()).isEqualTo(UPDATED_LOTE);
         assertThat(testVacina.getDataAplicacao()).isEqualTo(UPDATED_DATA_APLICACAO);

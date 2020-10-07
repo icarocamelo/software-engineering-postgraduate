@@ -29,18 +29,36 @@ export class FarmaciaUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  uUIDInput = element(by.id('field_uUID'));
+  nomeInput = element(by.id('field_nome'));
+
+  enderecoSelect = element(by.id('field_endereco'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
 
-  async setUUIDInput(uUID: string): Promise<void> {
-    await this.uUIDInput.sendKeys(uUID);
+  async setNomeInput(nome: string): Promise<void> {
+    await this.nomeInput.sendKeys(nome);
   }
 
-  async getUUIDInput(): Promise<string> {
-    return await this.uUIDInput.getAttribute('value');
+  async getNomeInput(): Promise<string> {
+    return await this.nomeInput.getAttribute('value');
+  }
+
+  async enderecoSelectLastOption(): Promise<void> {
+    await this.enderecoSelect.all(by.tagName('option')).last().click();
+  }
+
+  async enderecoSelectOption(option: string): Promise<void> {
+    await this.enderecoSelect.sendKeys(option);
+  }
+
+  getEnderecoSelect(): ElementFinder {
+    return this.enderecoSelect;
+  }
+
+  async getEnderecoSelectedOption(): Promise<string> {
+    return await this.enderecoSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

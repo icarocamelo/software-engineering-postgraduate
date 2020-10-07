@@ -17,6 +17,7 @@ export class HospitalUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    nome: [],
   });
 
   constructor(protected hospitalService: HospitalService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -30,6 +31,7 @@ export class HospitalUpdateComponent implements OnInit {
   updateForm(hospital: IHospital): void {
     this.editForm.patchValue({
       id: hospital.id,
+      nome: hospital.nome,
     });
   }
 
@@ -51,6 +53,7 @@ export class HospitalUpdateComponent implements OnInit {
     return {
       ...new Hospital(),
       id: this.editForm.get(['id'])!.value,
+      nome: this.editForm.get(['nome'])!.value,
     };
   }
 

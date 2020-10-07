@@ -30,6 +30,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class ConsultaResourceIT {
 
+    private static final String DEFAULT_DESCRICAO = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRICAO = "BBBBBBBBBB";
+
+    private static final Double DEFAULT_PRECO = 1D;
+    private static final Double UPDATED_PRECO = 2D;
+
+    private static final String DEFAULT_CODIGO = "AAAAAAAAAA";
+    private static final String UPDATED_CODIGO = "BBBBBBBBBB";
+
     @Autowired
     private ConsultaRepository consultaRepository;
 
@@ -48,7 +57,10 @@ public class ConsultaResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Consulta createEntity(EntityManager em) {
-        Consulta consulta = new Consulta();
+        Consulta consulta = new Consulta()
+            .descricao(DEFAULT_DESCRICAO)
+            .preco(DEFAULT_PRECO)
+            .codigo(DEFAULT_CODIGO);
         return consulta;
     }
     /**
@@ -58,7 +70,10 @@ public class ConsultaResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Consulta createUpdatedEntity(EntityManager em) {
-        Consulta consulta = new Consulta();
+        Consulta consulta = new Consulta()
+            .descricao(UPDATED_DESCRICAO)
+            .preco(UPDATED_PRECO)
+            .codigo(UPDATED_CODIGO);
         return consulta;
     }
 
@@ -81,6 +96,9 @@ public class ConsultaResourceIT {
         List<Consulta> consultaList = consultaRepository.findAll();
         assertThat(consultaList).hasSize(databaseSizeBeforeCreate + 1);
         Consulta testConsulta = consultaList.get(consultaList.size() - 1);
+        assertThat(testConsulta.getDescricao()).isEqualTo(DEFAULT_DESCRICAO);
+        assertThat(testConsulta.getPreco()).isEqualTo(DEFAULT_PRECO);
+        assertThat(testConsulta.getCodigo()).isEqualTo(DEFAULT_CODIGO);
     }
 
     @Test
@@ -113,7 +131,10 @@ public class ConsultaResourceIT {
         restConsultaMockMvc.perform(get("/api/consultas?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(consulta.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(consulta.getId().intValue())))
+            .andExpect(jsonPath("$.[*].descricao").value(hasItem(DEFAULT_DESCRICAO)))
+            .andExpect(jsonPath("$.[*].preco").value(hasItem(DEFAULT_PRECO.doubleValue())))
+            .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO)));
     }
     
     @Test
@@ -126,7 +147,10 @@ public class ConsultaResourceIT {
         restConsultaMockMvc.perform(get("/api/consultas/{id}", consulta.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(consulta.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(consulta.getId().intValue()))
+            .andExpect(jsonPath("$.descricao").value(DEFAULT_DESCRICAO))
+            .andExpect(jsonPath("$.preco").value(DEFAULT_PRECO.doubleValue()))
+            .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO));
     }
     @Test
     @Transactional
@@ -148,6 +172,10 @@ public class ConsultaResourceIT {
         Consulta updatedConsulta = consultaRepository.findById(consulta.getId()).get();
         // Disconnect from session so that the updates on updatedConsulta are not directly saved in db
         em.detach(updatedConsulta);
+        updatedConsulta
+            .descricao(UPDATED_DESCRICAO)
+            .preco(UPDATED_PRECO)
+            .codigo(UPDATED_CODIGO);
 
         restConsultaMockMvc.perform(put("/api/consultas").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -158,6 +186,9 @@ public class ConsultaResourceIT {
         List<Consulta> consultaList = consultaRepository.findAll();
         assertThat(consultaList).hasSize(databaseSizeBeforeUpdate);
         Consulta testConsulta = consultaList.get(consultaList.size() - 1);
+        assertThat(testConsulta.getDescricao()).isEqualTo(UPDATED_DESCRICAO);
+        assertThat(testConsulta.getPreco()).isEqualTo(UPDATED_PRECO);
+        assertThat(testConsulta.getCodigo()).isEqualTo(UPDATED_CODIGO);
     }
 
     @Test

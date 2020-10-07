@@ -30,8 +30,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class FarmaciaResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
+    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    private static final String UPDATED_NOME = "BBBBBBBBBB";
 
     @Autowired
     private FarmaciaRepository farmaciaRepository;
@@ -52,7 +52,7 @@ public class FarmaciaResourceIT {
      */
     public static Farmacia createEntity(EntityManager em) {
         Farmacia farmacia = new Farmacia()
-            .uUID(DEFAULT_U_UID);
+            .nome(DEFAULT_NOME);
         return farmacia;
     }
     /**
@@ -63,7 +63,7 @@ public class FarmaciaResourceIT {
      */
     public static Farmacia createUpdatedEntity(EntityManager em) {
         Farmacia farmacia = new Farmacia()
-            .uUID(UPDATED_U_UID);
+            .nome(UPDATED_NOME);
         return farmacia;
     }
 
@@ -86,7 +86,7 @@ public class FarmaciaResourceIT {
         List<Farmacia> farmaciaList = farmaciaRepository.findAll();
         assertThat(farmaciaList).hasSize(databaseSizeBeforeCreate + 1);
         Farmacia testFarmacia = farmaciaList.get(farmaciaList.size() - 1);
-        assertThat(testFarmacia.getuUID()).isEqualTo(DEFAULT_U_UID);
+        assertThat(testFarmacia.getNome()).isEqualTo(DEFAULT_NOME);
     }
 
     @Test
@@ -120,7 +120,7 @@ public class FarmaciaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(farmacia.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)));
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)));
     }
     
     @Test
@@ -134,7 +134,7 @@ public class FarmaciaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(farmacia.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID));
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME));
     }
     @Test
     @Transactional
@@ -157,7 +157,7 @@ public class FarmaciaResourceIT {
         // Disconnect from session so that the updates on updatedFarmacia are not directly saved in db
         em.detach(updatedFarmacia);
         updatedFarmacia
-            .uUID(UPDATED_U_UID);
+            .nome(UPDATED_NOME);
 
         restFarmaciaMockMvc.perform(put("/api/farmacias").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -168,7 +168,7 @@ public class FarmaciaResourceIT {
         List<Farmacia> farmaciaList = farmaciaRepository.findAll();
         assertThat(farmaciaList).hasSize(databaseSizeBeforeUpdate);
         Farmacia testFarmacia = farmaciaList.get(farmaciaList.size() - 1);
-        assertThat(testFarmacia.getuUID()).isEqualTo(UPDATED_U_UID);
+        assertThat(testFarmacia.getNome()).isEqualTo(UPDATED_NOME);
     }
 
     @Test

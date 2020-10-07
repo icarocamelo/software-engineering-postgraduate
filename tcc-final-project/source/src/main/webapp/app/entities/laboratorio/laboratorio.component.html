@@ -23,12 +23,30 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.laboratorio.cNPJ">C NPJ</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.laboratorio.telefone">Telefone</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.laboratorio.cEP">C EP</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.laboratorio.razaoSocial">Razao Social</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.laboratorio.nomeFantasia">Nome Fantasia</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.laboratorio.tipoUnidadeSaude">Tipo Unidade Saude</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.laboratorio.endereco">Endereco</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let laboratorio of laboratorios ;trackBy: trackId">
                     <td><a [routerLink]="['/laboratorio', laboratorio.id, 'view']">{{ laboratorio.id }}</a></td>
+                    <td>{{ laboratorio.cNPJ }}</td>
+                    <td>{{ laboratorio.telefone }}</td>
+                    <td>{{ laboratorio.cEP }}</td>
+                    <td>{{ laboratorio.razaoSocial }}</td>
+                    <td>{{ laboratorio.nomeFantasia }}</td>
+                    <td jhiTranslate="{{ 'saudepluplusApp.TipoUnidadeSaude.' + laboratorio.tipoUnidadeSaude }}">{{ laboratorio.tipoUnidadeSaude }}</td>
+                    <td>
+                        <div *ngIf="laboratorio.endereco">
+                            <a [routerLink]="['/endereco', laboratorio.endereco?.id, 'view']" >{{ laboratorio.endereco?.id }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

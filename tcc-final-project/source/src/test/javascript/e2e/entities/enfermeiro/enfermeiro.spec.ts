@@ -40,7 +40,20 @@ describe('Enfermeiro e2e test', () => {
 
     await enfermeiroComponentsPage.clickOnCreateButton();
 
-    await promise.all([]);
+    await promise.all([
+      enfermeiroUpdatePage.setNomeInput('nome'),
+      enfermeiroUpdatePage.setRGInput('rG'),
+      enfermeiroUpdatePage.setCPFInput('cPF'),
+      enfermeiroUpdatePage.setNumeroRegistroInput('numeroRegistro'),
+    ]);
+
+    expect(await enfermeiroUpdatePage.getNomeInput()).to.eq('nome', 'Expected Nome value to be equals to nome');
+    expect(await enfermeiroUpdatePage.getRGInput()).to.eq('rG', 'Expected RG value to be equals to rG');
+    expect(await enfermeiroUpdatePage.getCPFInput()).to.eq('cPF', 'Expected CPF value to be equals to cPF');
+    expect(await enfermeiroUpdatePage.getNumeroRegistroInput()).to.eq(
+      'numeroRegistro',
+      'Expected NumeroRegistro value to be equals to numeroRegistro'
+    );
 
     await enfermeiroUpdatePage.save();
     expect(await enfermeiroUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

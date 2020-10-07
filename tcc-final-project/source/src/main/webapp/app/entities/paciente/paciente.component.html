@@ -23,11 +23,9 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.uUID">U UID</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.nome">Nome</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.rG">R G</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.cPF">C PF</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.endereco">Endereco</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.dataNascimento">Data Nascimento</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.telefone">Telefone</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.peso">Peso</span></th>
@@ -35,17 +33,16 @@
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.responsavel">Responsavel</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.rNE">R NE</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.perfilAcesso">Perfil Acesso</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.paciente.endereco">Endereco</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let paciente of pacientes ;trackBy: trackId">
                     <td><a [routerLink]="['/paciente', paciente.id, 'view']">{{ paciente.id }}</a></td>
-                    <td>{{ paciente.uUID }}</td>
                     <td>{{ paciente.nome }}</td>
                     <td>{{ paciente.rG }}</td>
                     <td>{{ paciente.cPF }}</td>
-                    <td>{{ paciente.endereco }}</td>
                     <td>{{ paciente.dataNascimento | date:'mediumDate' }}</td>
                     <td>{{ paciente.telefone }}</td>
                     <td>{{ paciente.peso }}</td>
@@ -55,6 +52,11 @@
                     <td>
                         <div *ngIf="paciente.perfilAcesso">
                             <a [routerLink]="['/perfil-acesso', paciente.perfilAcesso?.id, 'view']" >{{ paciente.perfilAcesso?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="paciente.endereco">
+                            <a [routerLink]="['/endereco', paciente.endereco?.id, 'view']" >{{ paciente.endereco?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">

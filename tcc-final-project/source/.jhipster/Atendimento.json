@@ -1,0 +1,61 @@
+{
+  "name": "Atendimento",
+  "fields": [
+    {
+      "fieldName": "data",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "paciente",
+      "otherEntityRelationshipName": "atendimento",
+      "relationshipName": "paciente",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "profissionalDeSaude",
+      "otherEntityRelationshipName": "atendimento",
+      "relationshipName": "profissionalDeSaude",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "endereco",
+      "otherEntityRelationshipName": "atendimento",
+      "relationshipName": "endereco",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "agenda",
+      "otherEntityRelationshipName": "atendimento",
+      "relationshipName": "agenda",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "prontuario",
+      "otherEntityRelationshipName": "atendimentos",
+      "relationshipName": "prontuario",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200916024855",
+  "entityTableName": "atendimento",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

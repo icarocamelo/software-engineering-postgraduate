@@ -16,8 +16,11 @@
       "detail": {
         "title": "Agenda"
       },
-      "uUID": "U UID",
-      "data": "Data"
+      "data": "Data",
+      "medico": "Medico",
+      "fisioterapeuta": "Fisioterapeuta",
+      "enfermeiro": "Enfermeiro",
+      "psicologo": "Psicologo"
     }
   }
 }

@@ -30,6 +30,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class FisioterapeutaResourceIT {
 
+    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    private static final String UPDATED_NOME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_R_G = "AAAAAAAAAA";
+    private static final String UPDATED_R_G = "BBBBBBBBBB";
+
+    private static final String DEFAULT_C_PF = "AAAAAAAAAA";
+    private static final String UPDATED_C_PF = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NUMERO_REGISTRO = "AAAAAAAAAA";
+    private static final String UPDATED_NUMERO_REGISTRO = "BBBBBBBBBB";
+
     @Autowired
     private FisioterapeutaRepository fisioterapeutaRepository;
 
@@ -48,7 +60,11 @@ public class FisioterapeutaResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Fisioterapeuta createEntity(EntityManager em) {
-        Fisioterapeuta fisioterapeuta = new Fisioterapeuta();
+        Fisioterapeuta fisioterapeuta = new Fisioterapeuta()
+            .nome(DEFAULT_NOME)
+            .rG(DEFAULT_R_G)
+            .cPF(DEFAULT_C_PF)
+            .numeroRegistro(DEFAULT_NUMERO_REGISTRO);
         return fisioterapeuta;
     }
     /**
@@ -58,7 +74,11 @@ public class FisioterapeutaResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Fisioterapeuta createUpdatedEntity(EntityManager em) {
-        Fisioterapeuta fisioterapeuta = new Fisioterapeuta();
+        Fisioterapeuta fisioterapeuta = new Fisioterapeuta()
+            .nome(UPDATED_NOME)
+            .rG(UPDATED_R_G)
+            .cPF(UPDATED_C_PF)
+            .numeroRegistro(UPDATED_NUMERO_REGISTRO);
         return fisioterapeuta;
     }
 
@@ -81,6 +101,10 @@ public class FisioterapeutaResourceIT {
         List<Fisioterapeuta> fisioterapeutaList = fisioterapeutaRepository.findAll();
         assertThat(fisioterapeutaList).hasSize(databaseSizeBeforeCreate + 1);
         Fisioterapeuta testFisioterapeuta = fisioterapeutaList.get(fisioterapeutaList.size() - 1);
+        assertThat(testFisioterapeuta.getNome()).isEqualTo(DEFAULT_NOME);
+        assertThat(testFisioterapeuta.getrG()).isEqualTo(DEFAULT_R_G);
+        assertThat(testFisioterapeuta.getcPF()).isEqualTo(DEFAULT_C_PF);
+        assertThat(testFisioterapeuta.getNumeroRegistro()).isEqualTo(DEFAULT_NUMERO_REGISTRO);
     }
 
     @Test
@@ -113,7 +137,11 @@ public class FisioterapeutaResourceIT {
         restFisioterapeutaMockMvc.perform(get("/api/fisioterapeutas?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(fisioterapeuta.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(fisioterapeuta.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
+            .andExpect(jsonPath("$.[*].rG").value(hasItem(DEFAULT_R_G)))
+            .andExpect(jsonPath("$.[*].cPF").value(hasItem(DEFAULT_C_PF)))
+            .andExpect(jsonPath("$.[*].numeroRegistro").value(hasItem(DEFAULT_NUMERO_REGISTRO)));
     }
     
     @Test
@@ -126,7 +154,11 @@ public class FisioterapeutaResourceIT {
         restFisioterapeutaMockMvc.perform(get("/api/fisioterapeutas/{id}", fisioterapeuta.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(fisioterapeuta.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(fisioterapeuta.getId().intValue()))
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
+            .andExpect(jsonPath("$.rG").value(DEFAULT_R_G))
+            .andExpect(jsonPath("$.cPF").value(DEFAULT_C_PF))
+            .andExpect(jsonPath("$.numeroRegistro").value(DEFAULT_NUMERO_REGISTRO));
     }
     @Test
     @Transactional
@@ -148,6 +180,11 @@ public class FisioterapeutaResourceIT {
         Fisioterapeuta updatedFisioterapeuta = fisioterapeutaRepository.findById(fisioterapeuta.getId()).get();
         // Disconnect from session so that the updates on updatedFisioterapeuta are not directly saved in db
         em.detach(updatedFisioterapeuta);
+        updatedFisioterapeuta
+            .nome(UPDATED_NOME)
+            .rG(UPDATED_R_G)
+            .cPF(UPDATED_C_PF)
+            .numeroRegistro(UPDATED_NUMERO_REGISTRO);
 
         restFisioterapeutaMockMvc.perform(put("/api/fisioterapeutas").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -158,6 +195,10 @@ public class FisioterapeutaResourceIT {
         List<Fisioterapeuta> fisioterapeutaList = fisioterapeutaRepository.findAll();
         assertThat(fisioterapeutaList).hasSize(databaseSizeBeforeUpdate);
         Fisioterapeuta testFisioterapeuta = fisioterapeutaList.get(fisioterapeutaList.size() - 1);
+        assertThat(testFisioterapeuta.getNome()).isEqualTo(UPDATED_NOME);
+        assertThat(testFisioterapeuta.getrG()).isEqualTo(UPDATED_R_G);
+        assertThat(testFisioterapeuta.getcPF()).isEqualTo(UPDATED_C_PF);
+        assertThat(testFisioterapeuta.getNumeroRegistro()).isEqualTo(UPDATED_NUMERO_REGISTRO);
     }
 
     @Test

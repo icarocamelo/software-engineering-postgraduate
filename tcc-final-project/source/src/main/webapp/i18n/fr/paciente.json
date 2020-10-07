@@ -16,18 +16,17 @@
       "detail": {
         "title": "Paciente"
       },
-      "uUID": "U UID",
       "nome": "Nome",
       "rG": "R G",
       "cPF": "C PF",
-      "endereco": "Endereco",
       "dataNascimento": "Data Nascimento",
       "telefone": "Telefone",
       "peso": "Peso",
       "altura": "Altura",
       "responsavel": "Responsavel",
       "rNE": "R NE",
-      "perfilAcesso": "Perfil Acesso"
+      "perfilAcesso": "Perfil Acesso",
+      "endereco": "Endereco"
     }
   }
 }

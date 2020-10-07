@@ -22,6 +22,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.saudepluplus.domain.enumeration.TipoUnidadeSaude;
 /**
  * Integration tests for the {@link ClinicaMedicaResource} REST controller.
  */
@@ -29,6 +30,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WithMockUser
 public class ClinicaMedicaResourceIT {
+
+    private static final String DEFAULT_C_NPJ = "AAAAAAAAAA";
+    private static final String UPDATED_C_NPJ = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TELEFONE = "AAAAAAAAAA";
+    private static final String UPDATED_TELEFONE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_C_EP = "AAAAAAAAAA";
+    private static final String UPDATED_C_EP = "BBBBBBBBBB";
+
+    private static final String DEFAULT_RAZAO_SOCIAL = "AAAAAAAAAA";
+    private static final String UPDATED_RAZAO_SOCIAL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NOME_FANTASIA = "AAAAAAAAAA";
+    private static final String UPDATED_NOME_FANTASIA = "BBBBBBBBBB";
+
+    private static final TipoUnidadeSaude DEFAULT_TIPO_UNIDADE_SAUDE = TipoUnidadeSaude.PUBLICA;
+    private static final TipoUnidadeSaude UPDATED_TIPO_UNIDADE_SAUDE = TipoUnidadeSaude.PARTICULAR;
 
     @Autowired
     private ClinicaMedicaRepository clinicaMedicaRepository;
@@ -48,7 +67,13 @@ public class ClinicaMedicaResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static ClinicaMedica createEntity(EntityManager em) {
-        ClinicaMedica clinicaMedica = new ClinicaMedica();
+        ClinicaMedica clinicaMedica = new ClinicaMedica()
+            .cNPJ(DEFAULT_C_NPJ)
+            .telefone(DEFAULT_TELEFONE)
+            .cEP(DEFAULT_C_EP)
+            .razaoSocial(DEFAULT_RAZAO_SOCIAL)
+            .nomeFantasia(DEFAULT_NOME_FANTASIA)
+            .tipoUnidadeSaude(DEFAULT_TIPO_UNIDADE_SAUDE);
         return clinicaMedica;
     }
     /**
@@ -58,7 +83,13 @@ public class ClinicaMedicaResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static ClinicaMedica createUpdatedEntity(EntityManager em) {
-        ClinicaMedica clinicaMedica = new ClinicaMedica();
+        ClinicaMedica clinicaMedica = new ClinicaMedica()
+            .cNPJ(UPDATED_C_NPJ)
+            .telefone(UPDATED_TELEFONE)
+            .cEP(UPDATED_C_EP)
+            .razaoSocial(UPDATED_RAZAO_SOCIAL)
+            .nomeFantasia(UPDATED_NOME_FANTASIA)
+            .tipoUnidadeSaude(UPDATED_TIPO_UNIDADE_SAUDE);
         return clinicaMedica;
     }
 
@@ -81,6 +112,12 @@ public class ClinicaMedicaResourceIT {
         List<ClinicaMedica> clinicaMedicaList = clinicaMedicaRepository.findAll();
         assertThat(clinicaMedicaList).hasSize(databaseSizeBeforeCreate + 1);
         ClinicaMedica testClinicaMedica = clinicaMedicaList.get(clinicaMedicaList.size() - 1);
+        assertThat(testClinicaMedica.getcNPJ()).isEqualTo(DEFAULT_C_NPJ);
+        assertThat(testClinicaMedica.getTelefone()).isEqualTo(DEFAULT_TELEFONE);
+        assertThat(testClinicaMedica.getcEP()).isEqualTo(DEFAULT_C_EP);
+        assertThat(testClinicaMedica.getRazaoSocial()).isEqualTo(DEFAULT_RAZAO_SOCIAL);
+        assertThat(testClinicaMedica.getNomeFantasia()).isEqualTo(DEFAULT_NOME_FANTASIA);
+        assertThat(testClinicaMedica.getTipoUnidadeSaude()).isEqualTo(DEFAULT_TIPO_UNIDADE_SAUDE);
     }
 
     @Test
@@ -113,7 +150,13 @@ public class ClinicaMedicaResourceIT {
         restClinicaMedicaMockMvc.perform(get("/api/clinica-medicas?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(clinicaMedica.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(clinicaMedica.getId().intValue())))
+            .andExpect(jsonPath("$.[*].cNPJ").value(hasItem(DEFAULT_C_NPJ)))
+            .andExpect(jsonPath("$.[*].telefone").value(hasItem(DEFAULT_TELEFONE)))
+            .andExpect(jsonPath("$.[*].cEP").value(hasItem(DEFAULT_C_EP)))
+            .andExpect(jsonPath("$.[*].razaoSocial").value(hasItem(DEFAULT_RAZAO_SOCIAL)))
+            .andExpect(jsonPath("$.[*].nomeFantasia").value(hasItem(DEFAULT_NOME_FANTASIA)))
+            .andExpect(jsonPath("$.[*].tipoUnidadeSaude").value(hasItem(DEFAULT_TIPO_UNIDADE_SAUDE.toString())));
     }
     
     @Test
@@ -126,7 +169,13 @@ public class ClinicaMedicaResourceIT {
         restClinicaMedicaMockMvc.perform(get("/api/clinica-medicas/{id}", clinicaMedica.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(clinicaMedica.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(clinicaMedica.getId().intValue()))
+            .andExpect(jsonPath("$.cNPJ").value(DEFAULT_C_NPJ))
+            .andExpect(jsonPath("$.telefone").value(DEFAULT_TELEFONE))
+            .andExpect(jsonPath("$.cEP").value(DEFAULT_C_EP))
+            .andExpect(jsonPath("$.razaoSocial").value(DEFAULT_RAZAO_SOCIAL))
+            .andExpect(jsonPath("$.nomeFantasia").value(DEFAULT_NOME_FANTASIA))
+            .andExpect(jsonPath("$.tipoUnidadeSaude").value(DEFAULT_TIPO_UNIDADE_SAUDE.toString()));
     }
     @Test
     @Transactional
@@ -148,6 +197,13 @@ public class ClinicaMedicaResourceIT {
         ClinicaMedica updatedClinicaMedica = clinicaMedicaRepository.findById(clinicaMedica.getId()).get();
         // Disconnect from session so that the updates on updatedClinicaMedica are not directly saved in db
         em.detach(updatedClinicaMedica);
+        updatedClinicaMedica
+            .cNPJ(UPDATED_C_NPJ)
+            .telefone(UPDATED_TELEFONE)
+            .cEP(UPDATED_C_EP)
+            .razaoSocial(UPDATED_RAZAO_SOCIAL)
+            .nomeFantasia(UPDATED_NOME_FANTASIA)
+            .tipoUnidadeSaude(UPDATED_TIPO_UNIDADE_SAUDE);
 
         restClinicaMedicaMockMvc.perform(put("/api/clinica-medicas").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -158,6 +214,12 @@ public class ClinicaMedicaResourceIT {
         List<ClinicaMedica> clinicaMedicaList = clinicaMedicaRepository.findAll();
         assertThat(clinicaMedicaList).hasSize(databaseSizeBeforeUpdate);
         ClinicaMedica testClinicaMedica = clinicaMedicaList.get(clinicaMedicaList.size() - 1);
+        assertThat(testClinicaMedica.getcNPJ()).isEqualTo(UPDATED_C_NPJ);
+        assertThat(testClinicaMedica.getTelefone()).isEqualTo(UPDATED_TELEFONE);
+        assertThat(testClinicaMedica.getcEP()).isEqualTo(UPDATED_C_EP);
+        assertThat(testClinicaMedica.getRazaoSocial()).isEqualTo(UPDATED_RAZAO_SOCIAL);
+        assertThat(testClinicaMedica.getNomeFantasia()).isEqualTo(UPDATED_NOME_FANTASIA);
+        assertThat(testClinicaMedica.getTipoUnidadeSaude()).isEqualTo(UPDATED_TIPO_UNIDADE_SAUDE);
     }
 
     @Test

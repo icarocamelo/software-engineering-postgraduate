@@ -29,8 +29,18 @@ export class AgendaConsultaUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
+  dataInput = element(by.id('field_data'));
+
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
+  }
+
+  async setDataInput(data: string): Promise<void> {
+    await this.dataInput.sendKeys(data);
+  }
+
+  async getDataInput(): Promise<string> {
+    return await this.dataInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

@@ -23,20 +23,14 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.perfilAcesso.uUID">U UID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.perfilAcesso.permissao">Permissao</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.perfilAcesso.nome">Nome</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let perfilAcesso of perfilAcessos ;trackBy: trackId">
                     <td><a [routerLink]="['/perfil-acesso', perfilAcesso.id, 'view']">{{ perfilAcesso.id }}</a></td>
-                    <td>{{ perfilAcesso.uUID }}</td>
-                    <td>
-                        <div *ngIf="perfilAcesso.permissao">
-                            <a [routerLink]="['/permissao', perfilAcesso.permissao?.id, 'view']" >{{ perfilAcesso.permissao?.id }}</a>
-                        </div>
-                    </td>
+                    <td>{{ perfilAcesso.nome }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

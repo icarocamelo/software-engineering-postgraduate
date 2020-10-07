@@ -17,7 +17,6 @@ export class CartaoVacinaUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    uUID: [],
   });
 
   constructor(protected cartaoVacinaService: CartaoVacinaService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -31,7 +30,6 @@ export class CartaoVacinaUpdateComponent implements OnInit {
   updateForm(cartaoVacina: ICartaoVacina): void {
     this.editForm.patchValue({
       id: cartaoVacina.id,
-      uUID: cartaoVacina.uUID,
     });
   }
 
@@ -53,7 +51,6 @@ export class CartaoVacinaUpdateComponent implements OnInit {
     return {
       ...new CartaoVacina(),
       id: this.editForm.get(['id'])!.value,
-      uUID: this.editForm.get(['uUID'])!.value,
     };
   }
 

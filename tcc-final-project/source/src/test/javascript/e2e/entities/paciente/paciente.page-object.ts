@@ -29,11 +29,9 @@ export class PacienteUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  uUIDInput = element(by.id('field_uUID'));
   nomeInput = element(by.id('field_nome'));
   rGInput = element(by.id('field_rG'));
   cPFInput = element(by.id('field_cPF'));
-  enderecoInput = element(by.id('field_endereco'));
   dataNascimentoInput = element(by.id('field_dataNascimento'));
   telefoneInput = element(by.id('field_telefone'));
   pesoInput = element(by.id('field_peso'));
@@ -42,17 +40,10 @@ export class PacienteUpdatePage {
   rNEInput = element(by.id('field_rNE'));
 
   perfilAcessoSelect = element(by.id('field_perfilAcesso'));
+  enderecoSelect = element(by.id('field_endereco'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
-  }
-
-  async setUUIDInput(uUID: string): Promise<void> {
-    await this.uUIDInput.sendKeys(uUID);
-  }
-
-  async getUUIDInput(): Promise<string> {
-    return await this.uUIDInput.getAttribute('value');
   }
 
   async setNomeInput(nome: string): Promise<void> {
@@ -77,14 +68,6 @@ export class PacienteUpdatePage {
 
   async getCPFInput(): Promise<string> {
     return await this.cPFInput.getAttribute('value');
-  }
-
-  async setEnderecoInput(endereco: string): Promise<void> {
-    await this.enderecoInput.sendKeys(endereco);
-  }
-
-  async getEnderecoInput(): Promise<string> {
-    return await this.enderecoInput.getAttribute('value');
   }
 
   async setDataNascimentoInput(dataNascimento: string): Promise<void> {
@@ -149,6 +132,22 @@ export class PacienteUpdatePage {
 
   async getPerfilAcessoSelectedOption(): Promise<string> {
     return await this.perfilAcessoSelect.element(by.css('option:checked')).getText();
+  }
+
+  async enderecoSelectLastOption(): Promise<void> {
+    await this.enderecoSelect.all(by.tagName('option')).last().click();
+  }
+
+  async enderecoSelectOption(option: string): Promise<void> {
+    await this.enderecoSelect.sendKeys(option);
+  }
+
+  getEnderecoSelect(): ElementFinder {
+    return this.enderecoSelect;
+  }
+
+  async getEnderecoSelectedOption(): Promise<string> {
+    return await this.enderecoSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

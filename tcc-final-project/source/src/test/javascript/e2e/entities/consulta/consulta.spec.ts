@@ -40,7 +40,15 @@ describe('Consulta e2e test', () => {
 
     await consultaComponentsPage.clickOnCreateButton();
 
-    await promise.all([]);
+    await promise.all([
+      consultaUpdatePage.setDescricaoInput('descricao'),
+      consultaUpdatePage.setPrecoInput('5'),
+      consultaUpdatePage.setCodigoInput('codigo'),
+    ]);
+
+    expect(await consultaUpdatePage.getDescricaoInput()).to.eq('descricao', 'Expected Descricao value to be equals to descricao');
+    expect(await consultaUpdatePage.getPrecoInput()).to.eq('5', 'Expected preco value to be equals to 5');
+    expect(await consultaUpdatePage.getCodigoInput()).to.eq('codigo', 'Expected Codigo value to be equals to codigo');
 
     await consultaUpdatePage.save();
     expect(await consultaUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

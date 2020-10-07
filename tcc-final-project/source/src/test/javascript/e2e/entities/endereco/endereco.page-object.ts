@@ -29,7 +29,6 @@ export class EnderecoUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  uUIDInput = element(by.id('field_uUID'));
   tipoInput = element(by.id('field_tipo'));
   numeroInput = element(by.id('field_numero'));
   paisInput = element(by.id('field_pais'));
@@ -41,14 +40,6 @@ export class EnderecoUpdatePage {
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
-  }
-
-  async setUUIDInput(uUID: string): Promise<void> {
-    await this.uUIDInput.sendKeys(uUID);
-  }
-
-  async getUUIDInput(): Promise<string> {
-    return await this.uUIDInput.getAttribute('value');
   }
 
   async setTipoInput(tipo: string): Promise<void> {

@@ -23,16 +23,38 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.agenda.uUID">U UID</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.agenda.data">Data</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.agenda.medico">Medico</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.agenda.fisioterapeuta">Fisioterapeuta</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.agenda.enfermeiro">Enfermeiro</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.agenda.psicologo">Psicologo</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let agenda of agenda ;trackBy: trackId">
                     <td><a [routerLink]="['/agenda', agenda.id, 'view']">{{ agenda.id }}</a></td>
-                    <td>{{ agenda.uUID }}</td>
-                    <td>{{ agenda.data }}</td>
+                    <td>{{ agenda.data | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="agenda.medico">
+                            <a [routerLink]="['/medico', agenda.medico?.id, 'view']" >{{ agenda.medico?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="agenda.fisioterapeuta">
+                            <a [routerLink]="['/fisioterapeuta', agenda.fisioterapeuta?.id, 'view']" >{{ agenda.fisioterapeuta?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="agenda.enfermeiro">
+                            <a [routerLink]="['/enfermeiro', agenda.enfermeiro?.id, 'view']" >{{ agenda.enfermeiro?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="agenda.psicologo">
+                            <a [routerLink]="['/psicologo', agenda.psicologo?.id, 'view']" >{{ agenda.psicologo?.id }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

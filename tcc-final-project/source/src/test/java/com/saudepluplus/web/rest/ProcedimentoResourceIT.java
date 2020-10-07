@@ -30,9 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class ProcedimentoResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
-
     private static final String DEFAULT_DESCRICAO = "AAAAAAAAAA";
     private static final String UPDATED_DESCRICAO = "BBBBBBBBBB";
 
@@ -61,7 +58,6 @@ public class ProcedimentoResourceIT {
      */
     public static Procedimento createEntity(EntityManager em) {
         Procedimento procedimento = new Procedimento()
-            .uUID(DEFAULT_U_UID)
             .descricao(DEFAULT_DESCRICAO)
             .preco(DEFAULT_PRECO)
             .codigo(DEFAULT_CODIGO);
@@ -75,7 +71,6 @@ public class ProcedimentoResourceIT {
      */
     public static Procedimento createUpdatedEntity(EntityManager em) {
         Procedimento procedimento = new Procedimento()
-            .uUID(UPDATED_U_UID)
             .descricao(UPDATED_DESCRICAO)
             .preco(UPDATED_PRECO)
             .codigo(UPDATED_CODIGO);
@@ -101,7 +96,6 @@ public class ProcedimentoResourceIT {
         List<Procedimento> procedimentoList = procedimentoRepository.findAll();
         assertThat(procedimentoList).hasSize(databaseSizeBeforeCreate + 1);
         Procedimento testProcedimento = procedimentoList.get(procedimentoList.size() - 1);
-        assertThat(testProcedimento.getuUID()).isEqualTo(DEFAULT_U_UID);
         assertThat(testProcedimento.getDescricao()).isEqualTo(DEFAULT_DESCRICAO);
         assertThat(testProcedimento.getPreco()).isEqualTo(DEFAULT_PRECO);
         assertThat(testProcedimento.getCodigo()).isEqualTo(DEFAULT_CODIGO);
@@ -138,7 +132,6 @@ public class ProcedimentoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(procedimento.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)))
             .andExpect(jsonPath("$.[*].descricao").value(hasItem(DEFAULT_DESCRICAO)))
             .andExpect(jsonPath("$.[*].preco").value(hasItem(DEFAULT_PRECO.doubleValue())))
             .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO)));
@@ -155,7 +148,6 @@ public class ProcedimentoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(procedimento.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID))
             .andExpect(jsonPath("$.descricao").value(DEFAULT_DESCRICAO))
             .andExpect(jsonPath("$.preco").value(DEFAULT_PRECO.doubleValue()))
             .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO));
@@ -181,7 +173,6 @@ public class ProcedimentoResourceIT {
         // Disconnect from session so that the updates on updatedProcedimento are not directly saved in db
         em.detach(updatedProcedimento);
         updatedProcedimento
-            .uUID(UPDATED_U_UID)
             .descricao(UPDATED_DESCRICAO)
             .preco(UPDATED_PRECO)
             .codigo(UPDATED_CODIGO);
@@ -195,7 +186,6 @@ public class ProcedimentoResourceIT {
         List<Procedimento> procedimentoList = procedimentoRepository.findAll();
         assertThat(procedimentoList).hasSize(databaseSizeBeforeUpdate);
         Procedimento testProcedimento = procedimentoList.get(procedimentoList.size() - 1);
-        assertThat(testProcedimento.getuUID()).isEqualTo(UPDATED_U_UID);
         assertThat(testProcedimento.getDescricao()).isEqualTo(UPDATED_DESCRICAO);
         assertThat(testProcedimento.getPreco()).isEqualTo(UPDATED_PRECO);
         assertThat(testProcedimento.getCodigo()).isEqualTo(UPDATED_CODIGO);

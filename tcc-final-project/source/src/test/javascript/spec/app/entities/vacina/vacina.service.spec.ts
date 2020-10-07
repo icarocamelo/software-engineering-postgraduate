@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Vacina(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate);
+      elemDefault = new Vacina(0, 'AAAAAAA', 'AAAAAAA', currentDate);
     });
 
     describe('Service methods', () => {
@@ -69,7 +69,6 @@ describe('Service Tests', () => {
       it('should update a Vacina', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
             nome: 'BBBBBB',
             lote: 'BBBBBB',
             dataAplicacao: currentDate.format(DATE_FORMAT),
@@ -94,7 +93,6 @@ describe('Service Tests', () => {
       it('should return a list of Vacina', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
             nome: 'BBBBBB',
             lote: 'BBBBBB',
             dataAplicacao: currentDate.format(DATE_FORMAT),

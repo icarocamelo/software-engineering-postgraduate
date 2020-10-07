@@ -16,7 +16,12 @@
       "detail": {
         "title": "Atendimento"
       },
-      "uUID": "U UID"
+      "data": "Data",
+      "paciente": "Paciente",
+      "profissionalDeSaude": "Profissional De Saude",
+      "endereco": "Endereco",
+      "agenda": "Agenda",
+      "prontuario": "Prontuario"
     }
   }
 }

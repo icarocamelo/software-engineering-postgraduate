@@ -15,6 +15,27 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="c_npj" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="c_ep" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="razao_social" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="nome_fantasia" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="tipo_unidade_saude" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="endereco_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_posto_de_saude_endereco_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
@@ -38,6 +59,12 @@
                   separator=";"
                   tableName="posto_de_saude">
             <column name="id" type="numeric"/>
+            <column name="c_npj" type="string"/>
+            <column name="telefone" type="string"/>
+            <column name="c_ep" type="string"/>
+            <column name="razao_social" type="string"/>
+            <column name="nome_fantasia" type="string"/>
+            <column name="tipo_unidade_saude" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

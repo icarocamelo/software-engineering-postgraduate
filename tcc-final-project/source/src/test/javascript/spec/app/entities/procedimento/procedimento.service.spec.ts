@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(ProcedimentoService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Procedimento(0, 'AAAAAAA', 'AAAAAAA', 0, 'AAAAAAA');
+      elemDefault = new Procedimento(0, 'AAAAAAA', 0, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -54,7 +54,6 @@ describe('Service Tests', () => {
       it('should update a Procedimento', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
             descricao: 'BBBBBB',
             preco: 1,
             codigo: 'BBBBBB',
@@ -74,7 +73,6 @@ describe('Service Tests', () => {
       it('should return a list of Procedimento', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
             descricao: 'BBBBBB',
             preco: 1,
             codigo: 'BBBBBB',

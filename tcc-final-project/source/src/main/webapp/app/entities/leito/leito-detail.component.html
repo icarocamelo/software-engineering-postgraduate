@@ -8,9 +8,15 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="saudepluplusApp.leito.uUID">U UID</span></dt>
+                <dt><span jhiTranslate="saudepluplusApp.leito.identificacao">Identificacao</span></dt>
                 <dd>
-                    <span>{{ leito.uUID }}</span>
+                    <span>{{ leito.identificacao }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.leito.hospital">Hospital</span></dt>
+                <dd>
+                    <div *ngIf="leito.hospital">
+                        <a [routerLink]="['/hospital', leito.hospital?.id, 'view']">{{ leito.hospital?.id }}</a>
+                    </div>
                 </dd>
             </dl>
 

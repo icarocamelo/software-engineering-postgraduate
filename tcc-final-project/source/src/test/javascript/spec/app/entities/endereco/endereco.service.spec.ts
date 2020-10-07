@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(EnderecoService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Endereco(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Endereco(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -54,7 +54,6 @@ describe('Service Tests', () => {
       it('should update a Endereco', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
             tipo: 'BBBBBB',
             numero: 'BBBBBB',
             pais: 'BBBBBB',
@@ -79,7 +78,6 @@ describe('Service Tests', () => {
       it('should return a list of Endereco', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
             tipo: 'BBBBBB',
             numero: 'BBBBBB',
             pais: 'BBBBBB',

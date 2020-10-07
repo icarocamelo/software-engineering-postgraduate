@@ -23,12 +23,30 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.clinicaMedica.cNPJ">C NPJ</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.clinicaMedica.telefone">Telefone</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.clinicaMedica.cEP">C EP</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.clinicaMedica.razaoSocial">Razao Social</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.clinicaMedica.nomeFantasia">Nome Fantasia</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.clinicaMedica.tipoUnidadeSaude">Tipo Unidade Saude</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.clinicaMedica.endereco">Endereco</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let clinicaMedica of clinicaMedicas ;trackBy: trackId">
                     <td><a [routerLink]="['/clinica-medica', clinicaMedica.id, 'view']">{{ clinicaMedica.id }}</a></td>
+                    <td>{{ clinicaMedica.cNPJ }}</td>
+                    <td>{{ clinicaMedica.telefone }}</td>
+                    <td>{{ clinicaMedica.cEP }}</td>
+                    <td>{{ clinicaMedica.razaoSocial }}</td>
+                    <td>{{ clinicaMedica.nomeFantasia }}</td>
+                    <td jhiTranslate="{{ 'saudepluplusApp.TipoUnidadeSaude.' + clinicaMedica.tipoUnidadeSaude }}">{{ clinicaMedica.tipoUnidadeSaude }}</td>
+                    <td>
+                        <div *ngIf="clinicaMedica.endereco">
+                            <a [routerLink]="['/endereco', clinicaMedica.endereco?.id, 'view']" >{{ clinicaMedica.endereco?.id }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

@@ -4,6 +4,8 @@ package com.saudepluplus.domain;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A ProfissionalDeSaude.
@@ -19,8 +21,8 @@ public class ProfissionalDeSaude implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "numero_registro")
-    private String numeroRegistro;
+    @OneToMany(mappedBy = "profissionalDeSaude")
+    private Set<Prontuario> prontuarios = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -31,17 +33,29 @@ public class ProfissionalDeSaude implements Serializable {
         this.id = id;
     }
 
-    public String getNumeroRegistro() {
-        return numeroRegistro;
+    public Set<Prontuario> getProntuarios() {
+        return prontuarios;
     }
 
-    public ProfissionalDeSaude numeroRegistro(String numeroRegistro) {
-        this.numeroRegistro = numeroRegistro;
+    public ProfissionalDeSaude prontuarios(Set<Prontuario> prontuarios) {
+        this.prontuarios = prontuarios;
         return this;
     }
 
-    public void setNumeroRegistro(String numeroRegistro) {
-        this.numeroRegistro = numeroRegistro;
+    public ProfissionalDeSaude addProntuario(Prontuario prontuario) {
+        this.prontuarios.add(prontuario);
+        prontuario.setProfissionalDeSaude(this);
+        return this;
+    }
+
+    public ProfissionalDeSaude removeProntuario(Prontuario prontuario) {
+        this.prontuarios.remove(prontuario);
+        prontuario.setProfissionalDeSaude(null);
+        return this;
+    }
+
+    public void setProntuarios(Set<Prontuario> prontuarios) {
+        this.prontuarios = prontuarios;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -66,7 +80,6 @@ public class ProfissionalDeSaude implements Serializable {
     public String toString() {
         return "ProfissionalDeSaude{" +
             "id=" + getId() +
-            ", numeroRegistro='" + getNumeroRegistro() + "'" +
             "}";
     }
 }

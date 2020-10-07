@@ -1,0 +1,37 @@
+{
+  "name": "Vacina",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lote",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataAplicacao",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cartaoVacina",
+      "otherEntityRelationshipName": "vacina",
+      "relationshipName": "cartaoVacina",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200916025055",
+  "entityTableName": "vacina",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

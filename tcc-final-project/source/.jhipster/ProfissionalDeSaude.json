@@ -1,0 +1,23 @@
+{
+  "name": "ProfissionalDeSaude",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "prontuario",
+      "otherEntityRelationshipName": "profissionalDeSaude",
+      "relationshipName": "prontuario"
+    }
+  ],
+  "changelogDate": "20200916024055",
+  "entityTableName": "profissional_de_saude",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

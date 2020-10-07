@@ -14,6 +14,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,6 +31,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WithMockUser
 public class AgendaExameResourceIT {
+
+    private static final LocalDate DEFAULT_DATA = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private AgendaExameRepository agendaExameRepository;
@@ -48,7 +53,8 @@ public class AgendaExameResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static AgendaExame createEntity(EntityManager em) {
-        AgendaExame agendaExame = new AgendaExame();
+        AgendaExame agendaExame = new AgendaExame()
+            .data(DEFAULT_DATA);
         return agendaExame;
     }
     /**
@@ -58,7 +64,8 @@ public class AgendaExameResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static AgendaExame createUpdatedEntity(EntityManager em) {
-        AgendaExame agendaExame = new AgendaExame();
+        AgendaExame agendaExame = new AgendaExame()
+            .data(UPDATED_DATA);
         return agendaExame;
     }
 
@@ -81,6 +88,7 @@ public class AgendaExameResourceIT {
         List<AgendaExame> agendaExameList = agendaExameRepository.findAll();
         assertThat(agendaExameList).hasSize(databaseSizeBeforeCreate + 1);
         AgendaExame testAgendaExame = agendaExameList.get(agendaExameList.size() - 1);
+        assertThat(testAgendaExame.getData()).isEqualTo(DEFAULT_DATA);
     }
 
     @Test
@@ -113,7 +121,8 @@ public class AgendaExameResourceIT {
         restAgendaExameMockMvc.perform(get("/api/agenda-exames?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(agendaExame.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(agendaExame.getId().intValue())))
+            .andExpect(jsonPath("$.[*].data").value(hasItem(DEFAULT_DATA.toString())));
     }
     
     @Test
@@ -126,7 +135,8 @@ public class AgendaExameResourceIT {
         restAgendaExameMockMvc.perform(get("/api/agenda-exames/{id}", agendaExame.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(agendaExame.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(agendaExame.getId().intValue()))
+            .andExpect(jsonPath("$.data").value(DEFAULT_DATA.toString()));
     }
     @Test
     @Transactional
@@ -148,6 +158,8 @@ public class AgendaExameResourceIT {
         AgendaExame updatedAgendaExame = agendaExameRepository.findById(agendaExame.getId()).get();
         // Disconnect from session so that the updates on updatedAgendaExame are not directly saved in db
         em.detach(updatedAgendaExame);
+        updatedAgendaExame
+            .data(UPDATED_DATA);
 
         restAgendaExameMockMvc.perform(put("/api/agenda-exames").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -158,6 +170,7 @@ public class AgendaExameResourceIT {
         List<AgendaExame> agendaExameList = agendaExameRepository.findAll();
         assertThat(agendaExameList).hasSize(databaseSizeBeforeUpdate);
         AgendaExame testAgendaExame = agendaExameList.get(agendaExameList.size() - 1);
+        assertThat(testAgendaExame.getData()).isEqualTo(UPDATED_DATA);
     }
 
     @Test

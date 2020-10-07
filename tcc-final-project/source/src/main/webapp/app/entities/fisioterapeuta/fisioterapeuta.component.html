@@ -23,12 +23,20 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.fisioterapeuta.nome">Nome</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.fisioterapeuta.rG">R G</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.fisioterapeuta.cPF">C PF</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.fisioterapeuta.numeroRegistro">Numero Registro</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let fisioterapeuta of fisioterapeutas ;trackBy: trackId">
                     <td><a [routerLink]="['/fisioterapeuta', fisioterapeuta.id, 'view']">{{ fisioterapeuta.id }}</a></td>
+                    <td>{{ fisioterapeuta.nome }}</td>
+                    <td>{{ fisioterapeuta.rG }}</td>
+                    <td>{{ fisioterapeuta.cPF }}</td>
+                    <td>{{ fisioterapeuta.numeroRegistro }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

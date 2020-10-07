@@ -1,6 +1,5 @@
 export interface IEndereco {
   id?: number;
-  uUID?: string;
   tipo?: string;
   numero?: string;
   pais?: string;
@@ -14,7 +13,6 @@ export interface IEndereco {
 export class Endereco implements IEndereco {
   constructor(
     public id?: number,
-    public uUID?: string,
     public tipo?: string,
     public numero?: string,
     public pais?: string,

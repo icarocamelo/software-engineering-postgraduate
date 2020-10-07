@@ -23,7 +23,6 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.endereco.uUID">U UID</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.endereco.tipo">Tipo</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.endereco.numero">Numero</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.endereco.pais">Pais</span></th>
@@ -38,7 +37,6 @@
             <tbody>
                 <tr *ngFor="let endereco of enderecos ;trackBy: trackId">
                     <td><a [routerLink]="['/endereco', endereco.id, 'view']">{{ endereco.id }}</a></td>
-                    <td>{{ endereco.uUID }}</td>
                     <td>{{ endereco.tipo }}</td>
                     <td>{{ endereco.numero }}</td>
                     <td>{{ endereco.pais }}</td>

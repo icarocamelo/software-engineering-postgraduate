@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Prontuario.
+    -->
+    <changeSet id="20200929051819-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="paciente_id"
+                                 baseTableName="prontuario"
+                                 constraintName="fk_prontuario_paciente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="paciente"/>
+
+        <addForeignKeyConstraint baseColumnNames="profissional_de_saude_id"
+                                 baseTableName="prontuario"
+                                 constraintName="fk_prontuario_profissional_de_saude_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profissional_de_saude"/>
+
+    </changeSet>
+</databaseChangeLog>

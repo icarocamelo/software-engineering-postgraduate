@@ -43,9 +43,16 @@ describe('Atendimento e2e test', () => {
 
     await atendimentoComponentsPage.clickOnCreateButton();
 
-    await promise.all([atendimentoUpdatePage.setUUIDInput('uUID')]);
+    await promise.all([
+      atendimentoUpdatePage.setDataInput('2000-12-31'),
+      atendimentoUpdatePage.pacienteSelectLastOption(),
+      atendimentoUpdatePage.profissionalDeSaudeSelectLastOption(),
+      atendimentoUpdatePage.enderecoSelectLastOption(),
+      atendimentoUpdatePage.agendaSelectLastOption(),
+      atendimentoUpdatePage.prontuarioSelectLastOption(),
+    ]);
 
-    expect(await atendimentoUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
+    expect(await atendimentoUpdatePage.getDataInput()).to.eq('2000-12-31', 'Expected data value to be equals to 2000-12-31');
 
     await atendimentoUpdatePage.save();
     expect(await atendimentoUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

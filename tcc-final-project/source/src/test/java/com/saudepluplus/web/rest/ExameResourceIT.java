@@ -30,6 +30,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class ExameResourceIT {
 
+    private static final String DEFAULT_DESCRICAO = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRICAO = "BBBBBBBBBB";
+
+    private static final Double DEFAULT_PRECO = 1D;
+    private static final Double UPDATED_PRECO = 2D;
+
+    private static final String DEFAULT_CODIGO = "AAAAAAAAAA";
+    private static final String UPDATED_CODIGO = "BBBBBBBBBB";
+
     @Autowired
     private ExameRepository exameRepository;
 
@@ -48,7 +57,10 @@ public class ExameResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Exame createEntity(EntityManager em) {
-        Exame exame = new Exame();
+        Exame exame = new Exame()
+            .descricao(DEFAULT_DESCRICAO)
+            .preco(DEFAULT_PRECO)
+            .codigo(DEFAULT_CODIGO);
         return exame;
     }
     /**
@@ -58,7 +70,10 @@ public class ExameResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Exame createUpdatedEntity(EntityManager em) {
-        Exame exame = new Exame();
+        Exame exame = new Exame()
+            .descricao(UPDATED_DESCRICAO)
+            .preco(UPDATED_PRECO)
+            .codigo(UPDATED_CODIGO);
         return exame;
     }
 
@@ -81,6 +96,9 @@ public class ExameResourceIT {
         List<Exame> exameList = exameRepository.findAll();
         assertThat(exameList).hasSize(databaseSizeBeforeCreate + 1);
         Exame testExame = exameList.get(exameList.size() - 1);
+        assertThat(testExame.getDescricao()).isEqualTo(DEFAULT_DESCRICAO);
+        assertThat(testExame.getPreco()).isEqualTo(DEFAULT_PRECO);
+        assertThat(testExame.getCodigo()).isEqualTo(DEFAULT_CODIGO);
     }
 
     @Test
@@ -113,7 +131,10 @@ public class ExameResourceIT {
         restExameMockMvc.perform(get("/api/exames?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(exame.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(exame.getId().intValue())))
+            .andExpect(jsonPath("$.[*].descricao").value(hasItem(DEFAULT_DESCRICAO)))
+            .andExpect(jsonPath("$.[*].preco").value(hasItem(DEFAULT_PRECO.doubleValue())))
+            .andExpect(jsonPath("$.[*].codigo").value(hasItem(DEFAULT_CODIGO)));
     }
     
     @Test
@@ -126,7 +147,10 @@ public class ExameResourceIT {
         restExameMockMvc.perform(get("/api/exames/{id}", exame.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(exame.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(exame.getId().intValue()))
+            .andExpect(jsonPath("$.descricao").value(DEFAULT_DESCRICAO))
+            .andExpect(jsonPath("$.preco").value(DEFAULT_PRECO.doubleValue()))
+            .andExpect(jsonPath("$.codigo").value(DEFAULT_CODIGO));
     }
     @Test
     @Transactional
@@ -148,6 +172,10 @@ public class ExameResourceIT {
         Exame updatedExame = exameRepository.findById(exame.getId()).get();
         // Disconnect from session so that the updates on updatedExame are not directly saved in db
         em.detach(updatedExame);
+        updatedExame
+            .descricao(UPDATED_DESCRICAO)
+            .preco(UPDATED_PRECO)
+            .codigo(UPDATED_CODIGO);
 
         restExameMockMvc.perform(put("/api/exames").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -158,6 +186,9 @@ public class ExameResourceIT {
         List<Exame> exameList = exameRepository.findAll();
         assertThat(exameList).hasSize(databaseSizeBeforeUpdate);
         Exame testExame = exameList.get(exameList.size() - 1);
+        assertThat(testExame.getDescricao()).isEqualTo(UPDATED_DESCRICAO);
+        assertThat(testExame.getPreco()).isEqualTo(UPDATED_PRECO);
+        assertThat(testExame.getCodigo()).isEqualTo(UPDATED_CODIGO);
     }
 
     @Test

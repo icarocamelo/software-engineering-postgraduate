@@ -1,0 +1,25 @@
+{
+  "name": "Profissional",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "perfilAcesso",
+      "otherEntityRelationshipName": "profissional",
+      "relationshipName": "perfilAcesso",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200916023955",
+  "entityTableName": "profissional",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

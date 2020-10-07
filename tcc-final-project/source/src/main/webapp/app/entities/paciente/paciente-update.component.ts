@@ -10,6 +10,10 @@ import { IPaciente, Paciente } from 'app/shared/model/paciente.model';
 import { PacienteService } from './paciente.service';
 import { IPerfilAcesso } from 'app/shared/model/perfil-acesso.model';
 import { PerfilAcessoService } from 'app/entities/perfil-acesso/perfil-acesso.service';
+import { IEndereco } from 'app/shared/model/endereco.model';
+import { EnderecoService } from 'app/entities/endereco/endereco.service';
+
+type SelectableEntity = IPerfilAcesso | IEndereco;
 
 @Component({
   selector: 'jhi-paciente-update',
@@ -18,15 +22,14 @@ import { PerfilAcessoService } from 'app/entities/perfil-acesso/perfil-acesso.se
 export class PacienteUpdateComponent implements OnInit {
   isSaving = false;
   perfilacessos: IPerfilAcesso[] = [];
+  enderecos: IEndereco[] = [];
   dataNascimentoDp: any;
 
   editForm = this.fb.group({
     id: [],
-    uUID: [],
     nome: [],
     rG: [],
     cPF: [],
-    endereco: [],
     dataNascimento: [],
     telefone: [],
     peso: [],
@@ -34,11 +37,13 @@ export class PacienteUpdateComponent implements OnInit {
     responsavel: [],
     rNE: [],
     perfilAcesso: [],
+    endereco: [],
   });
 
   constructor(
     protected pacienteService: PacienteService,
     protected perfilAcessoService: PerfilAcessoService,
+    protected enderecoService: EnderecoService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -68,17 +73,37 @@ export class PacienteUpdateComponent implements OnInit {
               .subscribe((concatRes: IPerfilAcesso[]) => (this.perfilacessos = concatRes));
           }
         });
+
+      this.enderecoService
+        .query({ filter: 'paciente-is-null' })
+        .pipe(
+          map((res: HttpResponse<IEndereco[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: IEndereco[]) => {
+          if (!paciente.endereco || !paciente.endereco.id) {
+            this.enderecos = resBody;
+          } else {
+            this.enderecoService
+              .find(paciente.endereco.id)
+              .pipe(
+                map((subRes: HttpResponse<IEndereco>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IEndereco[]) => (this.enderecos = concatRes));
+          }
+        });
     });
   }
 
   updateForm(paciente: IPaciente): void {
     this.editForm.patchValue({
       id: paciente.id,
-      uUID: paciente.uUID,
       nome: paciente.nome,
       rG: paciente.rG,
       cPF: paciente.cPF,
-      endereco: paciente.endereco,
       dataNascimento: paciente.dataNascimento,
       telefone: paciente.telefone,
       peso: paciente.peso,
@@ -86,6 +111,7 @@ export class PacienteUpdateComponent implements OnInit {
       responsavel: paciente.responsavel,
       rNE: paciente.rNE,
       perfilAcesso: paciente.perfilAcesso,
+      endereco: paciente.endereco,
     });
   }
 
@@ -107,11 +133,9 @@ export class PacienteUpdateComponent implements OnInit {
     return {
       ...new Paciente(),
       id: this.editForm.get(['id'])!.value,
-      uUID: this.editForm.get(['uUID'])!.value,
       nome: this.editForm.get(['nome'])!.value,
       rG: this.editForm.get(['rG'])!.value,
       cPF: this.editForm.get(['cPF'])!.value,
-      endereco: this.editForm.get(['endereco'])!.value,
       dataNascimento: this.editForm.get(['dataNascimento'])!.value,
       telefone: this.editForm.get(['telefone'])!.value,
       peso: this.editForm.get(['peso'])!.value,
@@ -119,6 +143,7 @@ export class PacienteUpdateComponent implements OnInit {
       responsavel: this.editForm.get(['responsavel'])!.value,
       rNE: this.editForm.get(['rNE'])!.value,
       perfilAcesso: this.editForm.get(['perfilAcesso'])!.value,
+      endereco: this.editForm.get(['endereco'])!.value,
     };
   }
 
@@ -138,7 +163,7 @@ export class PacienteUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IPerfilAcesso): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
 }

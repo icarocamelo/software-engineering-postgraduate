@@ -1,5 +1,6 @@
 package com.saudepluplus.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -19,8 +20,12 @@ public class Permissao implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "u_uid")
-    private String uUID;
+    @Column(name = "nome")
+    private String nome;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "permissoes", allowSetters = true)
+    private PerfilAcesso perfilAcesso;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -31,17 +36,30 @@ public class Permissao implements Serializable {
         this.id = id;
     }
 
-    public String getuUID() {
-        return uUID;
+    public String getNome() {
+        return nome;
     }
 
-    public Permissao uUID(String uUID) {
-        this.uUID = uUID;
+    public Permissao nome(String nome) {
+        this.nome = nome;
         return this;
     }
 
-    public void setuUID(String uUID) {
-        this.uUID = uUID;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public PerfilAcesso getPerfilAcesso() {
+        return perfilAcesso;
+    }
+
+    public Permissao perfilAcesso(PerfilAcesso perfilAcesso) {
+        this.perfilAcesso = perfilAcesso;
+        return this;
+    }
+
+    public void setPerfilAcesso(PerfilAcesso perfilAcesso) {
+        this.perfilAcesso = perfilAcesso;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -66,7 +84,7 @@ public class Permissao implements Serializable {
     public String toString() {
         return "Permissao{" +
             "id=" + getId() +
-            ", uUID='" + getuUID() + "'" +
+            ", nome='" + getNome() + "'" +
             "}";
     }
 }

@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 
 import { IPerfilAcesso, PerfilAcesso } from 'app/shared/model/perfil-acesso.model';
 import { PerfilAcessoService } from './perfil-acesso.service';
-import { IPermissao } from 'app/shared/model/permissao.model';
-import { PermissaoService } from 'app/entities/permissao/permissao.service';
 
 @Component({
   selector: 'jhi-perfil-acesso-update',
@@ -16,34 +14,24 @@ import { PermissaoService } from 'app/entities/permissao/permissao.service';
 })
 export class PerfilAcessoUpdateComponent implements OnInit {
   isSaving = false;
-  permissaos: IPermissao[] = [];
 
   editForm = this.fb.group({
     id: [],
-    uUID: [],
-    permissao: [],
+    nome: [],
   });
 
-  constructor(
-    protected perfilAcessoService: PerfilAcessoService,
-    protected permissaoService: PermissaoService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected perfilAcessoService: PerfilAcessoService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ perfilAcesso }) => {
       this.updateForm(perfilAcesso);
-
-      this.permissaoService.query().subscribe((res: HttpResponse<IPermissao[]>) => (this.permissaos = res.body || []));
     });
   }
 
   updateForm(perfilAcesso: IPerfilAcesso): void {
     this.editForm.patchValue({
       id: perfilAcesso.id,
-      uUID: perfilAcesso.uUID,
-      permissao: perfilAcesso.permissao,
+      nome: perfilAcesso.nome,
     });
   }
 
@@ -65,8 +53,7 @@ export class PerfilAcessoUpdateComponent implements OnInit {
     return {
       ...new PerfilAcesso(),
       id: this.editForm.get(['id'])!.value,
-      uUID: this.editForm.get(['uUID'])!.value,
-      permissao: this.editForm.get(['permissao'])!.value,
+      nome: this.editForm.get(['nome'])!.value,
     };
   }
 
@@ -84,9 +71,5 @@ export class PerfilAcessoUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: IPermissao): any {
-    return item.id;
   }
 }

@@ -30,8 +30,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class LeitoResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
+    private static final String DEFAULT_IDENTIFICACAO = "AAAAAAAAAA";
+    private static final String UPDATED_IDENTIFICACAO = "BBBBBBBBBB";
 
     @Autowired
     private LeitoRepository leitoRepository;
@@ -52,7 +52,7 @@ public class LeitoResourceIT {
      */
     public static Leito createEntity(EntityManager em) {
         Leito leito = new Leito()
-            .uUID(DEFAULT_U_UID);
+            .identificacao(DEFAULT_IDENTIFICACAO);
         return leito;
     }
     /**
@@ -63,7 +63,7 @@ public class LeitoResourceIT {
      */
     public static Leito createUpdatedEntity(EntityManager em) {
         Leito leito = new Leito()
-            .uUID(UPDATED_U_UID);
+            .identificacao(UPDATED_IDENTIFICACAO);
         return leito;
     }
 
@@ -86,7 +86,7 @@ public class LeitoResourceIT {
         List<Leito> leitoList = leitoRepository.findAll();
         assertThat(leitoList).hasSize(databaseSizeBeforeCreate + 1);
         Leito testLeito = leitoList.get(leitoList.size() - 1);
-        assertThat(testLeito.getuUID()).isEqualTo(DEFAULT_U_UID);
+        assertThat(testLeito.getIdentificacao()).isEqualTo(DEFAULT_IDENTIFICACAO);
     }
 
     @Test
@@ -120,7 +120,7 @@ public class LeitoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(leito.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)));
+            .andExpect(jsonPath("$.[*].identificacao").value(hasItem(DEFAULT_IDENTIFICACAO)));
     }
     
     @Test
@@ -134,7 +134,7 @@ public class LeitoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(leito.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID));
+            .andExpect(jsonPath("$.identificacao").value(DEFAULT_IDENTIFICACAO));
     }
     @Test
     @Transactional
@@ -157,7 +157,7 @@ public class LeitoResourceIT {
         // Disconnect from session so that the updates on updatedLeito are not directly saved in db
         em.detach(updatedLeito);
         updatedLeito
-            .uUID(UPDATED_U_UID);
+            .identificacao(UPDATED_IDENTIFICACAO);
 
         restLeitoMockMvc.perform(put("/api/leitos").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -168,7 +168,7 @@ public class LeitoResourceIT {
         List<Leito> leitoList = leitoRepository.findAll();
         assertThat(leitoList).hasSize(databaseSizeBeforeUpdate);
         Leito testLeito = leitoList.get(leitoList.size() - 1);
-        assertThat(testLeito.getuUID()).isEqualTo(UPDATED_U_UID);
+        assertThat(testLeito.getIdentificacao()).isEqualTo(UPDATED_IDENTIFICACAO);
     }
 
     @Test

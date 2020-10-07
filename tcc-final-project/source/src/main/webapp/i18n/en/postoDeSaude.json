@@ -15,7 +15,14 @@
       },
       "detail": {
         "title": "Posto De Saude"
-      }
+      },
+      "cNPJ": "C NPJ",
+      "telefone": "Telefone",
+      "cEP": "C EP",
+      "razaoSocial": "Razao Social",
+      "nomeFantasia": "Nome Fantasia",
+      "tipoUnidadeSaude": "Tipo Unidade Saude",
+      "endereco": "Endereco"
     }
   }
 }

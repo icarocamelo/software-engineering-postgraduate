@@ -30,6 +30,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class EnfermeiroResourceIT {
 
+    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    private static final String UPDATED_NOME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_R_G = "AAAAAAAAAA";
+    private static final String UPDATED_R_G = "BBBBBBBBBB";
+
+    private static final String DEFAULT_C_PF = "AAAAAAAAAA";
+    private static final String UPDATED_C_PF = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NUMERO_REGISTRO = "AAAAAAAAAA";
+    private static final String UPDATED_NUMERO_REGISTRO = "BBBBBBBBBB";
+
     @Autowired
     private EnfermeiroRepository enfermeiroRepository;
 
@@ -48,7 +60,11 @@ public class EnfermeiroResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Enfermeiro createEntity(EntityManager em) {
-        Enfermeiro enfermeiro = new Enfermeiro();
+        Enfermeiro enfermeiro = new Enfermeiro()
+            .nome(DEFAULT_NOME)
+            .rG(DEFAULT_R_G)
+            .cPF(DEFAULT_C_PF)
+            .numeroRegistro(DEFAULT_NUMERO_REGISTRO);
         return enfermeiro;
     }
     /**
@@ -58,7 +74,11 @@ public class EnfermeiroResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Enfermeiro createUpdatedEntity(EntityManager em) {
-        Enfermeiro enfermeiro = new Enfermeiro();
+        Enfermeiro enfermeiro = new Enfermeiro()
+            .nome(UPDATED_NOME)
+            .rG(UPDATED_R_G)
+            .cPF(UPDATED_C_PF)
+            .numeroRegistro(UPDATED_NUMERO_REGISTRO);
         return enfermeiro;
     }
 
@@ -81,6 +101,10 @@ public class EnfermeiroResourceIT {
         List<Enfermeiro> enfermeiroList = enfermeiroRepository.findAll();
         assertThat(enfermeiroList).hasSize(databaseSizeBeforeCreate + 1);
         Enfermeiro testEnfermeiro = enfermeiroList.get(enfermeiroList.size() - 1);
+        assertThat(testEnfermeiro.getNome()).isEqualTo(DEFAULT_NOME);
+        assertThat(testEnfermeiro.getrG()).isEqualTo(DEFAULT_R_G);
+        assertThat(testEnfermeiro.getcPF()).isEqualTo(DEFAULT_C_PF);
+        assertThat(testEnfermeiro.getNumeroRegistro()).isEqualTo(DEFAULT_NUMERO_REGISTRO);
     }
 
     @Test
@@ -113,7 +137,11 @@ public class EnfermeiroResourceIT {
         restEnfermeiroMockMvc.perform(get("/api/enfermeiros?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(enfermeiro.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(enfermeiro.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
+            .andExpect(jsonPath("$.[*].rG").value(hasItem(DEFAULT_R_G)))
+            .andExpect(jsonPath("$.[*].cPF").value(hasItem(DEFAULT_C_PF)))
+            .andExpect(jsonPath("$.[*].numeroRegistro").value(hasItem(DEFAULT_NUMERO_REGISTRO)));
     }
     
     @Test
@@ -126,7 +154,11 @@ public class EnfermeiroResourceIT {
         restEnfermeiroMockMvc.perform(get("/api/enfermeiros/{id}", enfermeiro.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(enfermeiro.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(enfermeiro.getId().intValue()))
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
+            .andExpect(jsonPath("$.rG").value(DEFAULT_R_G))
+            .andExpect(jsonPath("$.cPF").value(DEFAULT_C_PF))
+            .andExpect(jsonPath("$.numeroRegistro").value(DEFAULT_NUMERO_REGISTRO));
     }
     @Test
     @Transactional
@@ -148,6 +180,11 @@ public class EnfermeiroResourceIT {
         Enfermeiro updatedEnfermeiro = enfermeiroRepository.findById(enfermeiro.getId()).get();
         // Disconnect from session so that the updates on updatedEnfermeiro are not directly saved in db
         em.detach(updatedEnfermeiro);
+        updatedEnfermeiro
+            .nome(UPDATED_NOME)
+            .rG(UPDATED_R_G)
+            .cPF(UPDATED_C_PF)
+            .numeroRegistro(UPDATED_NUMERO_REGISTRO);
 
         restEnfermeiroMockMvc.perform(put("/api/enfermeiros").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -158,6 +195,10 @@ public class EnfermeiroResourceIT {
         List<Enfermeiro> enfermeiroList = enfermeiroRepository.findAll();
         assertThat(enfermeiroList).hasSize(databaseSizeBeforeUpdate);
         Enfermeiro testEnfermeiro = enfermeiroList.get(enfermeiroList.size() - 1);
+        assertThat(testEnfermeiro.getNome()).isEqualTo(UPDATED_NOME);
+        assertThat(testEnfermeiro.getrG()).isEqualTo(UPDATED_R_G);
+        assertThat(testEnfermeiro.getcPF()).isEqualTo(UPDATED_C_PF);
+        assertThat(testEnfermeiro.getNumeroRegistro()).isEqualTo(UPDATED_NUMERO_REGISTRO);
     }
 
     @Test

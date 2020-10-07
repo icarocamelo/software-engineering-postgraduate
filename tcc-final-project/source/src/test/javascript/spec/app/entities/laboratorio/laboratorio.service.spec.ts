@@ -2,6 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { LaboratorioService } from 'app/entities/laboratorio/laboratorio.service';
 import { ILaboratorio, Laboratorio } from 'app/shared/model/laboratorio.model';
+import { TipoUnidadeSaude } from 'app/shared/model/enumerations/tipo-unidade-saude.model';
 
 describe('Service Tests', () => {
   describe('Laboratorio Service', () => {
@@ -20,7 +21,7 @@ describe('Service Tests', () => {
       service = injector.get(LaboratorioService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Laboratorio(0);
+      elemDefault = new Laboratorio(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', TipoUnidadeSaude.PUBLICA);
     });
 
     describe('Service methods', () => {
@@ -52,7 +53,17 @@ describe('Service Tests', () => {
       });
 
       it('should update a Laboratorio', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            cNPJ: 'BBBBBB',
+            telefone: 'BBBBBB',
+            cEP: 'BBBBBB',
+            razaoSocial: 'BBBBBB',
+            nomeFantasia: 'BBBBBB',
+            tipoUnidadeSaude: 'BBBBBB',
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -64,7 +75,17 @@ describe('Service Tests', () => {
       });
 
       it('should return a list of Laboratorio', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            cNPJ: 'BBBBBB',
+            telefone: 'BBBBBB',
+            cEP: 'BBBBBB',
+            razaoSocial: 'BBBBBB',
+            nomeFantasia: 'BBBBBB',
+            tipoUnidadeSaude: 'BBBBBB',
+          },
+          elemDefault
+        );
 
         const expected = Object.assign({}, returnedFromService);
 

@@ -17,14 +17,6 @@ export class UnidadeSaudeUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    uUID: [],
-    endereco: [],
-    cNPJ: [],
-    telefone: [],
-    cEP: [],
-    razaoSocial: [],
-    nomeFantasia: [],
-    tipoUnidadeSaude: [],
   });
 
   constructor(protected unidadeSaudeService: UnidadeSaudeService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -38,14 +30,6 @@ export class UnidadeSaudeUpdateComponent implements OnInit {
   updateForm(unidadeSaude: IUnidadeSaude): void {
     this.editForm.patchValue({
       id: unidadeSaude.id,
-      uUID: unidadeSaude.uUID,
-      endereco: unidadeSaude.endereco,
-      cNPJ: unidadeSaude.cNPJ,
-      telefone: unidadeSaude.telefone,
-      cEP: unidadeSaude.cEP,
-      razaoSocial: unidadeSaude.razaoSocial,
-      nomeFantasia: unidadeSaude.nomeFantasia,
-      tipoUnidadeSaude: unidadeSaude.tipoUnidadeSaude,
     });
   }
 
@@ -67,14 +51,6 @@ export class UnidadeSaudeUpdateComponent implements OnInit {
     return {
       ...new UnidadeSaude(),
       id: this.editForm.get(['id'])!.value,
-      uUID: this.editForm.get(['uUID'])!.value,
-      endereco: this.editForm.get(['endereco'])!.value,
-      cNPJ: this.editForm.get(['cNPJ'])!.value,
-      telefone: this.editForm.get(['telefone'])!.value,
-      cEP: this.editForm.get(['cEP'])!.value,
-      razaoSocial: this.editForm.get(['razaoSocial'])!.value,
-      nomeFantasia: this.editForm.get(['nomeFantasia'])!.value,
-      tipoUnidadeSaude: this.editForm.get(['tipoUnidadeSaude'])!.value,
     };
   }
 

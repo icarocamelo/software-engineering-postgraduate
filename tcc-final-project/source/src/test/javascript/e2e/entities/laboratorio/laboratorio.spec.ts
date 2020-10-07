@@ -43,7 +43,27 @@ describe('Laboratorio e2e test', () => {
 
     await laboratorioComponentsPage.clickOnCreateButton();
 
-    await promise.all([]);
+    await promise.all([
+      laboratorioUpdatePage.setCNPJInput('cNPJ'),
+      laboratorioUpdatePage.setTelefoneInput('telefone'),
+      laboratorioUpdatePage.setCEPInput('cEP'),
+      laboratorioUpdatePage.setRazaoSocialInput('razaoSocial'),
+      laboratorioUpdatePage.setNomeFantasiaInput('nomeFantasia'),
+      laboratorioUpdatePage.tipoUnidadeSaudeSelectLastOption(),
+      laboratorioUpdatePage.enderecoSelectLastOption(),
+    ]);
+
+    expect(await laboratorioUpdatePage.getCNPJInput()).to.eq('cNPJ', 'Expected CNPJ value to be equals to cNPJ');
+    expect(await laboratorioUpdatePage.getTelefoneInput()).to.eq('telefone', 'Expected Telefone value to be equals to telefone');
+    expect(await laboratorioUpdatePage.getCEPInput()).to.eq('cEP', 'Expected CEP value to be equals to cEP');
+    expect(await laboratorioUpdatePage.getRazaoSocialInput()).to.eq(
+      'razaoSocial',
+      'Expected RazaoSocial value to be equals to razaoSocial'
+    );
+    expect(await laboratorioUpdatePage.getNomeFantasiaInput()).to.eq(
+      'nomeFantasia',
+      'Expected NomeFantasia value to be equals to nomeFantasia'
+    );
 
     await laboratorioUpdatePage.save();
     expect(await laboratorioUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

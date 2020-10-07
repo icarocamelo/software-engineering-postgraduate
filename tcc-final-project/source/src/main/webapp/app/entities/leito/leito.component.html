@@ -23,14 +23,20 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.leito.uUID">U UID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.leito.identificacao">Identificacao</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.leito.hospital">Hospital</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let leito of leitos ;trackBy: trackId">
                     <td><a [routerLink]="['/leito', leito.id, 'view']">{{ leito.id }}</a></td>
-                    <td>{{ leito.uUID }}</td>
+                    <td>{{ leito.identificacao }}</td>
+                    <td>
+                        <div *ngIf="leito.hospital">
+                            <a [routerLink]="['/hospital', leito.hospital?.id, 'view']" >{{ leito.hospital?.id }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

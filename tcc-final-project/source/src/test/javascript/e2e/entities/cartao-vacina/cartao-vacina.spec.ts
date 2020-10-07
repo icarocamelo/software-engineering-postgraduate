@@ -43,9 +43,7 @@ describe('CartaoVacina e2e test', () => {
 
     await cartaoVacinaComponentsPage.clickOnCreateButton();
 
-    await promise.all([cartaoVacinaUpdatePage.setUUIDInput('uUID')]);
-
-    expect(await cartaoVacinaUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
+    await promise.all([]);
 
     await cartaoVacinaUpdatePage.save();
     expect(await cartaoVacinaUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

@@ -14,6 +14,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,8 +32,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class AtendimentoResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
+    private static final LocalDate DEFAULT_DATA = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private AtendimentoRepository atendimentoRepository;
@@ -52,7 +54,7 @@ public class AtendimentoResourceIT {
      */
     public static Atendimento createEntity(EntityManager em) {
         Atendimento atendimento = new Atendimento()
-            .uUID(DEFAULT_U_UID);
+            .data(DEFAULT_DATA);
         return atendimento;
     }
     /**
@@ -63,7 +65,7 @@ public class AtendimentoResourceIT {
      */
     public static Atendimento createUpdatedEntity(EntityManager em) {
         Atendimento atendimento = new Atendimento()
-            .uUID(UPDATED_U_UID);
+            .data(UPDATED_DATA);
         return atendimento;
     }
 
@@ -86,7 +88,7 @@ public class AtendimentoResourceIT {
         List<Atendimento> atendimentoList = atendimentoRepository.findAll();
         assertThat(atendimentoList).hasSize(databaseSizeBeforeCreate + 1);
         Atendimento testAtendimento = atendimentoList.get(atendimentoList.size() - 1);
-        assertThat(testAtendimento.getuUID()).isEqualTo(DEFAULT_U_UID);
+        assertThat(testAtendimento.getData()).isEqualTo(DEFAULT_DATA);
     }
 
     @Test
@@ -120,7 +122,7 @@ public class AtendimentoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(atendimento.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)));
+            .andExpect(jsonPath("$.[*].data").value(hasItem(DEFAULT_DATA.toString())));
     }
     
     @Test
@@ -134,7 +136,7 @@ public class AtendimentoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(atendimento.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID));
+            .andExpect(jsonPath("$.data").value(DEFAULT_DATA.toString()));
     }
     @Test
     @Transactional
@@ -157,7 +159,7 @@ public class AtendimentoResourceIT {
         // Disconnect from session so that the updates on updatedAtendimento are not directly saved in db
         em.detach(updatedAtendimento);
         updatedAtendimento
-            .uUID(UPDATED_U_UID);
+            .data(UPDATED_DATA);
 
         restAtendimentoMockMvc.perform(put("/api/atendimentos").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -168,7 +170,7 @@ public class AtendimentoResourceIT {
         List<Atendimento> atendimentoList = atendimentoRepository.findAll();
         assertThat(atendimentoList).hasSize(databaseSizeBeforeUpdate);
         Atendimento testAtendimento = atendimentoList.get(atendimentoList.size() - 1);
-        assertThat(testAtendimento.getuUID()).isEqualTo(UPDATED_U_UID);
+        assertThat(testAtendimento.getData()).isEqualTo(UPDATED_DATA);
     }
 
     @Test

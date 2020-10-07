@@ -40,10 +40,15 @@ describe('Agenda e2e test', () => {
 
     await agendaComponentsPage.clickOnCreateButton();
 
-    await promise.all([agendaUpdatePage.setUUIDInput('uUID'), agendaUpdatePage.setDataInput('data')]);
+    await promise.all([
+      agendaUpdatePage.setDataInput('2000-12-31'),
+      agendaUpdatePage.medicoSelectLastOption(),
+      agendaUpdatePage.fisioterapeutaSelectLastOption(),
+      agendaUpdatePage.enfermeiroSelectLastOption(),
+      agendaUpdatePage.psicologoSelectLastOption(),
+    ]);
 
-    expect(await agendaUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
-    expect(await agendaUpdatePage.getDataInput()).to.eq('data', 'Expected Data value to be equals to data');
+    expect(await agendaUpdatePage.getDataInput()).to.eq('2000-12-31', 'Expected data value to be equals to 2000-12-31');
 
     await agendaUpdatePage.save();
     expect(await agendaUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

@@ -23,12 +23,14 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.agendaExame.data">Data</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let agendaExame of agendaExames ;trackBy: trackId">
                     <td><a [routerLink]="['/agenda-exame', agendaExame.id, 'view']">{{ agendaExame.id }}</a></td>
+                    <td>{{ agendaExame.data | date:'mediumDate' }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

@@ -29,47 +29,10 @@ export class ProfissionalUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  uUIDInput = element(by.id('field_uUID'));
-  nomeInput = element(by.id('field_nome'));
-  rGInput = element(by.id('field_rG'));
-  cPFInput = element(by.id('field_cPF'));
-
   perfilAcessoSelect = element(by.id('field_perfilAcesso'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
-  }
-
-  async setUUIDInput(uUID: string): Promise<void> {
-    await this.uUIDInput.sendKeys(uUID);
-  }
-
-  async getUUIDInput(): Promise<string> {
-    return await this.uUIDInput.getAttribute('value');
-  }
-
-  async setNomeInput(nome: string): Promise<void> {
-    await this.nomeInput.sendKeys(nome);
-  }
-
-  async getNomeInput(): Promise<string> {
-    return await this.nomeInput.getAttribute('value');
-  }
-
-  async setRGInput(rG: string): Promise<void> {
-    await this.rGInput.sendKeys(rG);
-  }
-
-  async getRGInput(): Promise<string> {
-    return await this.rGInput.getAttribute('value');
-  }
-
-  async setCPFInput(cPF: string): Promise<void> {
-    await this.cPFInput.sendKeys(cPF);
-  }
-
-  async getCPFInput(): Promise<string> {
-    return await this.cPFInput.getAttribute('value');
   }
 
   async perfilAcessoSelectLastOption(): Promise<void> {

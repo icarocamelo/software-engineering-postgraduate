@@ -15,7 +15,10 @@
       },
       "detail": {
         "title": "Consulta"
-      }
+      },
+      "descricao": "Descricao",
+      "preco": "Preco",
+      "codigo": "Codigo"
     }
   }
 }

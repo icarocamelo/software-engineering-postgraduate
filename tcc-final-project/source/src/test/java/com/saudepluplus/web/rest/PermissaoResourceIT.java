@@ -30,8 +30,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class PermissaoResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
+    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    private static final String UPDATED_NOME = "BBBBBBBBBB";
 
     @Autowired
     private PermissaoRepository permissaoRepository;
@@ -52,7 +52,7 @@ public class PermissaoResourceIT {
      */
     public static Permissao createEntity(EntityManager em) {
         Permissao permissao = new Permissao()
-            .uUID(DEFAULT_U_UID);
+            .nome(DEFAULT_NOME);
         return permissao;
     }
     /**
@@ -63,7 +63,7 @@ public class PermissaoResourceIT {
      */
     public static Permissao createUpdatedEntity(EntityManager em) {
         Permissao permissao = new Permissao()
-            .uUID(UPDATED_U_UID);
+            .nome(UPDATED_NOME);
         return permissao;
     }
 
@@ -86,7 +86,7 @@ public class PermissaoResourceIT {
         List<Permissao> permissaoList = permissaoRepository.findAll();
         assertThat(permissaoList).hasSize(databaseSizeBeforeCreate + 1);
         Permissao testPermissao = permissaoList.get(permissaoList.size() - 1);
-        assertThat(testPermissao.getuUID()).isEqualTo(DEFAULT_U_UID);
+        assertThat(testPermissao.getNome()).isEqualTo(DEFAULT_NOME);
     }
 
     @Test
@@ -120,7 +120,7 @@ public class PermissaoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(permissao.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)));
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)));
     }
     
     @Test
@@ -134,7 +134,7 @@ public class PermissaoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(permissao.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID));
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME));
     }
     @Test
     @Transactional
@@ -157,7 +157,7 @@ public class PermissaoResourceIT {
         // Disconnect from session so that the updates on updatedPermissao are not directly saved in db
         em.detach(updatedPermissao);
         updatedPermissao
-            .uUID(UPDATED_U_UID);
+            .nome(UPDATED_NOME);
 
         restPermissaoMockMvc.perform(put("/api/permissaos").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -168,7 +168,7 @@ public class PermissaoResourceIT {
         List<Permissao> permissaoList = permissaoRepository.findAll();
         assertThat(permissaoList).hasSize(databaseSizeBeforeUpdate);
         Permissao testPermissao = permissaoList.get(permissaoList.size() - 1);
-        assertThat(testPermissao.getuUID()).isEqualTo(UPDATED_U_UID);
+        assertThat(testPermissao.getNome()).isEqualTo(UPDATED_NOME);
     }
 
     @Test

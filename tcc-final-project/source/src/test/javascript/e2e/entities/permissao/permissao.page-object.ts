@@ -29,18 +29,36 @@ export class PermissaoUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  uUIDInput = element(by.id('field_uUID'));
+  nomeInput = element(by.id('field_nome'));
+
+  perfilAcessoSelect = element(by.id('field_perfilAcesso'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
 
-  async setUUIDInput(uUID: string): Promise<void> {
-    await this.uUIDInput.sendKeys(uUID);
+  async setNomeInput(nome: string): Promise<void> {
+    await this.nomeInput.sendKeys(nome);
   }
 
-  async getUUIDInput(): Promise<string> {
-    return await this.uUIDInput.getAttribute('value');
+  async getNomeInput(): Promise<string> {
+    return await this.nomeInput.getAttribute('value');
+  }
+
+  async perfilAcessoSelectLastOption(): Promise<void> {
+    await this.perfilAcessoSelect.all(by.tagName('option')).last().click();
+  }
+
+  async perfilAcessoSelectOption(option: string): Promise<void> {
+    await this.perfilAcessoSelect.sendKeys(option);
+  }
+
+  getPerfilAcessoSelect(): ElementFinder {
+    return this.perfilAcessoSelect;
+  }
+
+  async getPerfilAcessoSelectedOption(): Promise<string> {
+    return await this.perfilAcessoSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

@@ -23,28 +23,12 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.unidadeSaude.uUID">U UID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.unidadeSaude.endereco">Endereco</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.unidadeSaude.cNPJ">C NPJ</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.unidadeSaude.telefone">Telefone</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.unidadeSaude.cEP">C EP</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.unidadeSaude.razaoSocial">Razao Social</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.unidadeSaude.nomeFantasia">Nome Fantasia</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.unidadeSaude.tipoUnidadeSaude">Tipo Unidade Saude</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let unidadeSaude of unidadeSaudes ;trackBy: trackId">
                     <td><a [routerLink]="['/unidade-saude', unidadeSaude.id, 'view']">{{ unidadeSaude.id }}</a></td>
-                    <td>{{ unidadeSaude.uUID }}</td>
-                    <td>{{ unidadeSaude.endereco }}</td>
-                    <td>{{ unidadeSaude.cNPJ }}</td>
-                    <td>{{ unidadeSaude.telefone }}</td>
-                    <td>{{ unidadeSaude.cEP }}</td>
-                    <td>{{ unidadeSaude.razaoSocial }}</td>
-                    <td>{{ unidadeSaude.nomeFantasia }}</td>
-                    <td jhiTranslate="{{ 'saudepluplusApp.TipoUnidadeSaude.' + unidadeSaude.tipoUnidadeSaude }}">{{ unidadeSaude.tipoUnidadeSaude }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

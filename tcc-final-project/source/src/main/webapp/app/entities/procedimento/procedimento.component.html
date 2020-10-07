@@ -23,20 +23,48 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.uUID">U UID</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.descricao">Descricao</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.preco">Preco</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.codigo">Codigo</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.paciente">Paciente</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.profissionalDeSaude">Profissional De Saude</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.endereco">Endereco</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.agenda">Agenda</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.procedimento.prontuario">Prontuario</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let procedimento of procedimentos ;trackBy: trackId">
                     <td><a [routerLink]="['/procedimento', procedimento.id, 'view']">{{ procedimento.id }}</a></td>
-                    <td>{{ procedimento.uUID }}</td>
                     <td>{{ procedimento.descricao }}</td>
                     <td>{{ procedimento.preco }}</td>
                     <td>{{ procedimento.codigo }}</td>
+                    <td>
+                        <div *ngIf="procedimento.paciente">
+                            <a [routerLink]="['/paciente', procedimento.paciente?.id, 'view']" >{{ procedimento.paciente?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="procedimento.profissionalDeSaude">
+                            <a [routerLink]="['/profissional-de-saude', procedimento.profissionalDeSaude?.id, 'view']" >{{ procedimento.profissionalDeSaude?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="procedimento.endereco">
+                            <a [routerLink]="['/endereco', procedimento.endereco?.id, 'view']" >{{ procedimento.endereco?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="procedimento.agenda">
+                            <a [routerLink]="['/agenda', procedimento.agenda?.id, 'view']" >{{ procedimento.agenda?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="procedimento.prontuario">
+                            <a [routerLink]="['/prontuario', procedimento.prontuario?.id, 'view']" >{{ procedimento.prontuario?.id }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

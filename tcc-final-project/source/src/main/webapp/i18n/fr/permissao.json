@@ -16,7 +16,8 @@
       "detail": {
         "title": "Permissao"
       },
-      "uUID": "U UID"
+      "nome": "Nome",
+      "perfilAcesso": "Perfil Acesso"
     }
   }
 }

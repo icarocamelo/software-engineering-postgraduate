@@ -30,8 +30,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class MedicamentoResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
+    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    private static final String UPDATED_NOME = "BBBBBBBBBB";
 
     @Autowired
     private MedicamentoRepository medicamentoRepository;
@@ -52,7 +52,7 @@ public class MedicamentoResourceIT {
      */
     public static Medicamento createEntity(EntityManager em) {
         Medicamento medicamento = new Medicamento()
-            .uUID(DEFAULT_U_UID);
+            .nome(DEFAULT_NOME);
         return medicamento;
     }
     /**
@@ -63,7 +63,7 @@ public class MedicamentoResourceIT {
      */
     public static Medicamento createUpdatedEntity(EntityManager em) {
         Medicamento medicamento = new Medicamento()
-            .uUID(UPDATED_U_UID);
+            .nome(UPDATED_NOME);
         return medicamento;
     }
 
@@ -86,7 +86,7 @@ public class MedicamentoResourceIT {
         List<Medicamento> medicamentoList = medicamentoRepository.findAll();
         assertThat(medicamentoList).hasSize(databaseSizeBeforeCreate + 1);
         Medicamento testMedicamento = medicamentoList.get(medicamentoList.size() - 1);
-        assertThat(testMedicamento.getuUID()).isEqualTo(DEFAULT_U_UID);
+        assertThat(testMedicamento.getNome()).isEqualTo(DEFAULT_NOME);
     }
 
     @Test
@@ -120,7 +120,7 @@ public class MedicamentoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(medicamento.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)));
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)));
     }
     
     @Test
@@ -134,7 +134,7 @@ public class MedicamentoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(medicamento.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID));
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME));
     }
     @Test
     @Transactional
@@ -157,7 +157,7 @@ public class MedicamentoResourceIT {
         // Disconnect from session so that the updates on updatedMedicamento are not directly saved in db
         em.detach(updatedMedicamento);
         updatedMedicamento
-            .uUID(UPDATED_U_UID);
+            .nome(UPDATED_NOME);
 
         restMedicamentoMockMvc.perform(put("/api/medicamentos").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -168,7 +168,7 @@ public class MedicamentoResourceIT {
         List<Medicamento> medicamentoList = medicamentoRepository.findAll();
         assertThat(medicamentoList).hasSize(databaseSizeBeforeUpdate);
         Medicamento testMedicamento = medicamentoList.get(medicamentoList.size() - 1);
-        assertThat(testMedicamento.getuUID()).isEqualTo(UPDATED_U_UID);
+        assertThat(testMedicamento.getNome()).isEqualTo(UPDATED_NOME);
     }
 
     @Test

@@ -41,14 +41,12 @@ describe('Vacina e2e test', () => {
     await vacinaComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      vacinaUpdatePage.setUUIDInput('uUID'),
       vacinaUpdatePage.setNomeInput('nome'),
       vacinaUpdatePage.setLoteInput('lote'),
       vacinaUpdatePage.setDataAplicacaoInput('2000-12-31'),
       vacinaUpdatePage.cartaoVacinaSelectLastOption(),
     ]);
 
-    expect(await vacinaUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
     expect(await vacinaUpdatePage.getNomeInput()).to.eq('nome', 'Expected Nome value to be equals to nome');
     expect(await vacinaUpdatePage.getLoteInput()).to.eq('lote', 'Expected Lote value to be equals to lote');
     expect(await vacinaUpdatePage.getDataAplicacaoInput()).to.eq('2000-12-31', 'Expected dataAplicacao value to be equals to 2000-12-31');

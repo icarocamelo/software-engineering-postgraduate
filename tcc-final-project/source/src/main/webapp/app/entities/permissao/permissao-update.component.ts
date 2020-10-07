@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IPermissao, Permissao } from 'app/shared/model/permissao.model';
 import { PermissaoService } from './permissao.service';
+import { IPerfilAcesso } from 'app/shared/model/perfil-acesso.model';
+import { PerfilAcessoService } from 'app/entities/perfil-acesso/perfil-acesso.service';
 
 @Component({
   selector: 'jhi-permissao-update',
@@ -14,24 +16,34 @@ import { PermissaoService } from './permissao.service';
 })
 export class PermissaoUpdateComponent implements OnInit {
   isSaving = false;
+  perfilacessos: IPerfilAcesso[] = [];
 
   editForm = this.fb.group({
     id: [],
-    uUID: [],
+    nome: [],
+    perfilAcesso: [],
   });
 
-  constructor(protected permissaoService: PermissaoService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected permissaoService: PermissaoService,
+    protected perfilAcessoService: PerfilAcessoService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ permissao }) => {
       this.updateForm(permissao);
+
+      this.perfilAcessoService.query().subscribe((res: HttpResponse<IPerfilAcesso[]>) => (this.perfilacessos = res.body || []));
     });
   }
 
   updateForm(permissao: IPermissao): void {
     this.editForm.patchValue({
       id: permissao.id,
-      uUID: permissao.uUID,
+      nome: permissao.nome,
+      perfilAcesso: permissao.perfilAcesso,
     });
   }
 
@@ -53,7 +65,8 @@ export class PermissaoUpdateComponent implements OnInit {
     return {
       ...new Permissao(),
       id: this.editForm.get(['id'])!.value,
-      uUID: this.editForm.get(['uUID'])!.value,
+      nome: this.editForm.get(['nome'])!.value,
+      perfilAcesso: this.editForm.get(['perfilAcesso'])!.value,
     };
   }
 
@@ -71,5 +84,9 @@ export class PermissaoUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IPerfilAcesso): any {
+    return item.id;
   }
 }

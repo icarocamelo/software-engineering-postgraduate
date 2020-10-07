@@ -10,6 +10,52 @@
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.clinicaMedica.cNPJ" for="field_cNPJ">C NPJ</label>
+                    <input type="text" class="form-control" name="cNPJ" id="field_cNPJ"
+                           formControlName="cNPJ"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.clinicaMedica.telefone" for="field_telefone">Telefone</label>
+                    <input type="text" class="form-control" name="telefone" id="field_telefone"
+                           formControlName="telefone"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.clinicaMedica.cEP" for="field_cEP">C EP</label>
+                    <input type="text" class="form-control" name="cEP" id="field_cEP"
+                           formControlName="cEP"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.clinicaMedica.razaoSocial" for="field_razaoSocial">Razao Social</label>
+                    <input type="text" class="form-control" name="razaoSocial" id="field_razaoSocial"
+                           formControlName="razaoSocial"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.clinicaMedica.nomeFantasia" for="field_nomeFantasia">Nome Fantasia</label>
+                    <input type="text" class="form-control" name="nomeFantasia" id="field_nomeFantasia"
+                           formControlName="nomeFantasia"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.clinicaMedica.tipoUnidadeSaude" for="field_tipoUnidadeSaude">Tipo Unidade Saude</label>
+                    <select class="form-control" name="tipoUnidadeSaude" formControlName="tipoUnidadeSaude" id="field_tipoUnidadeSaude">
+                        <option value="PUBLICA">{{ 'saudepluplusApp.TipoUnidadeSaude.PUBLICA' | translate }}</option>
+                        <option value="PARTICULAR">{{ 'saudepluplusApp.TipoUnidadeSaude.PARTICULAR' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.clinicaMedica.endereco" for="field_endereco">Endereco</label>
+                    <select class="form-control" id="field_endereco" name="endereco" formControlName="endereco">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="enderecoOption.id === editForm.get('endereco')!.value?.id ? editForm.get('endereco')!.value : enderecoOption" *ngFor="let enderecoOption of enderecos; trackBy: trackById">{{ enderecoOption.id }}</option>
+                    </select>
+                </div>
             </div>
 
             <div>

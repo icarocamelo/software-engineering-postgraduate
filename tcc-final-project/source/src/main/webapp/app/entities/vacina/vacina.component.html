@@ -23,7 +23,6 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="saudepluplusApp.vacina.uUID">U UID</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.vacina.nome">Nome</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.vacina.lote">Lote</span></th>
                     <th scope="col" ><span jhiTranslate="saudepluplusApp.vacina.dataAplicacao">Data Aplicacao</span></th>
@@ -34,7 +33,6 @@
             <tbody>
                 <tr *ngFor="let vacina of vacinas ;trackBy: trackId">
                     <td><a [routerLink]="['/vacina', vacina.id, 'view']">{{ vacina.id }}</a></td>
-                    <td>{{ vacina.uUID }}</td>
                     <td>{{ vacina.nome }}</td>
                     <td>{{ vacina.lote }}</td>
                     <td>{{ vacina.dataAplicacao | date:'mediumDate' }}</td>

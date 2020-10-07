@@ -15,7 +15,9 @@
       },
       "detail": {
         "title": "Hospital"
-      }
+      },
+      "nome": "Nome",
+      "leitos": "Leitos"
     }
   }
 }

@@ -12,12 +12,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="saudepluplusApp.procedimento.uUID" for="field_uUID">U UID</label>
-                    <input type="text" class="form-control" name="uUID" id="field_uUID"
-                           formControlName="uUID"/>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="saudepluplusApp.procedimento.descricao" for="field_descricao">Descricao</label>
                     <input type="text" class="form-control" name="descricao" id="field_descricao"
                            formControlName="descricao"/>
@@ -33,6 +27,46 @@
                     <label class="form-control-label" jhiTranslate="saudepluplusApp.procedimento.codigo" for="field_codigo">Codigo</label>
                     <input type="text" class="form-control" name="codigo" id="field_codigo"
                            formControlName="codigo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.procedimento.paciente" for="field_paciente">Paciente</label>
+                    <select class="form-control" id="field_paciente" name="paciente" formControlName="paciente">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="pacienteOption.id === editForm.get('paciente')!.value?.id ? editForm.get('paciente')!.value : pacienteOption" *ngFor="let pacienteOption of pacientes; trackBy: trackById">{{ pacienteOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.procedimento.profissionalDeSaude" for="field_profissionalDeSaude">Profissional De Saude</label>
+                    <select class="form-control" id="field_profissionalDeSaude" name="profissionalDeSaude" formControlName="profissionalDeSaude">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="profissionalDeSaudeOption.id === editForm.get('profissionalDeSaude')!.value?.id ? editForm.get('profissionalDeSaude')!.value : profissionalDeSaudeOption" *ngFor="let profissionalDeSaudeOption of profissionaldesaudes; trackBy: trackById">{{ profissionalDeSaudeOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.procedimento.endereco" for="field_endereco">Endereco</label>
+                    <select class="form-control" id="field_endereco" name="endereco" formControlName="endereco">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="enderecoOption.id === editForm.get('endereco')!.value?.id ? editForm.get('endereco')!.value : enderecoOption" *ngFor="let enderecoOption of enderecos; trackBy: trackById">{{ enderecoOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.procedimento.agenda" for="field_agenda">Agenda</label>
+                    <select class="form-control" id="field_agenda" name="agenda" formControlName="agenda">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="agendaOption.id === editForm.get('agenda')!.value?.id ? editForm.get('agenda')!.value : agendaOption" *ngFor="let agendaOption of agenda; trackBy: trackById">{{ agendaOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.procedimento.prontuario" for="field_prontuario">Prontuario</label>
+                    <select class="form-control" id="field_prontuario" name="prontuario" formControlName="prontuario">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="prontuarioOption.id === editForm.get('prontuario')!.value?.id ? editForm.get('prontuario')!.value : prontuarioOption" *ngFor="let prontuarioOption of prontuarios; trackBy: trackById">{{ prontuarioOption.id }}</option>
+                    </select>
                 </div>
             </div>
 

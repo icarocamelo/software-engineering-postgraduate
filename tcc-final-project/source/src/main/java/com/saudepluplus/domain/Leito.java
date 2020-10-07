@@ -1,5 +1,6 @@
 package com.saudepluplus.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -19,8 +20,12 @@ public class Leito implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "u_uid")
-    private String uUID;
+    @Column(name = "identificacao")
+    private String identificacao;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "leitos", allowSetters = true)
+    private Hospital hospital;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -31,17 +36,30 @@ public class Leito implements Serializable {
         this.id = id;
     }
 
-    public String getuUID() {
-        return uUID;
+    public String getIdentificacao() {
+        return identificacao;
     }
 
-    public Leito uUID(String uUID) {
-        this.uUID = uUID;
+    public Leito identificacao(String identificacao) {
+        this.identificacao = identificacao;
         return this;
     }
 
-    public void setuUID(String uUID) {
-        this.uUID = uUID;
+    public void setIdentificacao(String identificacao) {
+        this.identificacao = identificacao;
+    }
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public Leito hospital(Hospital hospital) {
+        this.hospital = hospital;
+        return this;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -66,7 +84,7 @@ public class Leito implements Serializable {
     public String toString() {
         return "Leito{" +
             "id=" + getId() +
-            ", uUID='" + getuUID() + "'" +
+            ", identificacao='" + getIdentificacao() + "'" +
             "}";
     }
 }

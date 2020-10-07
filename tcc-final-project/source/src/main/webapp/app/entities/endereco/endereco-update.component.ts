@@ -17,7 +17,6 @@ export class EnderecoUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    uUID: [],
     tipo: [],
     numero: [],
     pais: [],
@@ -39,7 +38,6 @@ export class EnderecoUpdateComponent implements OnInit {
   updateForm(endereco: IEndereco): void {
     this.editForm.patchValue({
       id: endereco.id,
-      uUID: endereco.uUID,
       tipo: endereco.tipo,
       numero: endereco.numero,
       pais: endereco.pais,
@@ -69,7 +67,6 @@ export class EnderecoUpdateComponent implements OnInit {
     return {
       ...new Endereco(),
       id: this.editForm.get(['id'])!.value,
-      uUID: this.editForm.get(['uUID'])!.value,
       tipo: this.editForm.get(['tipo'])!.value,
       numero: this.editForm.get(['numero'])!.value,
       pais: this.editForm.get(['pais'])!.value,

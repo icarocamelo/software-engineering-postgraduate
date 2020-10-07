@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(CartaoVacinaService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new CartaoVacina(0, 'AAAAAAA');
+      elemDefault = new CartaoVacina(0);
     });
 
     describe('Service methods', () => {
@@ -52,12 +52,7 @@ describe('Service Tests', () => {
       });
 
       it('should update a CartaoVacina', () => {
-        const returnedFromService = Object.assign(
-          {
-            uUID: 'BBBBBB',
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -69,12 +64,7 @@ describe('Service Tests', () => {
       });
 
       it('should return a list of CartaoVacina', () => {
-        const returnedFromService = Object.assign(
-          {
-            uUID: 'BBBBBB',
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
 
         const expected = Object.assign({}, returnedFromService);
 

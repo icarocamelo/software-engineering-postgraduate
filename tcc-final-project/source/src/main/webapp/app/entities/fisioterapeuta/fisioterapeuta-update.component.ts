@@ -17,6 +17,10 @@ export class FisioterapeutaUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    nome: [],
+    rG: [],
+    cPF: [],
+    numeroRegistro: [],
   });
 
   constructor(protected fisioterapeutaService: FisioterapeutaService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -30,6 +34,10 @@ export class FisioterapeutaUpdateComponent implements OnInit {
   updateForm(fisioterapeuta: IFisioterapeuta): void {
     this.editForm.patchValue({
       id: fisioterapeuta.id,
+      nome: fisioterapeuta.nome,
+      rG: fisioterapeuta.rG,
+      cPF: fisioterapeuta.cPF,
+      numeroRegistro: fisioterapeuta.numeroRegistro,
     });
   }
 
@@ -51,6 +59,10 @@ export class FisioterapeutaUpdateComponent implements OnInit {
     return {
       ...new Fisioterapeuta(),
       id: this.editForm.get(['id'])!.value,
+      nome: this.editForm.get(['nome'])!.value,
+      rG: this.editForm.get(['rG'])!.value,
+      cPF: this.editForm.get(['cPF'])!.value,
+      numeroRegistro: this.editForm.get(['numeroRegistro'])!.value,
     };
   }
 

@@ -15,15 +15,7 @@
       },
       "detail": {
         "title": "Unidade Saude"
-      },
-      "uUID": "U UID",
-      "endereco": "Endereco",
-      "cNPJ": "C NPJ",
-      "telefone": "Telefone",
-      "cEP": "C EP",
-      "razaoSocial": "Razao Social",
-      "nomeFantasia": "Nome Fantasia",
-      "tipoUnidadeSaude": "Tipo Unidade Saude"
+      }
     }
   }
 }

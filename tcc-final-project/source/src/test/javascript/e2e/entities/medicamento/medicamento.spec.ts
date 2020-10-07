@@ -43,9 +43,9 @@ describe('Medicamento e2e test', () => {
 
     await medicamentoComponentsPage.clickOnCreateButton();
 
-    await promise.all([medicamentoUpdatePage.setUUIDInput('uUID'), medicamentoUpdatePage.farmaciaSelectLastOption()]);
+    await promise.all([medicamentoUpdatePage.setNomeInput('nome'), medicamentoUpdatePage.farmaciaSelectLastOption()]);
 
-    expect(await medicamentoUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
+    expect(await medicamentoUpdatePage.getNomeInput()).to.eq('nome', 'Expected Nome value to be equals to nome');
 
     await medicamentoUpdatePage.save();
     expect(await medicamentoUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

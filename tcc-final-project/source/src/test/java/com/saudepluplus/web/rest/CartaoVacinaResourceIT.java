@@ -30,9 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class CartaoVacinaResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
-
     @Autowired
     private CartaoVacinaRepository cartaoVacinaRepository;
 
@@ -51,8 +48,7 @@ public class CartaoVacinaResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static CartaoVacina createEntity(EntityManager em) {
-        CartaoVacina cartaoVacina = new CartaoVacina()
-            .uUID(DEFAULT_U_UID);
+        CartaoVacina cartaoVacina = new CartaoVacina();
         return cartaoVacina;
     }
     /**
@@ -62,8 +58,7 @@ public class CartaoVacinaResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static CartaoVacina createUpdatedEntity(EntityManager em) {
-        CartaoVacina cartaoVacina = new CartaoVacina()
-            .uUID(UPDATED_U_UID);
+        CartaoVacina cartaoVacina = new CartaoVacina();
         return cartaoVacina;
     }
 
@@ -86,7 +81,6 @@ public class CartaoVacinaResourceIT {
         List<CartaoVacina> cartaoVacinaList = cartaoVacinaRepository.findAll();
         assertThat(cartaoVacinaList).hasSize(databaseSizeBeforeCreate + 1);
         CartaoVacina testCartaoVacina = cartaoVacinaList.get(cartaoVacinaList.size() - 1);
-        assertThat(testCartaoVacina.getuUID()).isEqualTo(DEFAULT_U_UID);
     }
 
     @Test
@@ -119,8 +113,7 @@ public class CartaoVacinaResourceIT {
         restCartaoVacinaMockMvc.perform(get("/api/cartao-vacinas?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(cartaoVacina.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(cartaoVacina.getId().intValue())));
     }
     
     @Test
@@ -133,8 +126,7 @@ public class CartaoVacinaResourceIT {
         restCartaoVacinaMockMvc.perform(get("/api/cartao-vacinas/{id}", cartaoVacina.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(cartaoVacina.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID));
+            .andExpect(jsonPath("$.id").value(cartaoVacina.getId().intValue()));
     }
     @Test
     @Transactional
@@ -156,8 +148,6 @@ public class CartaoVacinaResourceIT {
         CartaoVacina updatedCartaoVacina = cartaoVacinaRepository.findById(cartaoVacina.getId()).get();
         // Disconnect from session so that the updates on updatedCartaoVacina are not directly saved in db
         em.detach(updatedCartaoVacina);
-        updatedCartaoVacina
-            .uUID(UPDATED_U_UID);
 
         restCartaoVacinaMockMvc.perform(put("/api/cartao-vacinas").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -168,7 +158,6 @@ public class CartaoVacinaResourceIT {
         List<CartaoVacina> cartaoVacinaList = cartaoVacinaRepository.findAll();
         assertThat(cartaoVacinaList).hasSize(databaseSizeBeforeUpdate);
         CartaoVacina testCartaoVacina = cartaoVacinaList.get(cartaoVacinaList.size() - 1);
-        assertThat(testCartaoVacina.getuUID()).isEqualTo(UPDATED_U_UID);
     }
 
     @Test

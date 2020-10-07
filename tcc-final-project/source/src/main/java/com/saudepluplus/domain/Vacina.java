@@ -21,9 +21,6 @@ public class Vacina implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "u_uid")
-    private String uUID;
-
     @Column(name = "nome")
     private String nome;
 
@@ -44,19 +41,6 @@ public class Vacina implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getuUID() {
-        return uUID;
-    }
-
-    public Vacina uUID(String uUID) {
-        this.uUID = uUID;
-        return this;
-    }
-
-    public void setuUID(String uUID) {
-        this.uUID = uUID;
     }
 
     public String getNome() {
@@ -133,7 +117,6 @@ public class Vacina implements Serializable {
     public String toString() {
         return "Vacina{" +
             "id=" + getId() +
-            ", uUID='" + getuUID() + "'" +
             ", nome='" + getNome() + "'" +
             ", lote='" + getLote() + "'" +
             ", dataAplicacao='" + getDataAplicacao() + "'" +

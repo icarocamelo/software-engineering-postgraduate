@@ -16,10 +16,14 @@
       "detail": {
         "title": "Procedimento"
       },
-      "uUID": "U UID",
       "descricao": "Descricao",
       "preco": "Preco",
-      "codigo": "Codigo"
+      "codigo": "Codigo",
+      "paciente": "Paciente",
+      "profissionalDeSaude": "Profissional De Saude",
+      "endereco": "Endereco",
+      "agenda": "Agenda",
+      "prontuario": "Prontuario"
     }
   }
 }

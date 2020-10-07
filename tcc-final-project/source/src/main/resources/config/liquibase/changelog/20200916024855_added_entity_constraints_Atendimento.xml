@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Atendimento.
+    -->
+    <changeSet id="20200916024855-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="paciente_id"
+                                 baseTableName="atendimento"
+                                 constraintName="fk_atendimento_paciente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="paciente"/>
+
+        <addForeignKeyConstraint baseColumnNames="profissional_de_saude_id"
+                                 baseTableName="atendimento"
+                                 constraintName="fk_atendimento_profissional_de_saude_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profissional_de_saude"/>
+
+        <addForeignKeyConstraint baseColumnNames="endereco_id"
+                                 baseTableName="atendimento"
+                                 constraintName="fk_atendimento_endereco_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="endereco"/>
+
+        <addForeignKeyConstraint baseColumnNames="agenda_id"
+                                 baseTableName="atendimento"
+                                 constraintName="fk_atendimento_agenda_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="agenda"/>
+
+        <addForeignKeyConstraint baseColumnNames="prontuario_id"
+                                 baseTableName="atendimento"
+                                 constraintName="fk_atendimento_prontuario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="prontuario"/>
+
+    </changeSet>
+</databaseChangeLog>

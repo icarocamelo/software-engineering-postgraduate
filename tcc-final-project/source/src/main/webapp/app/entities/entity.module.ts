@@ -113,6 +113,14 @@ import { RouterModule } from '@angular/router';
         path: 'permissao',
         loadChildren: () => import('./permissao/permissao.module').then(m => m.SaudepluplusPermissaoModule),
       },
+      {
+        path: 'prontuario',
+        loadChildren: () => import('./prontuario/prontuario.module').then(m => m.SaudepluplusProntuarioModule),
+      },
+      {
+        path: 'usuario',
+        loadChildren: () => import('./usuario/usuario.module').then(m => m.SaudepluplusUsuarioModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

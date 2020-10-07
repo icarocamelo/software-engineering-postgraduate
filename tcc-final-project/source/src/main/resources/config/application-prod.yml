@@ -35,7 +35,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://localhost:5432/saudepluplus
     username: saudepluplus
-    password:
+    password: saudepluplus
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -44,7 +44,7 @@ spring:
     show-sql: false
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
-    contexts: prod
+    contexts: faker
   mail:
     host: localhost
     port: 25

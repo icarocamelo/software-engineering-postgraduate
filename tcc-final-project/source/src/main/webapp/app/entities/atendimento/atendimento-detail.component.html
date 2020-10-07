@@ -8,9 +8,39 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="saudepluplusApp.atendimento.uUID">U UID</span></dt>
+                <dt><span jhiTranslate="saudepluplusApp.atendimento.data">Data</span></dt>
                 <dd>
-                    <span>{{ atendimento.uUID }}</span>
+                    <span>{{ atendimento.data }}</span>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.atendimento.paciente">Paciente</span></dt>
+                <dd>
+                    <div *ngIf="atendimento.paciente">
+                        <a [routerLink]="['/paciente', atendimento.paciente?.id, 'view']">{{ atendimento.paciente?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.atendimento.profissionalDeSaude">Profissional De Saude</span></dt>
+                <dd>
+                    <div *ngIf="atendimento.profissionalDeSaude">
+                        <a [routerLink]="['/profissional-de-saude', atendimento.profissionalDeSaude?.id, 'view']">{{ atendimento.profissionalDeSaude?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.atendimento.endereco">Endereco</span></dt>
+                <dd>
+                    <div *ngIf="atendimento.endereco">
+                        <a [routerLink]="['/endereco', atendimento.endereco?.id, 'view']">{{ atendimento.endereco?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.atendimento.agenda">Agenda</span></dt>
+                <dd>
+                    <div *ngIf="atendimento.agenda">
+                        <a [routerLink]="['/agenda', atendimento.agenda?.id, 'view']">{{ atendimento.agenda?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="saudepluplusApp.atendimento.prontuario">Prontuario</span></dt>
+                <dd>
+                    <div *ngIf="atendimento.prontuario">
+                        <a [routerLink]="['/prontuario', atendimento.prontuario?.id, 'view']">{{ atendimento.prontuario?.id }}</a>
+                    </div>
                 </dd>
             </dl>
 

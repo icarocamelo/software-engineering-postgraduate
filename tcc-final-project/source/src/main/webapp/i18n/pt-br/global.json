@@ -34,6 +34,8 @@
         "agendaExame": "Agenda Exame",
         "perfilAcesso": "Perfil Acesso",
         "permissao": "Permissao",
+        "prontuario": "Prontuario",
+        "usuario": "Usuario",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

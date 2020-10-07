@@ -12,15 +12,45 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="saudepluplusApp.agenda.uUID" for="field_uUID">U UID</label>
-                    <input type="text" class="form-control" name="uUID" id="field_uUID"
-                           formControlName="uUID"/>
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.agenda.data" for="field_data">Data</label>
+                    <div class="input-group">
+                        <input id="field_data" type="text" class="form-control" name="data" ngbDatepicker #dataDp="ngbDatepicker" formControlName="data"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dataDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="saudepluplusApp.agenda.data" for="field_data">Data</label>
-                    <input type="text" class="form-control" name="data" id="field_data"
-                           formControlName="data"/>
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.agenda.medico" for="field_medico">Medico</label>
+                    <select class="form-control" id="field_medico" name="medico" formControlName="medico">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="medicoOption.id === editForm.get('medico')!.value?.id ? editForm.get('medico')!.value : medicoOption" *ngFor="let medicoOption of medicos; trackBy: trackById">{{ medicoOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.agenda.fisioterapeuta" for="field_fisioterapeuta">Fisioterapeuta</label>
+                    <select class="form-control" id="field_fisioterapeuta" name="fisioterapeuta" formControlName="fisioterapeuta">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="fisioterapeutaOption.id === editForm.get('fisioterapeuta')!.value?.id ? editForm.get('fisioterapeuta')!.value : fisioterapeutaOption" *ngFor="let fisioterapeutaOption of fisioterapeutas; trackBy: trackById">{{ fisioterapeutaOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.agenda.enfermeiro" for="field_enfermeiro">Enfermeiro</label>
+                    <select class="form-control" id="field_enfermeiro" name="enfermeiro" formControlName="enfermeiro">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="enfermeiroOption.id === editForm.get('enfermeiro')!.value?.id ? editForm.get('enfermeiro')!.value : enfermeiroOption" *ngFor="let enfermeiroOption of enfermeiros; trackBy: trackById">{{ enfermeiroOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="saudepluplusApp.agenda.psicologo" for="field_psicologo">Psicologo</label>
+                    <select class="form-control" id="field_psicologo" name="psicologo" formControlName="psicologo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="psicologoOption.id === editForm.get('psicologo')!.value?.id ? editForm.get('psicologo')!.value : psicologoOption" *ngFor="let psicologoOption of psicologos; trackBy: trackById">{{ psicologoOption.id }}</option>
+                    </select>
                 </div>
             </div>
 

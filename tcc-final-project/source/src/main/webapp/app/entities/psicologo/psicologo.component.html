@@ -23,12 +23,20 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.psicologo.nome">Nome</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.psicologo.rG">R G</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.psicologo.cPF">C PF</span></th>
+                    <th scope="col" ><span jhiTranslate="saudepluplusApp.psicologo.numeroRegistro">Numero Registro</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let psicologo of psicologos ;trackBy: trackId">
                     <td><a [routerLink]="['/psicologo', psicologo.id, 'view']">{{ psicologo.id }}</a></td>
+                    <td>{{ psicologo.nome }}</td>
+                    <td>{{ psicologo.rG }}</td>
+                    <td>{{ psicologo.cPF }}</td>
+                    <td>{{ psicologo.numeroRegistro }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

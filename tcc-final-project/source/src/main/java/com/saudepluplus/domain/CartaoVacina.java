@@ -21,9 +21,6 @@ public class CartaoVacina implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "u_uid")
-    private String uUID;
-
     @OneToMany(mappedBy = "cartaoVacina")
     private Set<Vacina> vacinas = new HashSet<>();
 
@@ -34,19 +31,6 @@ public class CartaoVacina implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getuUID() {
-        return uUID;
-    }
-
-    public CartaoVacina uUID(String uUID) {
-        this.uUID = uUID;
-        return this;
-    }
-
-    public void setuUID(String uUID) {
-        this.uUID = uUID;
     }
 
     public Set<Vacina> getVacinas() {
@@ -96,7 +80,6 @@ public class CartaoVacina implements Serializable {
     public String toString() {
         return "CartaoVacina{" +
             "id=" + getId() +
-            ", uUID='" + getuUID() + "'" +
             "}";
     }
 }

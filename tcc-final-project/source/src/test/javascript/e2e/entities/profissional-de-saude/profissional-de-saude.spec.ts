@@ -47,12 +47,7 @@ describe('ProfissionalDeSaude e2e test', () => {
 
     await profissionalDeSaudeComponentsPage.clickOnCreateButton();
 
-    await promise.all([profissionalDeSaudeUpdatePage.setNumeroRegistroInput('numeroRegistro')]);
-
-    expect(await profissionalDeSaudeUpdatePage.getNumeroRegistroInput()).to.eq(
-      'numeroRegistro',
-      'Expected NumeroRegistro value to be equals to numeroRegistro'
-    );
+    await promise.all([]);
 
     await profissionalDeSaudeUpdatePage.save();
     expect(await profissionalDeSaudeUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

@@ -14,6 +14,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,11 +32,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class AgendaResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
-
-    private static final String DEFAULT_DATA = "AAAAAAAAAA";
-    private static final String UPDATED_DATA = "BBBBBBBBBB";
+    private static final LocalDate DEFAULT_DATA = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private AgendaRepository agendaRepository;
@@ -55,7 +54,6 @@ public class AgendaResourceIT {
      */
     public static Agenda createEntity(EntityManager em) {
         Agenda agenda = new Agenda()
-            .uUID(DEFAULT_U_UID)
             .data(DEFAULT_DATA);
         return agenda;
     }
@@ -67,7 +65,6 @@ public class AgendaResourceIT {
      */
     public static Agenda createUpdatedEntity(EntityManager em) {
         Agenda agenda = new Agenda()
-            .uUID(UPDATED_U_UID)
             .data(UPDATED_DATA);
         return agenda;
     }
@@ -91,7 +88,6 @@ public class AgendaResourceIT {
         List<Agenda> agendaList = agendaRepository.findAll();
         assertThat(agendaList).hasSize(databaseSizeBeforeCreate + 1);
         Agenda testAgenda = agendaList.get(agendaList.size() - 1);
-        assertThat(testAgenda.getuUID()).isEqualTo(DEFAULT_U_UID);
         assertThat(testAgenda.getData()).isEqualTo(DEFAULT_DATA);
     }
 
@@ -126,8 +122,7 @@ public class AgendaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(agenda.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)))
-            .andExpect(jsonPath("$.[*].data").value(hasItem(DEFAULT_DATA)));
+            .andExpect(jsonPath("$.[*].data").value(hasItem(DEFAULT_DATA.toString())));
     }
     
     @Test
@@ -141,8 +136,7 @@ public class AgendaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(agenda.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID))
-            .andExpect(jsonPath("$.data").value(DEFAULT_DATA));
+            .andExpect(jsonPath("$.data").value(DEFAULT_DATA.toString()));
     }
     @Test
     @Transactional
@@ -165,7 +159,6 @@ public class AgendaResourceIT {
         // Disconnect from session so that the updates on updatedAgenda are not directly saved in db
         em.detach(updatedAgenda);
         updatedAgenda
-            .uUID(UPDATED_U_UID)
             .data(UPDATED_DATA);
 
         restAgendaMockMvc.perform(put("/api/agenda").with(csrf())
@@ -177,7 +170,6 @@ public class AgendaResourceIT {
         List<Agenda> agendaList = agendaRepository.findAll();
         assertThat(agendaList).hasSize(databaseSizeBeforeUpdate);
         Agenda testAgenda = agendaList.get(agendaList.size() - 1);
-        assertThat(testAgenda.getuUID()).isEqualTo(UPDATED_U_UID);
         assertThat(testAgenda.getData()).isEqualTo(UPDATED_DATA);
     }
 

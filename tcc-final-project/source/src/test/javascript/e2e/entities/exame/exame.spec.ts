@@ -40,7 +40,15 @@ describe('Exame e2e test', () => {
 
     await exameComponentsPage.clickOnCreateButton();
 
-    await promise.all([]);
+    await promise.all([
+      exameUpdatePage.setDescricaoInput('descricao'),
+      exameUpdatePage.setPrecoInput('5'),
+      exameUpdatePage.setCodigoInput('codigo'),
+    ]);
+
+    expect(await exameUpdatePage.getDescricaoInput()).to.eq('descricao', 'Expected Descricao value to be equals to descricao');
+    expect(await exameUpdatePage.getPrecoInput()).to.eq('5', 'Expected preco value to be equals to 5');
+    expect(await exameUpdatePage.getCodigoInput()).to.eq('codigo', 'Expected Codigo value to be equals to codigo');
 
     await exameUpdatePage.save();
     expect(await exameUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

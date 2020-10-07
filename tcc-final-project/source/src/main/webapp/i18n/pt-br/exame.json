@@ -15,7 +15,10 @@
       },
       "detail": {
         "title": "Exame"
-      }
+      },
+      "descricao": "Descricao",
+      "preco": "Preco",
+      "codigo": "Codigo"
     }
   }
 }

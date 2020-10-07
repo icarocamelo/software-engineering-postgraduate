@@ -24,20 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Paciente(
-        0,
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        currentDate,
-        'AAAAAAA',
-        0,
-        0,
-        'AAAAAAA',
-        'AAAAAAA'
-      );
+      elemDefault = new Paciente(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 'AAAAAAA', 0, 0, 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -82,11 +69,9 @@ describe('Service Tests', () => {
       it('should update a Paciente', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
             nome: 'BBBBBB',
             rG: 'BBBBBB',
             cPF: 'BBBBBB',
-            endereco: 'BBBBBB',
             dataNascimento: currentDate.format(DATE_FORMAT),
             telefone: 'BBBBBB',
             peso: 1,
@@ -114,11 +99,9 @@ describe('Service Tests', () => {
       it('should return a list of Paciente', () => {
         const returnedFromService = Object.assign(
           {
-            uUID: 'BBBBBB',
             nome: 'BBBBBB',
             rG: 'BBBBBB',
             cPF: 'BBBBBB',
-            endereco: 'BBBBBB',
             dataNascimento: currentDate.format(DATE_FORMAT),
             telefone: 'BBBBBB',
             peso: 1,

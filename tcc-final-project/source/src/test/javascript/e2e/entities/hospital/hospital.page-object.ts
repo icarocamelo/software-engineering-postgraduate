@@ -29,8 +29,18 @@ export class HospitalUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
+  nomeInput = element(by.id('field_nome'));
+
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
+  }
+
+  async setNomeInput(nome: string): Promise<void> {
+    await this.nomeInput.sendKeys(nome);
+  }
+
+  async getNomeInput(): Promise<string> {
+    return await this.nomeInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

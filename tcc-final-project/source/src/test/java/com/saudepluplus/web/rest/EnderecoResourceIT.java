@@ -30,9 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class EnderecoResourceIT {
 
-    private static final String DEFAULT_U_UID = "AAAAAAAAAA";
-    private static final String UPDATED_U_UID = "BBBBBBBBBB";
-
     private static final String DEFAULT_TIPO = "AAAAAAAAAA";
     private static final String UPDATED_TIPO = "BBBBBBBBBB";
 
@@ -76,7 +73,6 @@ public class EnderecoResourceIT {
      */
     public static Endereco createEntity(EntityManager em) {
         Endereco endereco = new Endereco()
-            .uUID(DEFAULT_U_UID)
             .tipo(DEFAULT_TIPO)
             .numero(DEFAULT_NUMERO)
             .pais(DEFAULT_PAIS)
@@ -95,7 +91,6 @@ public class EnderecoResourceIT {
      */
     public static Endereco createUpdatedEntity(EntityManager em) {
         Endereco endereco = new Endereco()
-            .uUID(UPDATED_U_UID)
             .tipo(UPDATED_TIPO)
             .numero(UPDATED_NUMERO)
             .pais(UPDATED_PAIS)
@@ -126,7 +121,6 @@ public class EnderecoResourceIT {
         List<Endereco> enderecoList = enderecoRepository.findAll();
         assertThat(enderecoList).hasSize(databaseSizeBeforeCreate + 1);
         Endereco testEndereco = enderecoList.get(enderecoList.size() - 1);
-        assertThat(testEndereco.getuUID()).isEqualTo(DEFAULT_U_UID);
         assertThat(testEndereco.getTipo()).isEqualTo(DEFAULT_TIPO);
         assertThat(testEndereco.getNumero()).isEqualTo(DEFAULT_NUMERO);
         assertThat(testEndereco.getPais()).isEqualTo(DEFAULT_PAIS);
@@ -168,7 +162,6 @@ public class EnderecoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(endereco.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uUID").value(hasItem(DEFAULT_U_UID)))
             .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO)))
             .andExpect(jsonPath("$.[*].numero").value(hasItem(DEFAULT_NUMERO)))
             .andExpect(jsonPath("$.[*].pais").value(hasItem(DEFAULT_PAIS)))
@@ -190,7 +183,6 @@ public class EnderecoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(endereco.getId().intValue()))
-            .andExpect(jsonPath("$.uUID").value(DEFAULT_U_UID))
             .andExpect(jsonPath("$.tipo").value(DEFAULT_TIPO))
             .andExpect(jsonPath("$.numero").value(DEFAULT_NUMERO))
             .andExpect(jsonPath("$.pais").value(DEFAULT_PAIS))
@@ -221,7 +213,6 @@ public class EnderecoResourceIT {
         // Disconnect from session so that the updates on updatedEndereco are not directly saved in db
         em.detach(updatedEndereco);
         updatedEndereco
-            .uUID(UPDATED_U_UID)
             .tipo(UPDATED_TIPO)
             .numero(UPDATED_NUMERO)
             .pais(UPDATED_PAIS)
@@ -240,7 +231,6 @@ public class EnderecoResourceIT {
         List<Endereco> enderecoList = enderecoRepository.findAll();
         assertThat(enderecoList).hasSize(databaseSizeBeforeUpdate);
         Endereco testEndereco = enderecoList.get(enderecoList.size() - 1);
-        assertThat(testEndereco.getuUID()).isEqualTo(UPDATED_U_UID);
         assertThat(testEndereco.getTipo()).isEqualTo(UPDATED_TIPO);
         assertThat(testEndereco.getNumero()).isEqualTo(UPDATED_NUMERO);
         assertThat(testEndereco.getPais()).isEqualTo(UPDATED_PAIS);

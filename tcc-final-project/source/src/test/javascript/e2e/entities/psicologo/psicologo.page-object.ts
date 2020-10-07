@@ -29,8 +29,45 @@ export class PsicologoUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
+  nomeInput = element(by.id('field_nome'));
+  rGInput = element(by.id('field_rG'));
+  cPFInput = element(by.id('field_cPF'));
+  numeroRegistroInput = element(by.id('field_numeroRegistro'));
+
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
+  }
+
+  async setNomeInput(nome: string): Promise<void> {
+    await this.nomeInput.sendKeys(nome);
+  }
+
+  async getNomeInput(): Promise<string> {
+    return await this.nomeInput.getAttribute('value');
+  }
+
+  async setRGInput(rG: string): Promise<void> {
+    await this.rGInput.sendKeys(rG);
+  }
+
+  async getRGInput(): Promise<string> {
+    return await this.rGInput.getAttribute('value');
+  }
+
+  async setCPFInput(cPF: string): Promise<void> {
+    await this.cPFInput.sendKeys(cPF);
+  }
+
+  async getCPFInput(): Promise<string> {
+    return await this.cPFInput.getAttribute('value');
+  }
+
+  async setNumeroRegistroInput(numeroRegistro: string): Promise<void> {
+    await this.numeroRegistroInput.sendKeys(numeroRegistro);
+  }
+
+  async getNumeroRegistroInput(): Promise<string> {
+    return await this.numeroRegistroInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

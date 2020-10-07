@@ -30,6 +30,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class HospitalResourceIT {
 
+    private static final String DEFAULT_NOME = "AAAAAAAAAA";
+    private static final String UPDATED_NOME = "BBBBBBBBBB";
+
     @Autowired
     private HospitalRepository hospitalRepository;
 
@@ -48,7 +51,8 @@ public class HospitalResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Hospital createEntity(EntityManager em) {
-        Hospital hospital = new Hospital();
+        Hospital hospital = new Hospital()
+            .nome(DEFAULT_NOME);
         return hospital;
     }
     /**
@@ -58,7 +62,8 @@ public class HospitalResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Hospital createUpdatedEntity(EntityManager em) {
-        Hospital hospital = new Hospital();
+        Hospital hospital = new Hospital()
+            .nome(UPDATED_NOME);
         return hospital;
     }
 
@@ -81,6 +86,7 @@ public class HospitalResourceIT {
         List<Hospital> hospitalList = hospitalRepository.findAll();
         assertThat(hospitalList).hasSize(databaseSizeBeforeCreate + 1);
         Hospital testHospital = hospitalList.get(hospitalList.size() - 1);
+        assertThat(testHospital.getNome()).isEqualTo(DEFAULT_NOME);
     }
 
     @Test
@@ -113,7 +119,8 @@ public class HospitalResourceIT {
         restHospitalMockMvc.perform(get("/api/hospitals?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(hospital.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(hospital.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)));
     }
     
     @Test
@@ -126,7 +133,8 @@ public class HospitalResourceIT {
         restHospitalMockMvc.perform(get("/api/hospitals/{id}", hospital.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(hospital.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(hospital.getId().intValue()))
+            .andExpect(jsonPath("$.nome").value(DEFAULT_NOME));
     }
     @Test
     @Transactional
@@ -148,6 +156,8 @@ public class HospitalResourceIT {
         Hospital updatedHospital = hospitalRepository.findById(hospital.getId()).get();
         // Disconnect from session so that the updates on updatedHospital are not directly saved in db
         em.detach(updatedHospital);
+        updatedHospital
+            .nome(UPDATED_NOME);
 
         restHospitalMockMvc.perform(put("/api/hospitals").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -158,6 +168,7 @@ public class HospitalResourceIT {
         List<Hospital> hospitalList = hospitalRepository.findAll();
         assertThat(hospitalList).hasSize(databaseSizeBeforeUpdate);
         Hospital testHospital = hospitalList.get(hospitalList.size() - 1);
+        assertThat(testHospital.getNome()).isEqualTo(UPDATED_NOME);
     }
 
     @Test

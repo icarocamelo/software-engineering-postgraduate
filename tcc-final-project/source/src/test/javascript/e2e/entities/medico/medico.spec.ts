@@ -40,7 +40,20 @@ describe('Medico e2e test', () => {
 
     await medicoComponentsPage.clickOnCreateButton();
 
-    await promise.all([]);
+    await promise.all([
+      medicoUpdatePage.setNomeInput('nome'),
+      medicoUpdatePage.setRGInput('rG'),
+      medicoUpdatePage.setCPFInput('cPF'),
+      medicoUpdatePage.setNumeroRegistroInput('numeroRegistro'),
+    ]);
+
+    expect(await medicoUpdatePage.getNomeInput()).to.eq('nome', 'Expected Nome value to be equals to nome');
+    expect(await medicoUpdatePage.getRGInput()).to.eq('rG', 'Expected RG value to be equals to rG');
+    expect(await medicoUpdatePage.getCPFInput()).to.eq('cPF', 'Expected CPF value to be equals to cPF');
+    expect(await medicoUpdatePage.getNumeroRegistroInput()).to.eq(
+      'numeroRegistro',
+      'Expected NumeroRegistro value to be equals to numeroRegistro'
+    );
 
     await medicoUpdatePage.save();
     expect(await medicoUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

@@ -30,9 +30,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class ProfissionalDeSaudeResourceIT {
 
-    private static final String DEFAULT_NUMERO_REGISTRO = "AAAAAAAAAA";
-    private static final String UPDATED_NUMERO_REGISTRO = "BBBBBBBBBB";
-
     @Autowired
     private ProfissionalDeSaudeRepository profissionalDeSaudeRepository;
 
@@ -51,8 +48,7 @@ public class ProfissionalDeSaudeResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static ProfissionalDeSaude createEntity(EntityManager em) {
-        ProfissionalDeSaude profissionalDeSaude = new ProfissionalDeSaude()
-            .numeroRegistro(DEFAULT_NUMERO_REGISTRO);
+        ProfissionalDeSaude profissionalDeSaude = new ProfissionalDeSaude();
         return profissionalDeSaude;
     }
     /**
@@ -62,8 +58,7 @@ public class ProfissionalDeSaudeResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static ProfissionalDeSaude createUpdatedEntity(EntityManager em) {
-        ProfissionalDeSaude profissionalDeSaude = new ProfissionalDeSaude()
-            .numeroRegistro(UPDATED_NUMERO_REGISTRO);
+        ProfissionalDeSaude profissionalDeSaude = new ProfissionalDeSaude();
         return profissionalDeSaude;
     }
 
@@ -86,7 +81,6 @@ public class ProfissionalDeSaudeResourceIT {
         List<ProfissionalDeSaude> profissionalDeSaudeList = profissionalDeSaudeRepository.findAll();
         assertThat(profissionalDeSaudeList).hasSize(databaseSizeBeforeCreate + 1);
         ProfissionalDeSaude testProfissionalDeSaude = profissionalDeSaudeList.get(profissionalDeSaudeList.size() - 1);
-        assertThat(testProfissionalDeSaude.getNumeroRegistro()).isEqualTo(DEFAULT_NUMERO_REGISTRO);
     }
 
     @Test
@@ -119,8 +113,7 @@ public class ProfissionalDeSaudeResourceIT {
         restProfissionalDeSaudeMockMvc.perform(get("/api/profissional-de-saudes?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(profissionalDeSaude.getId().intValue())))
-            .andExpect(jsonPath("$.[*].numeroRegistro").value(hasItem(DEFAULT_NUMERO_REGISTRO)));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(profissionalDeSaude.getId().intValue())));
     }
     
     @Test
@@ -133,8 +126,7 @@ public class ProfissionalDeSaudeResourceIT {
         restProfissionalDeSaudeMockMvc.perform(get("/api/profissional-de-saudes/{id}", profissionalDeSaude.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(profissionalDeSaude.getId().intValue()))
-            .andExpect(jsonPath("$.numeroRegistro").value(DEFAULT_NUMERO_REGISTRO));
+            .andExpect(jsonPath("$.id").value(profissionalDeSaude.getId().intValue()));
     }
     @Test
     @Transactional
@@ -156,8 +148,6 @@ public class ProfissionalDeSaudeResourceIT {
         ProfissionalDeSaude updatedProfissionalDeSaude = profissionalDeSaudeRepository.findById(profissionalDeSaude.getId()).get();
         // Disconnect from session so that the updates on updatedProfissionalDeSaude are not directly saved in db
         em.detach(updatedProfissionalDeSaude);
-        updatedProfissionalDeSaude
-            .numeroRegistro(UPDATED_NUMERO_REGISTRO);
 
         restProfissionalDeSaudeMockMvc.perform(put("/api/profissional-de-saudes").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -168,7 +158,6 @@ public class ProfissionalDeSaudeResourceIT {
         List<ProfissionalDeSaude> profissionalDeSaudeList = profissionalDeSaudeRepository.findAll();
         assertThat(profissionalDeSaudeList).hasSize(databaseSizeBeforeUpdate);
         ProfissionalDeSaude testProfissionalDeSaude = profissionalDeSaudeList.get(profissionalDeSaudeList.size() - 1);
-        assertThat(testProfissionalDeSaude.getNumeroRegistro()).isEqualTo(UPDATED_NUMERO_REGISTRO);
     }
 
     @Test

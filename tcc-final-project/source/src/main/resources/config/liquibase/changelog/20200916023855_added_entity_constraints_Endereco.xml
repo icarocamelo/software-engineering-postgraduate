@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Endereco.
+    -->
+    <changeSet id="20200916023855-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="paciente_id"
+                                 baseTableName="endereco"
+                                 constraintName="fk_endereco_paciente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="paciente"/>
+
+        <addForeignKeyConstraint baseColumnNames="posto_de_saude_id"
+                                 baseTableName="endereco"
+                                 constraintName="fk_endereco_posto_de_saude_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="posto_de_saude"/>
+
+        <addForeignKeyConstraint baseColumnNames="clinica_medica_id"
+                                 baseTableName="endereco"
+                                 constraintName="fk_endereco_clinica_medica_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="clinica_medica"/>
+
+        <addForeignKeyConstraint baseColumnNames="atendimento_id"
+                                 baseTableName="endereco"
+                                 constraintName="fk_endereco_atendimento_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="atendimento"/>
+
+        <addForeignKeyConstraint baseColumnNames="procedimento_id"
+                                 baseTableName="endereco"
+                                 constraintName="fk_endereco_procedimento_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="procedimento"/>
+
+        <addForeignKeyConstraint baseColumnNames="farmacia_id"
+                                 baseTableName="endereco"
+                                 constraintName="fk_endereco_farmacia_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="farmacia"/>
+
+        <addForeignKeyConstraint baseColumnNames="laboratorio_id"
+                                 baseTableName="endereco"
+                                 constraintName="fk_endereco_laboratorio_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="laboratorio"/>
+
+    </changeSet>
+</databaseChangeLog>

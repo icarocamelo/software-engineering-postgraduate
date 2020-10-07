@@ -14,9 +14,11 @@ import { AgendaConsultaService } from './agenda-consulta.service';
 })
 export class AgendaConsultaUpdateComponent implements OnInit {
   isSaving = false;
+  dataDp: any;
 
   editForm = this.fb.group({
     id: [],
+    data: [],
   });
 
   constructor(protected agendaConsultaService: AgendaConsultaService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -30,6 +32,7 @@ export class AgendaConsultaUpdateComponent implements OnInit {
   updateForm(agendaConsulta: IAgendaConsulta): void {
     this.editForm.patchValue({
       id: agendaConsulta.id,
+      data: agendaConsulta.data,
     });
   }
 
@@ -51,6 +54,7 @@ export class AgendaConsultaUpdateComponent implements OnInit {
     return {
       ...new AgendaConsulta(),
       id: this.editForm.get(['id'])!.value,
+      data: this.editForm.get(['data'])!.value,
     };
   }
 

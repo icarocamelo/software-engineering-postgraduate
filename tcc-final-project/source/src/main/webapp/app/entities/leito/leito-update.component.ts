@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { ILeito, Leito } from 'app/shared/model/leito.model';
 import { LeitoService } from './leito.service';
+import { IHospital } from 'app/shared/model/hospital.model';
+import { HospitalService } from 'app/entities/hospital/hospital.service';
 
 @Component({
   selector: 'jhi-leito-update',
@@ -14,24 +16,34 @@ import { LeitoService } from './leito.service';
 })
 export class LeitoUpdateComponent implements OnInit {
   isSaving = false;
+  hospitals: IHospital[] = [];
 
   editForm = this.fb.group({
     id: [],
-    uUID: [],
+    identificacao: [],
+    hospital: [],
   });
 
-  constructor(protected leitoService: LeitoService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected leitoService: LeitoService,
+    protected hospitalService: HospitalService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ leito }) => {
       this.updateForm(leito);
+
+      this.hospitalService.query().subscribe((res: HttpResponse<IHospital[]>) => (this.hospitals = res.body || []));
     });
   }
 
   updateForm(leito: ILeito): void {
     this.editForm.patchValue({
       id: leito.id,
-      uUID: leito.uUID,
+      identificacao: leito.identificacao,
+      hospital: leito.hospital,
     });
   }
 
@@ -53,7 +65,8 @@ export class LeitoUpdateComponent implements OnInit {
     return {
       ...new Leito(),
       id: this.editForm.get(['id'])!.value,
-      uUID: this.editForm.get(['uUID'])!.value,
+      identificacao: this.editForm.get(['identificacao'])!.value,
+      hospital: this.editForm.get(['hospital'])!.value,
     };
   }
 
@@ -71,5 +84,9 @@ export class LeitoUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IHospital): any {
+    return item.id;
   }
 }

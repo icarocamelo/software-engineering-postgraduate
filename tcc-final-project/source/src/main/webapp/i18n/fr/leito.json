@@ -16,7 +16,8 @@
       "detail": {
         "title": "Leito"
       },
-      "uUID": "U UID"
+      "identificacao": "Identificacao",
+      "hospital": "Hospital"
     }
   }
 }

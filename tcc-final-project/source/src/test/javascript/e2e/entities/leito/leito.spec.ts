@@ -40,9 +40,12 @@ describe('Leito e2e test', () => {
 
     await leitoComponentsPage.clickOnCreateButton();
 
-    await promise.all([leitoUpdatePage.setUUIDInput('uUID')]);
+    await promise.all([leitoUpdatePage.setIdentificacaoInput('identificacao'), leitoUpdatePage.hospitalSelectLastOption()]);
 
-    expect(await leitoUpdatePage.getUUIDInput()).to.eq('uUID', 'Expected UUID value to be equals to uUID');
+    expect(await leitoUpdatePage.getIdentificacaoInput()).to.eq(
+      'identificacao',
+      'Expected Identificacao value to be equals to identificacao'
+    );
 
     await leitoUpdatePage.save();
     expect(await leitoUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

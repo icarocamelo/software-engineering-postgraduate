@@ -2,7 +2,6 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { UnidadeSaudeService } from 'app/entities/unidade-saude/unidade-saude.service';
 import { IUnidadeSaude, UnidadeSaude } from 'app/shared/model/unidade-saude.model';
-import { TipoUnidadeSaude } from 'app/shared/model/enumerations/tipo-unidade-saude.model';
 
 describe('Service Tests', () => {
   describe('UnidadeSaude Service', () => {
@@ -21,17 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(UnidadeSaudeService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new UnidadeSaude(
-        0,
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        TipoUnidadeSaude.PUBLICA
-      );
+      elemDefault = new UnidadeSaude(0);
     });
 
     describe('Service methods', () => {
@@ -63,19 +52,7 @@ describe('Service Tests', () => {
       });
 
       it('should update a UnidadeSaude', () => {
-        const returnedFromService = Object.assign(
-          {
-            uUID: 'BBBBBB',
-            endereco: 'BBBBBB',
-            cNPJ: 'BBBBBB',
-            telefone: 'BBBBBB',
-            cEP: 'BBBBBB',
-            razaoSocial: 'BBBBBB',
-            nomeFantasia: 'BBBBBB',
-            tipoUnidadeSaude: 'BBBBBB',
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
 
         const expected = Object.assign({}, returnedFromService);
 
@@ -87,19 +64,7 @@ describe('Service Tests', () => {
       });
 
       it('should return a list of UnidadeSaude', () => {
-        const returnedFromService = Object.assign(
-          {
-            uUID: 'BBBBBB',
-            endereco: 'BBBBBB',
-            cNPJ: 'BBBBBB',
-            telefone: 'BBBBBB',
-            cEP: 'BBBBBB',
-            razaoSocial: 'BBBBBB',
-            nomeFantasia: 'BBBBBB',
-            tipoUnidadeSaude: 'BBBBBB',
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
 
         const expected = Object.assign({}, returnedFromService);
 

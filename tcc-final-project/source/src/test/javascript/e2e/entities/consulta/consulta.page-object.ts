@@ -29,8 +29,36 @@ export class ConsultaUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
+  descricaoInput = element(by.id('field_descricao'));
+  precoInput = element(by.id('field_preco'));
+  codigoInput = element(by.id('field_codigo'));
+
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
+  }
+
+  async setDescricaoInput(descricao: string): Promise<void> {
+    await this.descricaoInput.sendKeys(descricao);
+  }
+
+  async getDescricaoInput(): Promise<string> {
+    return await this.descricaoInput.getAttribute('value');
+  }
+
+  async setPrecoInput(preco: string): Promise<void> {
+    await this.precoInput.sendKeys(preco);
+  }
+
+  async getPrecoInput(): Promise<string> {
+    return await this.precoInput.getAttribute('value');
+  }
+
+  async setCodigoInput(codigo: string): Promise<void> {
+    await this.codigoInput.sendKeys(codigo);
+  }
+
+  async getCodigoInput(): Promise<string> {
+    return await this.codigoInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

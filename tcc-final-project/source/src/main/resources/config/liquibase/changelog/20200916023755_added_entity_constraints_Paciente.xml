@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="perfil_acesso"/>
 
+        <addForeignKeyConstraint baseColumnNames="endereco_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente_endereco_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="endereco"/>
+
     </changeSet>
 </databaseChangeLog>

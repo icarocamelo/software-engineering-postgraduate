@@ -20,8 +20,8 @@ public class Medicamento implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "u_uid")
-    private String uUID;
+    @Column(name = "nome")
+    private String nome;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "medicamentos", allowSetters = true)
@@ -36,17 +36,17 @@ public class Medicamento implements Serializable {
         this.id = id;
     }
 
-    public String getuUID() {
-        return uUID;
+    public String getNome() {
+        return nome;
     }
 
-    public Medicamento uUID(String uUID) {
-        this.uUID = uUID;
+    public Medicamento nome(String nome) {
+        this.nome = nome;
         return this;
     }
 
-    public void setuUID(String uUID) {
-        this.uUID = uUID;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Farmacia getFarmacia() {
@@ -84,7 +84,7 @@ public class Medicamento implements Serializable {
     public String toString() {
         return "Medicamento{" +
             "id=" + getId() +
-            ", uUID='" + getuUID() + "'" +
+            ", nome='" + getNome() + "'" +
             "}";
     }
 }
