@@ -1,0 +1,5 @@
+References
+
+https://www.uml-diagrams.org/use-case-include.html
+https://www.tutorialspoint.com/estimation_techniques/estimation_techniques_function_points.htm
+https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-aggregation-vs-composition/
