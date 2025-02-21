@@ -1,6 +1,4 @@
-# Saude++
-
-This application skeleton was generated using JHipster 6.10.1. You can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.10.1](https://www.jhipster.tech/documentation-archive/v6.10.1).
+# Saude++ - Developing a public health management system in a smart city
 
 ## Development
 
