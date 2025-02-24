@@ -1,4 +1,4 @@
-# Saude++ - Developing a public health management system in a smart city
+# Saude++ - A public health management system in a smart city
 
 ### Stack
 - AngularJS
